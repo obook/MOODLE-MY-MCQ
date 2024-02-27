@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<!--
+Outil de fabrication de question QCM au format GIFT pour Moodle
+(c) obooklage Académie de Créteil
+06/05/2020
+-->
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+	<title>Moodle MCQ GIFT Maker</title>
+
+    <!-- JQueryMobile -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="vendor/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css" />
+    <link rel="stylesheet" type="text/css" href="vendor/jquery-mobile-flat-ui-theme/jquery.mobile.flatui.css" />
+	<script src="vendor/jquerymobile.com_1.4.5_js_jquery.js"></script>
+	<script src="vendor/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+    <!-- Mathjax -->
+	<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+    <!-- Styles -->
+    <link rel="stylesheet" type="text/css" href="index.css">
+</head>
+<body class="no-mathjax">
+
+<div data-role="page" id="index">
+
+	<div data-role="header" data-position="fixed" data-tap-toggle="false" data-theme="a"> <!-- style="height: 16em;" -->
+		<h1 id="id_header">Moodle MCQ GIFT Maker</h1>
+	</div><!-- /header -->
+
+	<div role="main" class="ui-content">
+        <div id="id_apercu" class="mathjax" style="font-weight: normal !important; border:#000000 1px solid; color:#000000 ! important; background:#ffffff !important; padding-top:5px; padding-bottom:5px; padding-right:5px; padding-left:5px; overflow:scroll;"></div> <!--   overflow:scroll;  -->
+
+	<!-- <p>LaTeX : les symboles { et } DOIVENT avoir un anti-slash devant, comme \{ et \}, c'est valable pour tous les caractères spéciaux ~ = # { }</p> -->
+
+        <div data-role="collapsible" data-collapsed="true" data-theme="b" data-content-theme="b">
+            <h4>Réglages</h4>
+        <fieldset class="ui-grid-b">
+            <div class="ui-block-a">
+                    <div class="ui-field-contain">
+                        <label for="text-basic">Thème:</label>
+                        <input type="text" name="text-basic" id="id_theme" value="Thème de ma banque">
+                    </div>
+            </div>
+            <div class="ui-block-b">
+                    <select name="select-h-1a" id="id_question_type">
+                        <option value="1">Une bonne réponse</option>
+                        <option value="2">Deux bonnes réponses</option>
+                        <option value="3">Trois bonnes réponses</option>
+                        <option value="4">Quatre bonnes réponses</option>
+                    </select>
+            </div>
+            <div class="ui-block-c">
+                <select name="select-h-1b" id="id_points_negatifs"><!-- ajouter : disabled -->
+                    <option value="1">Avec points négatifs</option>
+                    <option value="0">Sans points négatifs</option>
+                </select>
+            </div>
+        </fieldset>
+        </div>
+		<!--
+        <div data-role="collapsible" data-collapsed="false" data-theme="a" data-content-theme="a">
+            <h4>Aperçu</h4>
+
+        </div>
+            -->
+        <div data-role="collapsible" data-collapsed="true" data-theme="b" data-content-theme="a">
+            <h4>Question</h4>
+<fieldset class="ui-grid-b">
+            <div class="ui-block-a">
+
+            <label for="id_format_question">
+                <div data-role="collapsible">
+                <h4>Format:</h4>
+<p><b>Code source Python</b> :
+<textarea readonly>
+<pre><code>def Mystère(x) :\n
+    ligne\n
+    return(0)
+</pre></code>
+</textarea>
+</p>
+                    <p><b> ...Au besoin dans Moodle </b> retoucher en utilisant la fonction "A -> Pré-formaté" pour copier du code source HTML</p>
+                    <p><b> Code balise HTML</b> : &amp;lt;balise&amp;gt; </p> <!-- CA NE MARCHE PAS !!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+                    <p><b> LaTeX </b> :  \( LaTeX \) </p>
+                    <p><b> Inférieur ou égal </b> :  \leqslant </p>
+                    <p><b> Supérieur ou égal </b> :  \geqslant </p>
+                    <p><b> Fraction </b> :  \dfrac{a}{b} </p>
+                    <p><b> Racine carrée </b> :  \sqrt{5} </p>
+                    <p><b> Angle </b> :  \widehat{AB} </p>
+                    <p><b> Vecteur </b> : \overrightarrow{AB} </p>
+                    <p><b> Coordonnées vecteur </b> : \overrightarrow{AB} \begin{pmatrix} -3 \\ 55 \end{pmatrix} </p>
+                    <p><b> Ensemble de nombres</b> : \mathbb{R} </p>
+                    <p><b> Intervalle</b> : ] -\infty ; 0 ] \cup [ 0 ; +\infty [ \cap [ -1 ; 1 ]</p>
+                    <p><b> Somme </b> : \sum^\infty_{k=0} </p>
+                </div>
+            </label>
+    </div>
+    <div class="ui-block-b">
+            <select id="id_format_question">
+                <option>html</option>
+                <option>plain</option>
+            </select>
+    </div>
+    <div class="ui-block-c">
+		<button class="ui-btn ui-corner-all ui-btn-d" id="id_reset">Raz</button>
+    </div>
+</fieldset>
+<fieldset class="ui-grid-a">
+    <div class="ui-block-a">
+        <label for="id_reponse1">Titre:</label>
+        <input type="text" name="titre" id="id_titre" value="Puissance de 6">
+    </div>
+    <div class="ui-block-b">
+        <label for="id_numero">N°</label>
+        <input type="text" name="numero" id="id_numero" value="01">
+    </div>
+</fieldset>
+
+          <label for="id_question">Texte:</label>
+		  <textarea cols="80" rows="10" name="textarea" id="id_question">\( 6^3 \) est égal à ...</textarea>
+        </div>
+
+
+        <div data-role="collapsible" data-collapsed="true" data-theme="b" data-content-theme="a">
+            <h4>Réponses</h4>
+              <div class="ui-field-contain">
+                <label for="id_format_reponse">Format:</label>
+                <select id="id_format_reponse">
+                <option>html</option>
+                <option>plain</option>
+                </select>
+
+                <label for="id_reponse1">Réponse 1:</label>
+                <input type="text" name="reponse1" id="id_reponse1" value="\( 216 \)">
+
+                <label for="id_reponse2">Réponse 2:</label>
+                <input type="text" name="reponse2" id="id_reponse2" value="\( ] -\infty ; 0 ] \cup [ 0 ; +\infty [ \cap [ -1 ; 1 ] \)">
+
+                <label for="id_reponse3">Réponse 3:</label>
+                <input type="text" name="reponse3" id="id_reponse3" value="\( - \dfrac{\pi}{2^{-1}} \)">
+
+                <label for="id_reponse4">Réponse 4:</label>
+                <input type="text" name="reponse4" id="id_reponse4" value="\( ^3\sqrt{5} \)">
+              </div>
+        </div>
+
+        <div data-role="collapsible" data-collapsed="true" data-theme="b" data-content-theme="a">
+            <h4>Feedback (optionnel)</h4>
+            <textarea cols="80" rows="5" name="textarea" id="id_feedback">En appliquant la définition de la puissance positive d'un nombre : \( 6^3 = 6 \times 6 \times 6 = 216 \)</textarea>
+        </div>
+
+        <div data-role="collapsible" data-collapsed="true" data-theme="b" data-content-theme="a">
+            <h4>Code GIFT généré - Les caractères ~ = # { } : sont encodés</h4>
+            <p id="id_result"></p>
+        </div>
+
+	</div><!-- /content -->
+
+	<div data-role="footer" data-position="fixed" data-tap-toggle="false" data-theme="a">
+		<h4>Moodle MCQ GIFT Maker - ADM 2020</h4>
+	</div><!-- /footer -->
+
+	<script type="text/javascript">
+
+    $(document).delegate('.ui-page', 'pageshow', function () {
+        console.log("pageshow");
+	});
+
+	$(document).on("pagecreate", "#index", function() {
+		console.log('pagecreate@index');
+	});
+
+    $(document).on("pagebeforeshow", "#index", function()
+	{
+        console.log('pagebeforeshow@index');
+    });
+
+    $(document).on("pageaftershow", "#index", function()
+	{
+        console.log('pageaftershow@index');
+    });
+
+	$( "#id_reset" ).click(function()
+	{
+		if ( confirm( "Effacer la question et les réponses ?" ) )
+		{
+			$("#id_titre").val("");
+			$("#id_numero").val("01");
+			$("#id_question").val("");
+			$("#id_reponse1").val("");
+			$("#id_reponse2").val("");
+			$("#id_reponse3").val("");
+			$("#id_reponse4").val("");
+			$("#id_feedback").val("");
+		}
+	});
+
+    </script>
+
+</div><!-- /page -->
+
+<script type="text/javascript">
+
+/* Alerte si on ferme l'onglet ou la page : MAIS ne fonctionne pas avec Chrome */
+
+window.addEventListener('beforeunload', function (e) {
+  // Cancel the event
+  e.preventDefault(); // If you prevent default behavior in Mozilla Firefox prompt will always be shown
+  // Chrome requires returnValue to be set
+  e.returnValue = '';
+});
+
+window.onbeforeunload = function(e) {
+  return 'Are you sure you want to leave this page?  You will lose any unsaved data.';
+};
+
+</script>
+<!-- script principal -->
+<script src="index.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'],['\\(','\\)']],
+    processClass: "mathjax",
+    ignoreClass: "no-mathjax"
+  }
+});
+</script>
+</body>
+</html>
