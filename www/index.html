@@ -31,31 +31,30 @@ Outil de fabrication de question QCM au format GIFT pour Moodle
 	</div><!-- /header -->
 
 	<div role="main" class="ui-content">
-        <div id="id_apercu" class="mathjax" style="font-weight: normal !important; border:#000000 1px solid; color:#000000 ! important; background:#ffffff !important; padding-top:5px; padding-bottom:5px; padding-right:5px; padding-left:5px; overflow:scroll;"></div> <!--   overflow:scroll;  -->
 
 	<!-- <p>LaTeX : les symboles { et } DOIVENT avoir un anti-slash devant, comme \{ et \}, c'est valable pour tous les caractères spéciaux ~ = # { }</p> -->
 
         <div data-role="collapsible" data-collapsed="true" data-theme="b" data-content-theme="b">
-            <h4>Réglages</h4>
+            <h4>Settings</h4>
         <fieldset class="ui-grid-b">
             <div class="ui-block-a">
                     <div class="ui-field-contain">
-                        <label for="text-basic">Thème:</label>
-                        <input type="text" name="text-basic" id="id_theme" value="Thème de ma banque">
+                        <label for="text-basic">Category:</label>
+                        <input type="text" name="text-basic" id="id_theme" value="My bank theme">
                     </div>
             </div>
             <div class="ui-block-b">
                     <select name="select-h-1a" id="id_question_type">
-                        <option value="1">Une bonne réponse</option>
-                        <option value="2">Deux bonnes réponses</option>
-                        <option value="3">Trois bonnes réponses</option>
-                        <option value="4">Quatre bonnes réponses</option>
+                        <option value="1">One correct awswer</option>
+                        <option value="2">Two correct awswers</option>
+                        <option value="3">Three correct awswers</option>
+                        <option value="4">Four correct awswers</option>
                     </select>
             </div>
             <div class="ui-block-c">
                 <select name="select-h-1b" id="id_points_negatifs"><!-- ajouter : disabled -->
-                    <option value="1">Avec points négatifs</option>
-                    <option value="0">Sans points négatifs</option>
+                    <option value="1">With negatives points</option>
+                    <option value="0">Without negatives points</option>
                 </select>
             </div>
         </fieldset>
@@ -76,9 +75,10 @@ Outil de fabrication de question QCM au format GIFT pour Moodle
                 <h4>Format:</h4>
 <p><b>Code source Python</b> :
 <textarea readonly>
-<pre><code>def Mystère(x) :\n
-    ligne\n
+<pre><code>def Mystère(x) :
+    ligne
     return(0)
+print(Mystère(-7))
 </pre></code>
 </textarea>
 </p>
@@ -105,13 +105,13 @@ Outil de fabrication de question QCM au format GIFT pour Moodle
             </select>
     </div>
     <div class="ui-block-c">
-		<button class="ui-btn ui-corner-all ui-btn-d" id="id_reset">Raz</button>
+		<button class="ui-btn ui-corner-all ui-btn-d" id="id_reset">Reset</button>
     </div>
 </fieldset>
 <fieldset class="ui-grid-a">
     <div class="ui-block-a">
         <label for="id_reponse1">Titre:</label>
-        <input type="text" name="titre" id="id_titre" value="Puissance de 6">
+        <input type="text" name="titre" id="id_titre" value="Un programme en Python">
     </div>
     <div class="ui-block-b">
         <label for="id_numero">N°</label>
@@ -120,12 +120,19 @@ Outil de fabrication de question QCM au format GIFT pour Moodle
 </fieldset>
 
           <label for="id_question">Texte:</label>
-		  <textarea cols="80" rows="10" name="textarea" id="id_question">\( 6^3 \) est égal à ...</textarea>
+		  <textarea cols="80" rows="10" name="textarea" id="id_question">
+Consider the following Python program.
+<pre><code>x=4
+if 3*x-6 < 0 :
+    r=-1
+else :
+    r=1</code></pre>
+What does the variable r contain at the end of the program?
+          </textarea>
         </div>
 
-
         <div data-role="collapsible" data-collapsed="true" data-theme="b" data-content-theme="a">
-            <h4>Réponses</h4>
+            <h4>Answers</h4>
               <div class="ui-field-contain">
                 <label for="id_format_reponse">Format:</label>
                 <select id="id_format_reponse">
@@ -133,27 +140,32 @@ Outil de fabrication de question QCM au format GIFT pour Moodle
                 <option>plain</option>
                 </select>
 
-                <label for="id_reponse1">Réponse 1:</label>
-                <input type="text" name="reponse1" id="id_reponse1" value="\( 216 \)">
+                <label for="id_reponse1">Answer 1:</label>
+                <input type="text" name="reponse1" id="id_reponse1" value="-1">
 
-                <label for="id_reponse2">Réponse 2:</label>
-                <input type="text" name="reponse2" id="id_reponse2" value="\( ] -\infty ; 0 ] \cup [ 0 ; +\infty [ \cap [ -1 ; 1 ] \)">
+                <label for="id_reponse2">Answer 2:</label>
+                <input type="text" name="reponse2" id="id_reponse2" value="1">
 
-                <label for="id_reponse3">Réponse 3:</label>
-                <input type="text" name="reponse3" id="id_reponse3" value="\( - \dfrac{\pi}{2^{-1}} \)">
+                <label for="id_reponse3">Answer 3:</label>
+                <input type="text" name="reponse3" id="id_reponse3" value="x">
 
-                <label for="id_reponse4">Réponse 4:</label>
-                <input type="text" name="reponse4" id="id_reponse4" value="\( ^3\sqrt{5} \)">
+                <label for="id_reponse4">Answer 4:</label>
+                <input type="text" name="reponse4" id="id_reponse4" value="6">
               </div>
         </div>
 
         <div data-role="collapsible" data-collapsed="true" data-theme="b" data-content-theme="a">
-            <h4>Feedback (optionnel)</h4>
-            <textarea cols="80" rows="5" name="textarea" id="id_feedback">En appliquant la définition de la puissance positive d'un nombre : \( 6^3 = 6 \times 6 \times 6 = 216 \)</textarea>
+            <h4>Feedback (optionnal)</h4>
+            <textarea cols="80" rows="5" name="textarea" id="id_feedback"></textarea>
         </div>
 
-        <div data-role="collapsible" data-collapsed="true" data-theme="b" data-content-theme="a">
-            <h4>Code GIFT généré - Les caractères ~ = # { } : sont encodés</h4>
+        <div data-role="collapsible" data-collapsed="false" data-theme="b" data-content-theme="b">
+            <h4>Preview</h4>
+        <div id="id_apercu" class="mathjax"></div> <!--   overflow:scroll;  -->
+        </div>
+
+        <div data-role="collapsible" data-collapsed="false" data-theme="b" data-content-theme="a">
+            <h4>GIFT code - To copy into a text editor (chars ~ = # { } : are encoded)</h4>
             <p id="id_result"></p>
         </div>
 
@@ -185,7 +197,7 @@ Outil de fabrication de question QCM au format GIFT pour Moodle
 
 	$( "#id_reset" ).click(function()
 	{
-		if ( confirm( "Effacer la question et les réponses ?" ) )
+		if ( confirm( "Clear all answers ?" ) )
 		{
 			$("#id_titre").val("");
 			$("#id_numero").val("01");

@@ -16,7 +16,7 @@ function Html2GiftFilter(string, format)
 {
     if( format == "apercu" )
         return(string);
-    
+    /*
     string = string.replace(/:/g, '\:')
     string = string.replace(/{/g, '\\{')
     string = string.replace(/}/g, '\\}')
@@ -25,6 +25,20 @@ function Html2GiftFilter(string, format)
     string = string.replace(/#/g, '\\#')
     string = string.replace(/</g, '&lt;')
     string = string.replace(/>/g, '&gt;')
+
+    */
+    string = string.replaceAll('=', '\\=');
+    string = string.replaceAll('<', '&lt;');
+    string = string.replaceAll('>', '&gt;');
+    string = string.replaceAll(':', '\\:');
+    string = string.replaceAll('{', '\\{');
+    string = string.replaceAll('}', '\\}');
+    string = string.replaceAll('\r', '\\r');
+
+    // Retours à la ligne
+
+    string = string.replaceAll('\u000A', '\\n');
+
 return string;
 }
 
@@ -68,6 +82,12 @@ Question avec du code HTML, on remarque les \n :
 	var theme = $("#id_theme").val();
 	var titre = numero + " - " + titre;
 	var question = $("#id_question").val();
+
+/*
+    for (let i = 0; i < question.length; i++) {
+        console.log(question[i] + " CODE="+question[i].charCodeAt(0)); // Get decimal UTF-16 code
+      }
+*/
     var type = $("#id_question_type").val(); /* 1,2,3 ou 4 bonnes réponses */
     var points = $("#id_points_negatifs").val(); /* 0 = sans points négatifs, 1 = avec points négatifs */
 	
