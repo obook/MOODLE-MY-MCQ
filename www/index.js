@@ -129,7 +129,7 @@ Question avec du code HTML, on remarque les \n :
     {
         if (points == 1) /* Points négatifs */
         {
-            code = code + "// Une seule bonne réponse : n°1, avec points négatifs<br>\n{<br>\n";
+            code = code + "// One correct awswer : n°1, With negatives points<br>\n{<br>\n";
             code = code + "&nbsp; = ["+format_reponse+"] " + Html2GiftFilter( reponse1, format_reponse ) + "<br>\n";
             code = code + "&nbsp; ~%-33.33333% ["+format_reponse+"] " + Html2GiftFilter( reponse2, format_reponse) + "<br>\n";
             code = code + "&nbsp; ~%-33.33333% ["+format_reponse+"] " + Html2GiftFilter( reponse3, format_reponse ) + "<br>\n";
@@ -137,7 +137,7 @@ Question avec du code HTML, on remarque les \n :
         }
         else
         {
-            code = code + "// Une seule bonne réponse : n°1, sans points négatifs<br>\n{<br>\n";
+            code = code + "// One correct awswer : n°1, Without negatives points<br>\n{<br>\n";
             code = code + "&nbsp; = ["+format_reponse+"] " + Html2GiftFilter( reponse1, format_reponse ) + "<br>\n";
             code = code + "&nbsp; ~ ["+format_reponse+"] " + Html2GiftFilter( reponse2, format_reponse ) + "<br>\n";
             code = code + "&nbsp; ~ ["+format_reponse+"] " + Html2GiftFilter( reponse3, format_reponse ) + "<br>\n";
@@ -148,7 +148,7 @@ Question avec du code HTML, on remarque les \n :
     {
         if (points == 1) /* Points négatifs */
         {
-            code = code + "// Deux bonnes réponses : n°1 et n°2, avec points négatifs<br>\n{<br>\n";
+            code = code + "// Two correct awswers : n°1 et n°2, With negatives points<br>\n{<br>\n";
             code = code + "&nbsp; ~%50% ["+format_reponse+"] " + Html2GiftFilter( reponse1, format_reponse ) + "<br>\n";
             code = code + "&nbsp; ~%50% ["+format_reponse+"] " + Html2GiftFilter( reponse2, format_reponse ) + "<br>\n";
             code = code + "&nbsp; ~%-33.33333% ["+format_reponse+"] " + Html2GiftFilter( reponse3, format_reponse ) + "<br>\n";
@@ -156,7 +156,7 @@ Question avec du code HTML, on remarque les \n :
         }
         else
         {
-            code = code + "// Deux bonnes réponses : n°1 et n°2, sans points négatifs<br>\n{<br>\n";
+            code = code + "// Two correct awswers : n°1 et n°2, Without negatives points<br>\n{<br>\n";
             code = code + "&nbsp; ~%50% ["+format_reponse+"] " + Html2GiftFilter( reponse1, format_reponse ) + "<br>\n";
             code = code + "&nbsp; ~%50% ["+format_reponse+"] " + Html2GiftFilter( reponse2, format_reponse ) + "<br>\n";
             code = code + "&nbsp; ~ ["+format_reponse+"] " + Html2GiftFilter( reponse3, format_reponse ) + "<br>\n";
@@ -167,7 +167,7 @@ Question avec du code HTML, on remarque les \n :
     {
         if (points == 1) /* Points négatifs */
         {
-            code = code + "// Trois bonnes réponses : n°1, n°2 et n°3, avec points négatifs<br>\n{<br>\n";
+            code = code + "// Three correct awswers : n°1, n°2 et n°3, With negatives points<br>\n{<br>\n";
             code = code + "&nbsp; ~%33.33333% ["+format_reponse+"] " + Html2GiftFilter( reponse1, format_reponse ) + "<br>\n";
             code = code + "&nbsp; ~%33.33333% ["+format_reponse+"] " + Html2GiftFilter( reponse2, format_reponse ) + "<br>\n";
             code = code + "&nbsp; ~%33.33333% ["+format_reponse+"] " + Html2GiftFilter( reponse3, format_reponse ) + "<br>\n";
@@ -175,7 +175,7 @@ Question avec du code HTML, on remarque les \n :
         }
         else
         {
-            code = code + "// Trois bonnes réponses : n°1, n°2 et n°3, sans points négatifs<br>\n{<br>\n";
+            code = code + "// Three correct awswers : n°1, n°2 et n°3, Without negatives points<br>\n{<br>\n";
             code = code + "&nbsp; ~%33.33333% ["+format_reponse+"] " + Html2GiftFilter( reponse1, format_reponse ) + "<br>\n";
             code = code + "&nbsp; ~%33.33333% ["+format_reponse+"] " + Html2GiftFilter( reponse2, format_reponse ) + "<br>\n";
             code = code + "&nbsp; ~%33.33333% ["+format_reponse+"] " + Html2GiftFilter( reponse3, format_reponse ) + "<br>\n";
@@ -184,7 +184,7 @@ Question avec du code HTML, on remarque les \n :
     }
     else // Quatre bonnes réponses
     {
-        code = code + "// Quatres bonnes réponses<br>\n{<br>\n";
+        code = code + "// Four correct awswers<br>\n{<br>\n";
         code = code + "&nbsp; ~%25% ["+format_reponse+"] " + Html2GiftFilter( reponse1, format_reponse ) + "<br>\n";
         code = code + "&nbsp; ~%25% ["+format_reponse+"] " + Html2GiftFilter( reponse2, format_reponse ) + "<br>\n";
         code = code + "&nbsp; ~%25% ["+format_reponse+"] " + Html2GiftFilter( reponse3, format_reponse ) + "<br>\n";
