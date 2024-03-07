@@ -33,7 +33,6 @@ function Html2GiftFilter(string, format)
     string = string.replaceAll(':', '\\:');
     string = string.replaceAll('{', '\\{');
     string = string.replaceAll('}', '\\}');
-    string = string.replaceAll('\r', '\\r');
 
     // Retours à la ligne
 
@@ -81,11 +80,45 @@ Question avec du code HTML, on remarque les \n :
 	var titre = $("#id_titre").val();
 	var theme = $("#id_theme").val();
 	var titre = numero + " - " + titre;
-	var question = $("#id_question").val();
+    var question_object = $("#id_question");
+	var question = question_object.val();
+    //var question_html = $(question_object.val()).html();
 
+    // Il faut remplacer < par &lt; à l'intérieur de <pre><code></code></pre>
 /*
-    for (let i = 0; i < question.length; i++) {
-        console.log(question[i] + " CODE="+question[i].charCodeAt(0)); // Get decimal UTF-16 code
+    let start_code = false;
+    let index_start = -1;
+    let index_end = -1;
+
+    for (let i = 0; i < question.length-1; i++) {
+        let c = question[i];
+        let start_tag_code = question.slice(i, i+6).toLowerCase();
+        let end_tag_code = question.slice(i, i+7).toLowerCase();
+
+        if ( start_tag_code.indexOf("<code>") == 0 )
+        {
+            start_code = true;
+            index_start = i;
+        }
+        else if ( end_tag_code.indexOf("</code>") == 0 )
+        {
+            start_code = false;
+            index_end = i;
+            let portion = question.slice(index_start+6, index_end);
+            // console.log("PORTION "+index_start+"/"+index_end+"=["+portion+"]");
+            begin = question.slice(0, index_start+6);
+            code = question.slice(index_start+6, index_end).replaceAll("<","&lt;");
+            end = question.slice(index_end, question.length);
+            //console.log("BEGIN=["+begin+"]");
+            //console.log("CODE=["+code+"]");
+            //console.log("END=["+end+"]");
+            // On doit finir ici
+            question = begin+code+end;
+            console.log("NEW QUESTION=["+question+"]");
+            break;
+        }
+
+        // console.log(question[i] + " CODE="+question[i].charCodeAt(0)); // Get decimal UTF-16 code
       }
 */
     var type = $("#id_question_type").val(); /* 1,2,3 ou 4 bonnes réponses */
@@ -123,8 +156,8 @@ Question avec du code HTML, on remarque les \n :
 	var code;
 	code = "$CATEGORY: $course$/" + theme + "<br>\n<br>\n";
 	code = code + "::" + Html2GiftFilter( titre ) + "<br>\n";
-	code = code + "::["+format_question+"] " + Html2GiftFilter( question ) + "<br>\n";
-	
+    code = code + "::["+format_question+"] " + Html2GiftFilter( question ) + "<br>\n";
+
     if( type == 1 ) // Une bonne réponse
     {
         if (points == 1) /* Points négatifs */
@@ -197,13 +230,59 @@ Question avec du code HTML, on remarque les \n :
     }
     
 	code = code + "}";
-	
+
+    var code_object = $("#id_result");
+
     if( old_code != code )
     {
-        $("#id_result").html("<code>"+code+"<code>");
+        code_object.html("<code>"+code+"<code>");
         old_code = code;
     }
-	
+/*
+    temp = code_object.text(); // pas utilisé pour l'instant...
+
+    var message = 'salut, <code> ICI MON CODE SOURCE </code> est maSLF !';
+    var regExp = /(\<code\s*[^\>]*\>) ([^\<]*\<\/code>)?/gi;
+    //const found = message.match(regExp);
+    message.replace(/\<code\>.*\<\/code\>/,"NEW CODE");
+    console.log(message);
+
+
+    var regex = /code/;
+    if(temp.match(regex))
+       alert('Tiens, il y a plusieurs personnes ?');
+    else
+       alert('Tout seul...');
+
+       */
+
+/*
+    var object = { 
+        id: "divID", 
+        class: "divClass"
+        }
+    var temp = $("<div>", object);
+
+    temp.html(code_object.html());
+    $('#divID > code').text('Hi I am replace');
+    console.log("TEMP="+temp.text());
+
+
+    code_object.children().eq(0)
+   .find('code')
+      .css('background-color', 'red');
+
+    
+code_object.html(code);
+
+    var temp = document.createElement('div');
+    temp.innerHTML = code_object.html();
+    var content_text = temp.querySelector('code').textContent;
+    console.log(content_text);
+*/
+    // Cleanup ?
+    // Il faut remplacer < par &lt; à l'intérieur de <pre><code></code></pre>
+
 	var apercu;
 	
 	apercu = question;
