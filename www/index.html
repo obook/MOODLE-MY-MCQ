@@ -13,7 +13,7 @@ Outil de fabrication de question QCM au format GIFT pour Moodle
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="./images/moodle-icon.png" type="image/icon type">
 	<link rel="stylesheet" href="vendor/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css" />
-    <link rel="stylesheet" type="text/css" href="vendor/jquery-mobile-flat-ui-theme/jquery.mobile.flatui.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="vendor/jquery-mobile-flat-ui-theme/jquery.mobile.flatui.css" /> -->
 	<script src="vendor/jquerymobile.com_1.4.5_js_jquery.js"></script>
 	<script src="vendor/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script>
 
@@ -25,26 +25,55 @@ Outil de fabrication de question QCM au format GIFT pour Moodle
 </head>
 <body class="no-mathjax">
 
-<div data-role="page" id="index">
+<div data-role="page" id="index" data-theme="b">
 
-	<div data-role="header" data-position="fixed" data-tap-toggle="false" data-theme="a"> <!-- style="height: 16em;" -->
+
+    <!-- Panel -->
+
+    <div data-role="panel" id="defaultpanel" data-display="overlay">
+        <!-- panel content goes here -->
+
+        <label for="text-basic">Category:</label>
+        <input type="text" name="text-basic" id="id_theme" value="My bank theme">
+
+        <select name="select-h-1a" id="id_question_type">
+            <option value="1">One correct awswer</option>
+            <option value="2">Two correct awswers</option>
+            <option value="3">Three correct awswers</option>
+            <option value="4">Four correct awswers</option>
+        </select>
+
+        <select name="select-h-1b" id="id_points_negatifs">
+            <option value="1">With negative points</option>
+            <option value="0">Without negative points</option>
+        </select>
+
+        <a href="#demo-links" data-rel="close" class="ui-btn ui-shadow ui-corner-all ui-icon-delete ui-btn-icon-left ui-btn-inline">Close</a>
+    </div><!-- /panel -->
+
+    <!-- Header -->
+
+	<div data-role="header" data-position="fixed" data-tap-toggle="false" data-theme="b"> <!-- style="height: 16em;" -->
+        <a href="#defaultpanel" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-btn-icon-left ui-icon-gear">Settings</a>
 		<h1 id="id_header">Moodle MCQ GIFT Maker</h1>
 	</div><!-- /header -->
 
 	<div role="main" class="ui-content">
 
 	<!-- <p>LaTeX : les symboles { et } DOIVENT avoir un anti-slash devant, comme \{ et \}, c'est valable pour tous les caractères spéciaux ~ = # { }</p> -->
-
-        <div data-role="collapsible" data-collapsed="true" data-theme="b" data-content-theme="b">
+<!--
+        <div data-role="collapsible" data-collapsed="true" data-theme="b" data-content-theme="b" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
             <h4>Settings</h4>
         <fieldset class="ui-grid-b">
             <div class="ui-block-a">
                     <div class="ui-field-contain">
+                        
                         <label for="text-basic">Category:</label>
                         <input type="text" name="text-basic" id="id_theme" value="My bank theme">
                     </div>
             </div>
             <div class="ui-block-b">
+
                     <select name="select-h-1a" id="id_question_type">
                         <option value="1">One correct awswer</option>
                         <option value="2">Two correct awswers</option>
@@ -53,20 +82,22 @@ Outil de fabrication de question QCM au format GIFT pour Moodle
                     </select>
             </div>
             <div class="ui-block-c">
-                <select name="select-h-1b" id="id_points_negatifs"><!-- ajouter : disabled -->
+                <!-- ajouter : disabled 
+
+                <select name="select-h-1b" id="id_points_negatifs">
                     <option value="1">With negative points</option>
                     <option value="0">Without negative points</option>
                 </select>
             </div>
         </fieldset>
-        </div>
+        </div>-->
 		<!--
         <div data-role="collapsible" data-collapsed="false" data-theme="a" data-content-theme="a">
             <h4>Aperçu</h4>
 
         </div>
             -->
-        <div data-role="collapsible" data-collapsed="true" data-theme="b" data-content-theme="a">
+        <div data-role="collapsible" data-collapsed="true" data-theme="b" data-content-theme="b" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
             <h4>Question</h4>
 <fieldset class="ui-grid-b">
             <div class="ui-block-a">
@@ -138,7 +169,7 @@ C'est fini !</textarea>
 
         </div>
 
-        <div data-role="collapsible" data-collapsed="true" data-theme="b" data-content-theme="a">
+        <div data-role="collapsible" data-collapsed="true" data-theme="b" data-content-theme="b" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
             <h4>Answers</h4>
               <div class="ui-field-contain">
                 <label for="id_format_reponse">Format:</label>
@@ -147,7 +178,7 @@ C'est fini !</textarea>
                 <option>plain</option>
                 </select>
 
-                <label for="id_reponse1">Answer 1:</label>
+                <label for="id_reponse1">Answer 1 (correct) :</label>
                 <input type="text" name="reponse1" id="id_reponse1" value="1">
 
                 <label for="id_reponse2">Answer 2:</label>
@@ -161,25 +192,25 @@ C'est fini !</textarea>
               </div>
         </div>
 
-        <div data-role="collapsible" data-collapsed="true" data-theme="b" data-content-theme="a">
+        <div data-role="collapsible" data-collapsed="true" data-theme="b" data-content-theme="b" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
             <h4>Feedback (optionnal)</h4>
             <textarea cols="80" rows="5" name="textarea" id="id_feedback"></textarea>
         </div>
 
-        <div data-role="collapsible" data-collapsed="false" data-theme="b" data-content-theme="b">
+        <div data-role="collapsible" data-collapsed="false" data-theme="b" data-content-theme="a" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
             <h4>Preview</h4>
         <div id="id_apercu" class="mathjax"></div> <!--   overflow:scroll;  -->
         </div>
 
-        <div data-role="collapsible" data-collapsed="false" data-theme="b" data-content-theme="a">
+        <div data-role="collapsible" data-collapsed="false" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" data-theme="b" data-content-theme="b">
             <h4>GIFT code - Copy into a text editor then import in questions bank</h4>
             <div id="id_result"></div>
         </div>
 
 	</div><!-- /content -->
 
-	<div data-role="footer" data-position="fixed" data-tap-toggle="false" data-theme="a">
-		<h4>Moodle MCQ GIFT Maker - ADM 2020/SMB33 2024</h4>
+	<div data-role="footer" data-position="fixed" data-tap-toggle="false" data-theme="b">
+		<h4>Moodle MCQ GIFT Maker - ADM 2020/SMB33 2024 - <a href='https://github.com/obook/Moodle-MCQ-GIFT-Maker' target='_blank'>GitHub</a></h4>
 	</div><!-- /footer -->
 
 	<script type="text/javascript">
@@ -204,7 +235,7 @@ C'est fini !</textarea>
 
 	$( "#id_reset" ).click(function()
 	{
-		if ( confirm( "Clear all answers ?" ) )
+		if ( confirm( "Clear all ?" ) )
 		{
 			$("#id_titre").val("");
 			$("#id_numero").val("01");
