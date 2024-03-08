@@ -76,6 +76,7 @@ let index_end = -1;
             {
                 code = code.replaceAll("<","&amp;lt;");
                 code = code.replaceAll(">","&amp;gt;");
+                code = code.replaceAll(" ","&amp;nbsp;");
             }
 
             question = begin+code+end;
