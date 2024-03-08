@@ -1,19 +1,18 @@
 <!DOCTYPE html>
 <!--
 Outil de fabrication de question QCM au format GIFT pour Moodle
-(c) obooklage Académie de Créteil
-06/05/2020
+(c) obooklage Académie de Créteil - Académie de Bordeaux
+06/05/2020 - 08/03/2024
 -->
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
 	<title>Moodle MCQ GIFT Maker</title>
 
-    <!-- JQueryMobile -->
+    <!-- Jquery/JQueryMobile -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="./images/moodle-icon.png" type="image/icon type">
 	<link rel="stylesheet" href="vendor/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css" />
-    <!-- <link rel="stylesheet" type="text/css" href="vendor/jquery-mobile-flat-ui-theme/jquery.mobile.flatui.css" /> -->
 	<script src="vendor/jquerymobile.com_1.4.5_js_jquery.js"></script>
 	<script src="vendor/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script>
 
@@ -25,16 +24,14 @@ Outil de fabrication de question QCM au format GIFT pour Moodle
 </head>
 <body class="no-mathjax">
 
+<!-- Main page -->
 <div data-role="page" id="index" data-theme="b">
 
-
     <!-- Panel -->
-
-    <div data-role="panel" id="defaultpanel" data-display="overlay">
-        <!-- panel content goes here -->
-
+    <div data-role="panel" id="settingspanel" data-display="overlay">
         <label for="text-basic">Category:</label>
-        <input type="text" name="text-basic" id="id_theme" value="My bank theme">
+
+        <input type="text" name="text-basic" id="id_theme" value="My bank category">
 
         <select name="select-h-1a" id="id_question_type">
             <option value="1">One correct awswer</option>
@@ -54,54 +51,18 @@ Outil de fabrication de question QCM au format GIFT pour Moodle
     <!-- Header -->
 
 	<div data-role="header" data-position="fixed" data-tap-toggle="false" data-theme="b"> <!-- style="height: 16em;" -->
-        <a href="#defaultpanel" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-btn-icon-left ui-icon-gear">Settings</a>
+        <a href="#settingspanel" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-btn-icon-left ui-icon-gear">Settings</a>
 		<h1 id="id_header">Moodle MCQ GIFT Maker</h1>
 	</div><!-- /header -->
 
+    <!-- Content -->
 	<div role="main" class="ui-content">
 
-	<!-- <p>LaTeX : les symboles { et } DOIVENT avoir un anti-slash devant, comme \{ et \}, c'est valable pour tous les caractères spéciaux ~ = # { }</p> -->
-<!--
-        <div data-role="collapsible" data-collapsed="true" data-theme="b" data-content-theme="b" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
-            <h4>Settings</h4>
-        <fieldset class="ui-grid-b">
-            <div class="ui-block-a">
-                    <div class="ui-field-contain">
-                        
-                        <label for="text-basic">Category:</label>
-                        <input type="text" name="text-basic" id="id_theme" value="My bank theme">
-                    </div>
-            </div>
-            <div class="ui-block-b">
-
-                    <select name="select-h-1a" id="id_question_type">
-                        <option value="1">One correct awswer</option>
-                        <option value="2">Two correct awswers</option>
-                        <option value="3">Three correct awswers</option>
-                        <option value="4">Four correct awswers</option>
-                    </select>
-            </div>
-            <div class="ui-block-c">
-                <!-- ajouter : disabled 
-
-                <select name="select-h-1b" id="id_points_negatifs">
-                    <option value="1">With negative points</option>
-                    <option value="0">Without negative points</option>
-                </select>
-            </div>
-        </fieldset>
-        </div>-->
-		<!--
-        <div data-role="collapsible" data-collapsed="false" data-theme="a" data-content-theme="a">
-            <h4>Aperçu</h4>
-
-        </div>
-            -->
+	    <!-- <p>LaTeX : les symboles { et } DOIVENT avoir un anti-slash devant, comme \{ et \}, c'est valable pour tous les caractères spéciaux ~ = # { }</p> -->
         <div data-role="collapsible" data-collapsed="true" data-theme="b" data-content-theme="b" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
             <h4>Question</h4>
-<fieldset class="ui-grid-b">
+            <fieldset class="ui-grid-b">
             <div class="ui-block-a">
-
             <label for="id_format_question">
                 <div data-role="collapsible">
                 <h4>Format:</h4>
@@ -111,9 +72,7 @@ Outil de fabrication de question QCM au format GIFT pour Moodle
     ligne
     return(0)
 print(Mystère(-7))
-</pre></code>
-</textarea>
-</p>
+</pre></code></textarea></p>
                     <p><b> ...Au besoin dans Moodle </b> retoucher en utilisant la fonction "A -> Pré-formaté" pour copier du code source HTML</p>
                     <p><b> Code balise HTML</b> : &amp;lt;balise&amp;gt; </p> <!-- CA NE MARCHE PAS !!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
                     <p><b> LaTeX </b> :  \( LaTeX \) </p>
@@ -163,12 +122,11 @@ else :
     x=-1
     r=1</code></pre>
 What does the variable r contain at the end of the program?</textarea>
-   <!--
+   <!-- test with HTML tags
 <textarea cols="80" rows="10" name="textarea" id="id_question">Voici un code HTML :
 <pre><code> Hello, voici mon formulaire : <form><button>BOUTON</button></form></code></pre>
 C'est fini !</textarea>
  -->    
-
         </div>
 
         <div data-role="collapsible" data-collapsed="true" data-theme="b" data-content-theme="b" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
@@ -270,16 +228,16 @@ window.onbeforeunload = function(e) {
 };
 
 </script>
-<!-- script principal -->
+<!-- Main script -->
 <script src="index.js"></script>
 <script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  tex2jax: {
-    inlineMath: [['$','$'],['\\(','\\)']],
-    processClass: "mathjax",
-    ignoreClass: "no-mathjax"
-  }
-});
+    MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [['$','$'],['\\(','\\)']],
+        processClass: "mathjax",
+        ignoreClass: "no-mathjax"
+    }
+    });
 </script>
 </body>
 </html>

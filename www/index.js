@@ -25,7 +25,6 @@ function Html2GiftFilter(string, format)
     string = string.replace(/#/g, '\\#')
     string = string.replace(/</g, '&lt;')
     string = string.replace(/>/g, '&gt;')
-
     */
     string = string.replaceAll('=', '\\=');
     string = string.replaceAll('<', '&lt;');
@@ -33,8 +32,10 @@ function Html2GiftFilter(string, format)
     string = string.replaceAll(':', '\\:');
     string = string.replaceAll('{', '\\{');
     string = string.replaceAll('}', '\\}');
+    string = string.replaceAll('~', '\\~');
+    string = string.replaceAll('#', '\\#');
 
-    // Retours à la ligne
+    // Line feed
 
     string = string.replaceAll('\u000A', '\\n');
 
@@ -136,7 +137,6 @@ Question avec du code HTML, on remarque les \n :
 	var titre = numero + " - " + titre;
     var question_object = $("#id_question");
 	var question = EncodeCodeSnippet(question_object.val());
-    //var question_html = $(question_object.val()).html();
 
     // Il faut remplacer < par &lt; à l'intérieur de <pre><code></code></pre>
 
@@ -257,50 +257,6 @@ Question avec du code HTML, on remarque les \n :
         code_object.html("<code>"+code+"<code>");
         old_code = code;
     }
-/*
-    temp = code_object.text(); // pas utilisé pour l'instant...
-
-    var message = 'salut, <code> ICI MON CODE SOURCE </code> est maSLF !';
-    var regExp = /(\<code\s*[^\>]*\>) ([^\<]*\<\/code>)?/gi;
-    //const found = message.match(regExp);
-    message.replace(/\<code\>.*\<\/code\>/,"NEW CODE");
-    console.log(message);
-
-
-    var regex = /code/;
-    if(temp.match(regex))
-       alert('Tiens, il y a plusieurs personnes ?');
-    else
-       alert('Tout seul...');
-
-       */
-
-/*
-    var object = { 
-        id: "divID", 
-        class: "divClass"
-        }
-    var temp = $("<div>", object);
-
-    temp.html(code_object.html());
-    $('#divID > code').text('Hi I am replace');
-    console.log("TEMP="+temp.text());
-
-
-    code_object.children().eq(0)
-   .find('code')
-      .css('background-color', 'red');
-
-    
-code_object.html(code);
-
-    var temp = document.createElement('div');
-    temp.innerHTML = code_object.html();
-    var content_text = temp.querySelector('code').textContent;
-    console.log(content_text);
-*/
-    // Cleanup ?
-    // Il faut remplacer < par &lt; à l'intérieur de <pre><code></code></pre>
 
 	var apercu;
 	apercu = EncodeCodeSnippet(question_object.val(), true);
