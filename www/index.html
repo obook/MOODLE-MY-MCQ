@@ -11,6 +11,7 @@ Outil de fabrication de question QCM au format GIFT pour Moodle
 
     <!-- JQueryMobile -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="./images/moodle-icon.png" type="image/icon type">
 	<link rel="stylesheet" href="vendor/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css" />
     <link rel="stylesheet" type="text/css" href="vendor/jquery-mobile-flat-ui-theme/jquery.mobile.flatui.css" />
 	<script src="vendor/jquerymobile.com_1.4.5_js_jquery.js"></script>
@@ -120,14 +121,21 @@ print(Mystère(-7))
 </fieldset>
 
           <label for="id_question">Text:</label>
+       
 		  <textarea cols="80" rows="10" name="textarea" id="id_question">
 Consider the following Python program.
 <pre><code>x=4
-if 3*x-6 < 0 :
+if 3*x-6<0 :
     r=-1
 else :
     r=1</code></pre>
 What does the variable r contain at the end of the program?</textarea>
+   <!--
+<textarea cols="80" rows="10" name="textarea" id="id_question">Voici un code HTML :
+<pre><code> Hello, voici mon formulaire : <form><button>BOUTON</button></form></code></pre>
+C'est fini !</textarea>
+ -->    
+
         </div>
 
         <div data-role="collapsible" data-collapsed="true" data-theme="b" data-content-theme="a">

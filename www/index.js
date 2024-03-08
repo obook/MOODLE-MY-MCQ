@@ -41,6 +41,59 @@ function Html2GiftFilter(string, format)
 return string;
 }
 
+function EncodeCodeSnippet(question, preview=false)
+{
+let start_code = false;
+let index_start = -1;
+let index_end = -1;
+
+    for (let i = 0; i < question.length-1; i++) {
+        let c = question[i];
+        let start_tag_code = question.slice(i, i+6).toLowerCase();
+        let end_tag_code = question.slice(i, i+7).toLowerCase();
+
+        if ( start_tag_code.indexOf("<code>") == 0 )
+        {
+            // console.log("ScanForCode début '<code>' détecté.")
+            start_code = true;
+            index_start = i;
+        }
+        else if ( end_tag_code.indexOf("</code>") == 0 )
+        {
+            // console.log("ScanForCode fin '</code>' détecté.")
+            start_code = false;
+            index_end = i;
+
+            let begin = question.slice(0, index_start+6);
+            let code = question.slice(index_start+6, index_end);
+            let end = question.slice(index_end, question.length);
+
+            if (preview)
+            {
+                code = code.replaceAll("<","&lt;"); 
+            }
+            else
+            {
+                code = code.replaceAll("<","&amp;lt;");
+                code = code.replaceAll(">","&amp;gt;");
+            }
+
+            question = begin+code+end;
+
+        /*
+            console.log("BEGIN=["+begin+"]");
+            console.log("CODE=["+code+"]");
+            console.log("END=["+end+"]");
+            console.log("NEW QUESTION=["+question+"]");
+        */
+
+            break;
+        }
+    }
+    
+return(question)
+}
+
 var old_apercu = "";
 var old_apercu_title = "";
 var old_code = "";
@@ -48,7 +101,7 @@ var old_header = "";
     
 function Process()
 {
-	console.log("Formattage");
+	console.log("Process start...");
 	
 /* Création du résultat 
 	
@@ -81,46 +134,11 @@ Question avec du code HTML, on remarque les \n :
 	var theme = $("#id_theme").val();
 	var titre = numero + " - " + titre;
     var question_object = $("#id_question");
-	var question = question_object.val();
+	var question = EncodeCodeSnippet(question_object.val());
     //var question_html = $(question_object.val()).html();
 
     // Il faut remplacer < par &lt; à l'intérieur de <pre><code></code></pre>
-/*
-    let start_code = false;
-    let index_start = -1;
-    let index_end = -1;
 
-    for (let i = 0; i < question.length-1; i++) {
-        let c = question[i];
-        let start_tag_code = question.slice(i, i+6).toLowerCase();
-        let end_tag_code = question.slice(i, i+7).toLowerCase();
-
-        if ( start_tag_code.indexOf("<code>") == 0 )
-        {
-            start_code = true;
-            index_start = i;
-        }
-        else if ( end_tag_code.indexOf("</code>") == 0 )
-        {
-            start_code = false;
-            index_end = i;
-            let portion = question.slice(index_start+6, index_end);
-            // console.log("PORTION "+index_start+"/"+index_end+"=["+portion+"]");
-            begin = question.slice(0, index_start+6);
-            code = question.slice(index_start+6, index_end).replaceAll("<","&lt;");
-            end = question.slice(index_end, question.length);
-            //console.log("BEGIN=["+begin+"]");
-            //console.log("CODE=["+code+"]");
-            //console.log("END=["+end+"]");
-            // On doit finir ici
-            question = begin+code+end;
-            console.log("NEW QUESTION=["+question+"]");
-            break;
-        }
-
-        // console.log(question[i] + " CODE="+question[i].charCodeAt(0)); // Get decimal UTF-16 code
-      }
-*/
     var type = $("#id_question_type").val(); /* 1,2,3 ou 4 bonnes réponses */
     var points = $("#id_points_negatifs").val(); /* 0 = sans points négatifs, 1 = avec points négatifs */
 	
@@ -156,7 +174,7 @@ Question avec du code HTML, on remarque les \n :
 	var code;
 	code = "$CATEGORY: $course$/" + theme + "<br>\n<br>\n";
 	code = code + "::" + Html2GiftFilter( titre ) + "<br>\n";
-    code = code + "::["+format_question+"] " + Html2GiftFilter( question ) + "<br>\n";
+    code = code + "::["+format_question+"] " + Html2GiftFilter(question) + "<br>\n";
 
     if( type == 1 ) // Une bonne réponse
     {
@@ -284,8 +302,7 @@ code_object.html(code);
     // Il faut remplacer < par &lt; à l'intérieur de <pre><code></code></pre>
 
 	var apercu;
-	
-	apercu = question;
+	apercu = EncodeCodeSnippet(question_object.val(), true);
 	apercu = apercu + "<br>\n<br>\n";	
 	apercu = apercu + "a. &nbsp;&nbsp;" + Html2GiftFilter( reponse1, "apercu" ) + "<br>\n";	
 	apercu = apercu + "b. &nbsp;&nbsp;" + Html2GiftFilter( reponse2, "apercu" ) + "<br>\n";
@@ -296,7 +313,7 @@ code_object.html(code);
     {
          apercu = apercu + "<br>\nFeedback: " + feedback;
     }
-
+    
     if( old_apercu != apercu )
     {
         var math = document.getElementById("id_apercu");
@@ -314,6 +331,8 @@ code_object.html(code);
         $("#id_apercu_title").html(apercu_title);
         old_apercu_title = apercu_title;
     }
+
+    console.log("Process ended.");
 }
 
 intervalId = setInterval(clock, 1000);
