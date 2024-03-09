@@ -1,3 +1,4 @@
+/*
 .custom-corners .ui-bar {
   -webkit-border-top-left-radius: inherit;
   border-top-left-radius: inherit;
@@ -12,9 +13,8 @@
   -webkit-border-bottom-right-radius: inherit;
   border-bottom-right-radius: inherit;
 }
-
-#id_apercu
-{
+*/
+#id_apercu {
   text-shadow:none !important;
   /* border:#000000 1px solid; */
   color:#000000 ! important;
@@ -38,11 +38,6 @@ pre {
   background:#e6e6e6;
  }
 
- .number{
+ .number {
   width: 100px !important;
  }
- 
- .title{
-  width: 100px !important;
- }
- 
