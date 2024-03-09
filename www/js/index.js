@@ -147,6 +147,9 @@ Which of the flollowing line(s) if inserted in line 6 above will compile?]]></te
 	var titre = $("#id_titre").val();
 	var theme = $("#id_theme").val();
 	var titre = numero.toString().padStart(2, '0') + " - " + titre;
+  // Réglage du titre de la fenêtre
+  $(document).prop('title', theme);
+
   var question_object = $("#id_question");
 	var question = EncodeSnippet(question_object.val());
 
