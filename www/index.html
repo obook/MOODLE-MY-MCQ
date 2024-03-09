@@ -20,7 +20,7 @@ Outil de fabrication de question QCM au format GIFT pour Moodle
 	<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
     <!-- Styles -->
-    <link rel="stylesheet" type="text/css" href="index.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
 </head>
 <body class="no-mathjax">
 
@@ -59,7 +59,7 @@ Outil de fabrication de question QCM au format GIFT pour Moodle
 	<div role="main" class="ui-content">
 
 	    <!-- <p>LaTeX : les symboles { et } DOIVENT avoir un anti-slash devant, comme \{ et \}, c'est valable pour tous les caractères spéciaux ~ = # { }</p> -->
-        <div data-role="collapsible" data-collapsed="true" data-theme="b" data-content-theme="b" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
+        <div data-role="collapsible" data-mini="true" data-collapsed="true" data-theme="b" data-content-theme="b" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
             <h4>Question</h4>
             <fieldset class="ui-grid-b">
             <div class="ui-block-a">
@@ -119,7 +119,7 @@ C'est fini !</textarea>
  -->    
         </div>
 
-        <div data-role="collapsible" data-collapsed="true" data-theme="b" data-content-theme="b" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
+        <div data-role="collapsible" data-mini="true" data-collapsed="true" data-theme="b" data-content-theme="b" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
             <h4>Answers</h4>
               <div class="ui-field-contain">
                 <label for="id_format_reponse">Format:</label>
@@ -142,18 +142,22 @@ C'est fini !</textarea>
               </div>
         </div>
 
-        <div data-role="collapsible" data-collapsed="true" data-theme="b" data-content-theme="b" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
+        <div data-role="collapsible" data-mini="true" data-collapsed="true" data-theme="b" data-content-theme="b" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
             <h4>Feedback (optionnal)</h4>
             <textarea cols="80" rows="5" name="textarea" id="id_feedback"></textarea>
         </div>
 
-        <div data-role="collapsible" data-collapsed="false" data-theme="b" data-content-theme="a" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
+        <div data-role="collapsible" data-mini="true" data-collapsed="false" data-theme="b" data-content-theme="a" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
             <h4>Preview</h4>
         <div id="id_apercu" class="mathjax"></div> <!--   overflow:scroll;  -->
         </div>
 
-        <div data-role="collapsible" data-collapsed="false" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" data-theme="b" data-content-theme="b">
+        <div data-role="collapsible" data-mini="true" data-collapsed="false" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" data-theme="b" data-content-theme="b">
             <h4>GIFT code - Copy into a text editor then import in questions bank</h4>
+            <select name="sliderOutput" id="sliderOutput" data-role="slider" data-mini="true" disabled>
+                <option value="GIFT" selected>GIFT</option>
+                <option value="XML">XML</option>
+            </select>
             <div id="id_result"></div>
         </div>
 
@@ -198,6 +202,11 @@ C'est fini !</textarea>
 		}
 	});
 
+    $("#sliderOutput").change(function()
+	{
+        SetFormatOutput ($("#sliderOutput").val());
+	});
+
     </script>
 
 </div><!-- /page -->
@@ -219,7 +228,7 @@ window.onbeforeunload = function(e) {
 
 </script>
 <!-- Main script -->
-<script src="index.js"></script>
+<script src="js/index.js"></script>
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
     tex2jax: {

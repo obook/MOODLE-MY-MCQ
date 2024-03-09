@@ -1,9 +1,28 @@
+/*
+*
+* (C) obook 2020-2024
+*
+*/
+
 var delay = 2
 var counter = delay;
 var intervalId = null;
+var format_gift = true;
 
-function clock() 
-{
+function SetFormatOutput(value) {
+    if (value == 'GIFT') {
+        console.log("SetFormatOutput:GIFT");
+        format_gift = true;
+        Process();
+    }
+    else {
+        console.log("SetFormatOutput:XML");
+        format_gift = false;
+        Process(); 
+    }
+}
+
+function clock() {
     counter--;
     if(counter == 0)
     {
@@ -12,8 +31,7 @@ function clock()
     }
 }
 
-function Html2GiftFilter(string, format)
-{
+function Html2GiftFilter(string, format) {
     if( format == "apercu" )
         return(string);
     /*
@@ -42,8 +60,7 @@ function Html2GiftFilter(string, format)
 return string;
 }
 
-function EncodeCodeSnippet(question, preview=false)
-{
+function EncodeSnippet(question, preview=false) {
 let start_code = false;
 let index_start = -1;
 let index_end = -1;
@@ -98,12 +115,57 @@ var old_apercu = "";
 var old_apercu_title = "";
 var old_code = "";
 var old_header = "";
+
+function Preview() {
+var apercu;
+var numero = $("#id_numero").val();
+var titre = $("#id_titre").val();
+var titre = numero + " - " + titre;
+var question_object = $("#id_question");
+var reponse1 = $("#id_reponse1").val();
+var reponse2 = $("#id_reponse2").val();
+var reponse3 = $("#id_reponse3").val();
+var reponse4 = $("#id_reponse4").val();
+var feedback = $("#id_feedback").val();
+
+	apercu = EncodeSnippet(question_object.val(), true);
+	apercu = apercu + "<br>\n<br>\n";	
+	apercu = apercu + "a. &nbsp;&nbsp;" + Html2GiftFilter( reponse1, "apercu" ) + "<br>\n";	
+	apercu = apercu + "b. &nbsp;&nbsp;" + Html2GiftFilter( reponse2, "apercu" ) + "<br>\n";
+	apercu = apercu + "c. &nbsp;&nbsp;" + Html2GiftFilter( reponse3, "apercu" ) + "<br>\n";
+	apercu = apercu + "d. &nbsp;&nbsp;" + Html2GiftFilter( reponse4, "apercu" ) + "<br>\n";
     
+    if( feedback ) {
+         apercu = apercu + "<br>\nFeedback: " + feedback;
+    }
+    
+    if( old_apercu != apercu ) {
+        var math = document.getElementById("id_apercu");
+        $("#id_apercu").html(apercu);
+        MathJax.Hub.Queue(["Typeset",MathJax.Hub,math]);
+        old_apercu = apercu;
+        /* $("#id_apercu").trigger("create"); */
+    }
+    
+    var apercu_title;
+    apercu_title = "Aperçu " + titre;
+
+    if( old_apercu_title != apercu_title )
+    {
+        $("#id_apercu_title").html(apercu_title);
+        old_apercu_title = apercu_title;
+    }
+}
+
 function Process()
 {
 	console.log("Process start...");
 	
-/* Création du résultat 
+/* Création du résultat
+
+
+GIFT
+----
 	
 :: 11 - Échange pour trier
 ::["+format_reponse+"] Combien d'échange effectue la fonction Python suivante pour trier un tableau de 10 éléments au pire des cas ?
@@ -127,6 +189,71 @@ Question avec du code HTML, on remarque les \n :
 
 ::06 - Attribut id::[plain]On considère le formulaire HTML suivant \: \n\n<form action\="action.php" method\="get" name\="prenom">\nPrénom \: <input type\="text" id\="champ1" name\="p"/> <br/>\n<input type\="hidden" name\="util" value\="1549"/>\n<input value\="Envoi du prénom" type\="submit"/>\n</form>\n\nLe prénom entré par l'utilisateur est contenu dans \:
 
+XML
+---
+
+<!-- question: 680  -->
+  <question type="multichoice">
+    <name>
+      <text>90 - Considere the code below</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Considere the code below:
+<pre><code>class&nbsp;Voop&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;static&nbsp;void&nbsp;main(String[]&nbsp;arg)&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;doStuff(1);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;do&nbsp;Stuff(1,&nbsp;2);
+&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;insert&nbsp;code&nbsp;here
+}</code></pre>
+Which of the flollowing line(s) if inserted in line 6 above will compile?]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <showstandardinstruction>0</showstandardinstruction>
+    <correctfeedback format="html">
+      <text></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text></text>
+    </incorrectfeedback>
+    <answer fraction="100" format="html">
+      <text>static void doStuff(int... doArgs) { }</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="-33.33333" format="html">
+      <text>static void doStuff(int[] doArgs) { }</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="-33.33333" format="html">
+      <text>static void doStuff(int x, int... doArgs) { }</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="-33.33333" format="html">
+      <text>static void doStuff(int... doArgs, int y) { }</text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+  </question>
+  
 	*/
 	
 	var numero = $("#id_numero").val();
@@ -134,7 +261,7 @@ Question avec du code HTML, on remarque les \n :
 	var theme = $("#id_theme").val();
 	var titre = numero + " - " + titre;
     var question_object = $("#id_question");
-	var question = EncodeCodeSnippet(question_object.val());
+	var question = EncodeSnippet(question_object.val());
 
     // Il faut remplacer < par &lt; à l'intérieur de <pre><code></code></pre>
 
@@ -256,36 +383,7 @@ Question avec du code HTML, on remarque les \n :
         old_code = code;
     }
 
-	var apercu;
-	apercu = EncodeCodeSnippet(question_object.val(), true);
-	apercu = apercu + "<br>\n<br>\n";	
-	apercu = apercu + "a. &nbsp;&nbsp;" + Html2GiftFilter( reponse1, "apercu" ) + "<br>\n";	
-	apercu = apercu + "b. &nbsp;&nbsp;" + Html2GiftFilter( reponse2, "apercu" ) + "<br>\n";
-	apercu = apercu + "c. &nbsp;&nbsp;" + Html2GiftFilter( reponse3, "apercu" ) + "<br>\n";
-	apercu = apercu + "d. &nbsp;&nbsp;" + Html2GiftFilter( reponse4, "apercu" ) + "<br>\n";
-    
-    if( feedback )
-    {
-         apercu = apercu + "<br>\nFeedback: " + feedback;
-    }
-    
-    if( old_apercu != apercu )
-    {
-        var math = document.getElementById("id_apercu");
-        $("#id_apercu").html(apercu);
-        MathJax.Hub.Queue(["Typeset",MathJax.Hub,math]);
-        old_apercu = apercu;
-        /* $("#id_apercu").trigger("create"); */
-    }
-    
-    var apercu_title;
-    apercu_title = "Aperçu " + titre;
-
-    if( old_apercu_title != apercu_title )
-    {
-        $("#id_apercu_title").html(apercu_title);
-        old_apercu_title = apercu_title;
-    }
+    Preview();
 
     console.log("Process ended.");
 }
