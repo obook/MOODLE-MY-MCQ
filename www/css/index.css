@@ -37,3 +37,12 @@ pre {
   color: rgb(0, 0, 0);
   background:#e6e6e6;
  }
+
+ .number{
+  width: 100px !important;
+ }
+ 
+ .title{
+  width: 100px !important;
+ }
+ 

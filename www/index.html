@@ -27,7 +27,7 @@ Outil de fabrication de question QCM au format GIFT pour Moodle
 <!-- Main page -->
 <div data-role="page" id="index" data-theme="b">
 
-    <!-- Panel -->
+    <!-- Panel Settings -->
     <div data-role="panel" id="settingspanel" data-display="overlay">
         <label for="text-basic">Category:</label>
 
@@ -46,7 +46,26 @@ Outil de fabrication de question QCM au format GIFT pour Moodle
         </select>
 
         <a href="#" data-rel="close" class="ui-btn ui-shadow ui-corner-all ui-icon-delete ui-btn-icon-left ui-btn-inline">Close</a>
-    </div><!-- /panel -->
+    </div><!-- /panel Settings -->
+
+    <!-- Panel Sample -->
+    <div data-role="panel" id="samplepanel" data-display="overlay">
+
+<p><b>Code snippet</b> :
+<textarea readonly>
+<pre><code>def Strange(x) :
+y = 2*x+5
+return(y)
+print(Strange(-7))
+</code></pre></textarea></p>
+<p><b> LaTeX </b> :
+<textarea readonly>
+Maths  \( LaTeXCodeHere \)</textarea></p>
+
+
+
+        <a href="#" data-rel="close" class="ui-btn ui-shadow ui-corner-all ui-icon-delete ui-btn-icon-left ui-btn-inline">Close</a>
+    </div><!-- /panel Sample -->
 
     <!-- Header -->
 
@@ -59,49 +78,30 @@ Outil de fabrication de question QCM au format GIFT pour Moodle
 	<div role="main" class="ui-content">
 
 	    <!-- <p>LaTeX : les symboles { et } DOIVENT avoir un anti-slash devant, comme \{ et \}, c'est valable pour tous les caractères spéciaux ~ = # { }</p> -->
-        <div data-role="collapsible" data-mini="true" data-collapsed="true" data-theme="b" data-content-theme="b" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
+        <div data-role="collapsible" data-mini="true" data-collapsed="false" data-theme="b" data-content-theme="b" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
             <h4>Question</h4>
-            <fieldset class="ui-grid-b">
-            <div class="ui-block-a">
-            <label for="id_format_question">
-                <div data-role="collapsible" data-content-theme="a" data-mini="true">
-                <h4>Format:</h4>
-                    <p><b>Code snippet</b> :
-<textarea readonly>
-<pre><code>def Strange(x) :
-    y = 2*x+5
-    return(y)
-print(Strange(-7))
-</code></pre></textarea></p>
-                    <p><b> LaTeX </b> :
-<textarea readonly>
- Maths  \( LaTeXCodeHere \)</textarea></p>
-                </div>
-            </label>
-    </div>
-    <div class="ui-block-b">
-            <select id="id_format_question" data-mini="true">
-                <option>html</option>
-                <option>plain</option>
-            </select>
-    </div>
-    <div class="ui-block-c">
-		<button class="ui-btn ui-mini" id="id_reset">Reset</button>
-    </div>
-</fieldset>
-<fieldset class="ui-grid-a">
-    <div class="ui-block-a">
-        <!-- <label for="id_titre">Title:</label> -->
-        <input type="text" name="titre" id="id_titre" placeholder="Title of question" value="A program in Python">
-    </div>
-    <div class="ui-block-b">
-        <!-- <label for="id_numero">#</label> -->
-        <input type="text" name="numero" id="id_numero" placeholder="Question number" pattern="[0-9]*" value="01">
-    </div>
-</fieldset>
 
-          <label for="id_question">Text:</label>
-       
+            <fieldset class="ui-grid-b">
+                <div class="ui-block-a" data-theme="a">
+                    <input type="text" name="titre" id="id_titre" placeholder="Title of question" data-wrapper-class="titleX" value="A program in Python"> 
+                </div>
+
+                <div class="ui-block-b">
+                    <input type="number" name="numero" id="id_numero" placeholder="Question number" value="1" data-wrapper-class="number">                                       
+                </div>
+
+                <div class="ui-block-c">
+                    <fieldset data-role="controlgroup" data-type="horizontal" data-mini="false">
+                        <select name="sliderOutput" class="ui-btn ui-shadow ui-corner-all ui-btn-inline" id="id_format_question" data-role="slider">
+                            <option>plain</option>
+                            <option selected>html</option>
+                        </select>
+                        <a href="#" id="id_reset"class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-btn-icon-right ui-icon-delete">Reset</a>
+                        <a href="#samplepanel" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-icon-edit ui-btn-icon-right">Samples</a>
+                    </fieldset>                                      
+                </div>
+            </fieldset>
+
 		  <textarea cols="80" rows="10" name="textarea" id="id_question">
 Consider the following Python program.
 <pre><code>x=4
