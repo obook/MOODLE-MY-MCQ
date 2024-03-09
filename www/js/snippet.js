@@ -40,7 +40,7 @@ let index_start = -1;
 let index_end = -1;
 let succeed = false;
 
-console.log("succeed = "+succeed);
+// console.log("succeed = "+succeed);
 
     for (let i = 0; i < question.length-1; i++) {
         let c = question[i];
