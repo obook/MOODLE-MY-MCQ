@@ -81,13 +81,14 @@ Maths  \( LaTeXCodeHere \)</textarea></p>
         <div data-role="collapsible" data-mini="true" data-collapsed="false" data-theme="b" data-content-theme="b" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
             <h4>Question</h4>
 
-            <fieldset class="ui-grid-b">
+            <fieldset class="ui-grid-c">
                 <div class="ui-block-a" data-theme="a">
                     <input type="text" name="titre" id="id_titre" placeholder="Title of question" data-wrapper-class="titleX" value="A program in Python"> 
                 </div>
 
                 <div class="ui-block-b">
-                    <input type="number" name="numero" id="id_numero" placeholder="Question number" value="1" data-wrapper-class="number">                                       
+                    <input type="number" name="numero" id="id_numero" placeholder="Question number" value="1" data-wrapper-class="number">
+                                   
                 </div>
 
                 <div class="ui-block-c">
@@ -95,11 +96,16 @@ Maths  \( LaTeXCodeHere \)</textarea></p>
                         <select name="sliderOutput" class="ui-btn ui-shadow ui-corner-all ui-btn-inline" id="id_format_question" data-role="slider">
                             <option>plain</option>
                             <option selected>html</option>
-                        </select>
-                        <a href="#" id="id_reset"class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-btn-icon-right ui-icon-delete">Reset</a>
-                        <a href="#samplepanel" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-icon-edit ui-btn-icon-right">Samples</a>
+                        </select>   
                     </fieldset>                                      
                 </div>
+                <div class="ui-block-d">
+                    <fieldset data-role="controlgroup" data-type="horizontal" data-mini="false">
+                        <a href="#samplepanel" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-icon-edit ui-btn-icon-right">Samples</a>
+                        <a href="#" id="id_reset"class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-btn-icon-right ui-icon-delete">Reset</a>
+                    </fieldset>                                      
+                </div>
+
             </fieldset>
 
 		  <textarea cols="80" rows="10" name="textarea" id="id_question">
