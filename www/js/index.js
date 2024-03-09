@@ -146,7 +146,7 @@ Which of the flollowing line(s) if inserted in line 6 above will compile?]]></te
 	var numero = $("#id_numero").val();
 	var titre = $("#id_titre").val();
 	var theme = $("#id_theme").val();
-	var titre = numero + " - " + titre;
+	var titre = numero.toString().padStart(2, '0') + " - " + titre;
   var question_object = $("#id_question");
 	var question = EncodeSnippet(question_object.val());
 
@@ -155,7 +155,7 @@ Which of the flollowing line(s) if inserted in line 6 above will compile?]]></te
     var type = $("#id_question_type").val(); /* 1,2,3 ou 4 bonnes réponses */
     var points = $("#id_points_negatifs").val(); /* 0 = sans points négatifs, 1 = avec points négatifs */
 	
-	var header = theme + " : Q" + titre;
+	  var header = theme + " : Q" + titre;
     if( old_header != header )
     {
         $("#id_header").html(header);
