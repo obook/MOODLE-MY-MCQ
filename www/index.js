@@ -70,9 +70,7 @@ let index_end = -1;
             let end = question.slice(index_end, question.length);
 
             if (preview)
-            {
                 code = code.replaceAll("<","&lt;"); 
-            }
             else
             {
                 code = code.replaceAll("<","&amp;lt;");
