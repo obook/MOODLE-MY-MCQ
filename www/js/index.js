@@ -6,6 +6,7 @@
 
 import { Preview } from "./preview.js";
 import { EncodeSnippet, Html2GiftFilter } from "./snippet.js";
+export {Init}
 
 var delay = 2
 var counter = delay;
@@ -15,6 +16,11 @@ var format_gift = true;
 
 var old_code = "";
 var old_header = "";
+
+function Init() {
+  Process();
+  clockId = setInterval(clock, 1000);
+}
 
 function clock() {
     counter--;
@@ -272,5 +278,4 @@ Which of the flollowing line(s) if inserted in line 6 above will compile?]]></te
     console.log("Process ended.");
 }
 
-Process();
-clockId = setInterval(clock, 1000);
+Init();

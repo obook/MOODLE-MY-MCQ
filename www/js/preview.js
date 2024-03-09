@@ -3,9 +3,9 @@
 * (C) obook 2020-2024
 *
 */
-export { Preview };
 
 import { EncodeSnippet, Html2GiftFilter } from "./snippet.js";
+export { Preview };
 
 var old_apercu = "";
 var old_apercu_title = "";
@@ -36,7 +36,7 @@ var feedback = $("#id_feedback").val();
     if( old_apercu != apercu ) {
         var math = document.getElementById("id_apercu");
         $("#id_apercu").html(apercu);
-        MathJax.Hub.Queue(["Typeset",MathJax.Hub,math]);
+        MathJax.Hub.Queue(["Typeset",MathJax.Hub,math]); /* MathJax not found ! */
         old_apercu = apercu;
         /* $("#id_apercu").trigger("create"); */
     }
