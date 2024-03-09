@@ -141,7 +141,7 @@ Which of the flollowing line(s) if inserted in line 6 above will compile?]]></te
 	var titre = $("#id_titre").val();
 	var theme = $("#id_theme").val();
 	var titre = numero + " - " + titre;
-    var question_object = $("#id_question");
+  var question_object = $("#id_question");
 	var question = EncodeSnippet(question_object.val());
 
     // Il faut remplacer < par &lt; à l'intérieur de <pre><code></code></pre>
@@ -170,18 +170,19 @@ Which of the flollowing line(s) if inserted in line 6 above will compile?]]></te
     
     var format_reponse = $("#id_format_reponse").val(); /* html ou plain */
     var format_question = $("#id_format_question").val(); /* html ou plain */
-	var reponse1 = $("#id_reponse1").val();
-	var reponse2 = $("#id_reponse2").val();
-	var reponse3 = $("#id_reponse3").val();
-	var reponse4 = $("#id_reponse4").val();
+    var reponse1 = $("#id_reponse1").val();
+    var reponse2 = $("#id_reponse2").val();
+    var reponse3 = $("#id_reponse3").val();
+    var reponse4 = $("#id_reponse4").val();
     var feedback = $("#id_feedback").val();
                  
     // console.log("id_points_negatifs = " + points );
 	
 	var code;
+
     code = code + "// Category<br>\n";
-	code = "$CATEGORY: $course$/" + theme + "<br>\n<br>\n";
-	code = code + "::" + Html2GiftFilter( titre ) + "<br>\n";
+	  code = "$CATEGORY: $course$/" + theme + "<br>\n<br>\n";
+	  code = code + "::" + Html2GiftFilter( titre ) + "<br>\n";
     code = code + "// Question<br>\n";
     code = code + "::["+format_question+"] " + Html2GiftFilter(question) + "<br>\n";
 
@@ -256,7 +257,7 @@ Which of the flollowing line(s) if inserted in line 6 above will compile?]]></te
          code = code + "&nbsp; #### ["+format_reponse+"] " + Html2GiftFilter( feedback ) + "<br>\n";
     }
     
-	code = code + "}";
+	  code = code + "}";
 
     var code_object = $("#id_result");
 
@@ -271,4 +272,5 @@ Which of the flollowing line(s) if inserted in line 6 above will compile?]]></te
     console.log("Process ended.");
 }
 
+Process();
 clockId = setInterval(clock, 1000);
