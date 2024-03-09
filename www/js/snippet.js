@@ -3,7 +3,7 @@
 * (C) obook 2020-2024
 *
 */
-export { EncodeSnippet, Html2GiftFilter};
+export {EncodeSnippet, Html2GiftFilter};
 
 function Html2GiftFilter(string, format) {
     if( format == "apercu" )
@@ -38,6 +38,9 @@ function EncodeSnippet(question, preview=false) {
 let start_code = false;
 let index_start = -1;
 let index_end = -1;
+let succeed = false;
+
+console.log("succeed = "+succeed);
 
     for (let i = 0; i < question.length-1; i++) {
         let c = question[i];
@@ -70,6 +73,7 @@ let index_end = -1;
             }
 
             question = begin+code+end;
+            succeed = true;
 
         /*
             console.log("BEGIN=["+begin+"]");
@@ -81,7 +85,10 @@ let index_end = -1;
             break;
         }
     }
-    
+/*
+    if (succeed == true)
+        EncodeSnippet(question, preview);
+  */  
 return(question)
 }
      
