@@ -4,10 +4,26 @@
 *
 */
 
+import { Preview } from "./preview.js";
+import { EncodeSnippet, Html2GiftFilter } from "./snippet.js";
+
 var delay = 2
 var counter = delay;
-var intervalId = null;
+var clockId;
+
 var format_gift = true;
+
+var old_code = "";
+var old_header = "";
+
+function clock() {
+    counter--;
+    if(counter == 0)
+    {
+        Process();
+        counter = delay+1;
+    }
+}
 
 function SetFormatOutput(value) {
     if (value == 'GIFT') {
@@ -19,141 +35,6 @@ function SetFormatOutput(value) {
         console.log("SetFormatOutput:XML");
         format_gift = false;
         Process(); 
-    }
-}
-
-function clock() {
-    counter--;
-    if(counter == 0)
-    {
-        Process();
-        counter = delay+1;
-    }
-}
-
-function Html2GiftFilter(string, format) {
-    if( format == "apercu" )
-        return(string);
-    /*
-    string = string.replace(/:/g, '\:')
-    string = string.replace(/{/g, '\\{')
-    string = string.replace(/}/g, '\\}')
-    string = string.replace(/=/g, '\\=')
-    string = string.replace(/~/g, '\\~')
-    string = string.replace(/#/g, '\\#')
-    string = string.replace(/</g, '&lt;')
-    string = string.replace(/>/g, '&gt;')
-    */
-    string = string.replaceAll('=', '\\=');
-    string = string.replaceAll('<', '&lt;');
-    string = string.replaceAll('>', '&gt;');
-    string = string.replaceAll(':', '\\:');
-    string = string.replaceAll('{', '\\{');
-    string = string.replaceAll('}', '\\}');
-    string = string.replaceAll('~', '\\~');
-    string = string.replaceAll('#', '\\#');
-
-    // Line feed
-
-    string = string.replaceAll('\u000A', '\\n');
-
-return string;
-}
-
-function EncodeSnippet(question, preview=false) {
-let start_code = false;
-let index_start = -1;
-let index_end = -1;
-
-    for (let i = 0; i < question.length-1; i++) {
-        let c = question[i];
-        let start_tag_code = question.slice(i, i+6).toLowerCase();
-        let end_tag_code = question.slice(i, i+7).toLowerCase();
-
-        if ( start_tag_code.indexOf("<code>") == 0 )
-        {
-            // console.log("ScanForCode début '<code>' détecté.")
-            start_code = true;
-            index_start = i;
-        }
-        else if ( end_tag_code.indexOf("</code>") == 0 )
-        {
-            // console.log("ScanForCode fin '</code>' détecté.")
-            start_code = false;
-            index_end = i;
-
-            let begin = question.slice(0, index_start+6);
-            let code = question.slice(index_start+6, index_end);
-            let end = question.slice(index_end, question.length);
-
-            if (preview)
-                code = code.replaceAll("<","&lt;"); 
-            else
-            {
-                code = code.replaceAll("<","&amp;lt;");
-                code = code.replaceAll(">","&amp;gt;");
-                code = code.replaceAll(" ","&amp;nbsp;");
-            }
-
-            question = begin+code+end;
-
-        /*
-            console.log("BEGIN=["+begin+"]");
-            console.log("CODE=["+code+"]");
-            console.log("END=["+end+"]");
-            console.log("NEW QUESTION=["+question+"]");
-        */
-
-            break;
-        }
-    }
-    
-return(question)
-}
-
-var old_apercu = "";
-var old_apercu_title = "";
-var old_code = "";
-var old_header = "";
-
-function Preview() {
-var apercu;
-var numero = $("#id_numero").val();
-var titre = $("#id_titre").val();
-var titre = numero + " - " + titre;
-var question_object = $("#id_question");
-var reponse1 = $("#id_reponse1").val();
-var reponse2 = $("#id_reponse2").val();
-var reponse3 = $("#id_reponse3").val();
-var reponse4 = $("#id_reponse4").val();
-var feedback = $("#id_feedback").val();
-
-	apercu = EncodeSnippet(question_object.val(), true);
-	apercu = apercu + "<br>\n<br>\n";	
-	apercu = apercu + "a. &nbsp;&nbsp;" + Html2GiftFilter( reponse1, "apercu" ) + "<br>\n";	
-	apercu = apercu + "b. &nbsp;&nbsp;" + Html2GiftFilter( reponse2, "apercu" ) + "<br>\n";
-	apercu = apercu + "c. &nbsp;&nbsp;" + Html2GiftFilter( reponse3, "apercu" ) + "<br>\n";
-	apercu = apercu + "d. &nbsp;&nbsp;" + Html2GiftFilter( reponse4, "apercu" ) + "<br>\n";
-    
-    if( feedback ) {
-         apercu = apercu + "<br>\nFeedback: " + feedback;
-    }
-    
-    if( old_apercu != apercu ) {
-        var math = document.getElementById("id_apercu");
-        $("#id_apercu").html(apercu);
-        MathJax.Hub.Queue(["Typeset",MathJax.Hub,math]);
-        old_apercu = apercu;
-        /* $("#id_apercu").trigger("create"); */
-    }
-    
-    var apercu_title;
-    apercu_title = "Aperçu " + titre;
-
-    if( old_apercu_title != apercu_title )
-    {
-        $("#id_apercu_title").html(apercu_title);
-        old_apercu_title = apercu_title;
     }
 }
 
@@ -298,8 +179,10 @@ Which of the flollowing line(s) if inserted in line 6 above will compile?]]></te
     // console.log("id_points_negatifs = " + points );
 	
 	var code;
+    code = code + "// Category<br>\n";
 	code = "$CATEGORY: $course$/" + theme + "<br>\n<br>\n";
 	code = code + "::" + Html2GiftFilter( titre ) + "<br>\n";
+    code = code + "// Question<br>\n";
     code = code + "::["+format_question+"] " + Html2GiftFilter(question) + "<br>\n";
 
     if( type == 1 ) // Une bonne réponse
@@ -388,4 +271,4 @@ Which of the flollowing line(s) if inserted in line 6 above will compile?]]></te
     console.log("Process ended.");
 }
 
-intervalId = setInterval(clock, 1000);
+clockId = setInterval(clock, 1000);
