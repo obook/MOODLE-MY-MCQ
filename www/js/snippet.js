@@ -3,7 +3,7 @@
 * (C) obook 2020-2024
 *
 */
-export {EncodeSnippet, Html2GiftFilter};
+export {EncodeSnippet, Html2GiftFilter, Html2XMLFilter};
 
 function Html2GiftFilter(string, format) {
     if( format == "apercu" )
@@ -30,6 +30,37 @@ function Html2GiftFilter(string, format) {
     // Line feed
 
     string = string.replaceAll('\u000A', '\\n');
+
+return string;
+}
+
+function Html2XMLFilter(string, format) {
+    if( format == "apercu" )
+        return(string);
+    /*
+    string = string.replace(/:/g, '\:')
+    string = string.replace(/{/g, '\\{')
+    string = string.replace(/}/g, '\\}')
+    string = string.replace(/=/g, '\\=')
+    string = string.replace(/~/g, '\\~')
+    string = string.replace(/#/g, '\\#')
+    string = string.replace(/</g, '&lt;')
+    string = string.replace(/>/g, '&gt;')
+    
+    string = string.replaceAll('=', '\\=');
+    string = string.replaceAll(':', '\\:');
+    string = string.replaceAll('{', '\\{');
+    string = string.replaceAll('}', '\\}');
+    string = string.replaceAll('~', '\\~');
+    string = string.replaceAll('#', '\\#');
+
+    // Line feed
+
+    string = string.replaceAll('\u000A', '\\n');
+*/
+
+    string = string.replaceAll('<', '&lt;');
+    string = string.replaceAll('>', '&gt;');
 
 return string;
 }
