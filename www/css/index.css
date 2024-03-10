@@ -31,8 +31,8 @@
 
 pre {
   text-shadow:none !important;
-  font-weight: normal !important;
-  font-family: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
+  font-weight:normal !important;
+  font-family:Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
   display: block;
   padding: 12px;
   color: rgb(0, 0, 0);
@@ -43,9 +43,8 @@ pre {
   width: 100px !important;
  }
 
- .result{
-  padding: 0px;
+ .result {
   text-shadow:none !important;
-  background: rgb(0, 0, 0); !important;
+  background: rgba(12, 12, 12, 0.562); !important;
   color:#e6e6e6; !important;
  }

@@ -162,6 +162,7 @@ C'est fini !</textarea>
 
         <div data-role="collapsible" data-mini="true" data-collapsed="false" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" data-theme="b" data-content-theme="b">
             <h4>CODE - Copy into a text editor then import in questions bank</h4>
+            <a href="#" id="copy-button" class="ui-shadow ui-btn ui-corner-all ui-btn-inline ui-btn-icon-left ui-icon-grid ui-mini">COPY</a>
             <div class ='result' id="id_result"></div>
         </div>
 
@@ -214,6 +215,15 @@ C'est fini !</textarea>
         Module.SetFormatOutput($("#sliderOutput").val());
         Module.Process(true);
 	});
+
+    $('#copy-button').click(function() {
+        var textToCopy = $('#id_result').text();
+        var tempTextarea = $('<textarea>');
+        $('body').append(tempTextarea);
+        tempTextarea.val(textToCopy).select();
+        document.execCommand('copy');
+        $('#copy-button').fadeOut(300).fadeIn(0);
+    });
 
     </script>
 

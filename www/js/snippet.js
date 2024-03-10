@@ -61,7 +61,7 @@ function Html2XMLFilter(string, format) {
 
     string = string.replaceAll('<', '&lt;');
     string = string.replaceAll('>', '&gt;');
-    string = string.replaceAll('\t', '');
+    // string = string.replaceAll('\t', '');
 return string;
 }
 
