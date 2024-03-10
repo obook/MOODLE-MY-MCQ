@@ -19,6 +19,8 @@ var format_gift = true;
 var print_bank = true;
 
 function Init() {
+  $("#sliderOutput").val('GIFT');
+  $("#sliderBank").val('OFF');
   Process(true, print_bank);
   clockId = setInterval(clock, 1000);
 }
