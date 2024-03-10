@@ -46,7 +46,7 @@ function SetFormatOutput(value) {
 }
 
 function SetBankOutput(value) {
-  if (value == 'BANK') {
+  if (value == 'OFF') {
       console.log("SetBankOutput:TRUE");
       print_bank = true;
       Process(true, print_bank);
@@ -69,11 +69,12 @@ function Process(force=false, bank=true)
   // Réglage du titre de la fenêtre
   $(document).prop('title', theme);
 
+
   if ($("#sliderOutput").val() == 'GIFT') {
     format_gift = true;
   }
   else {
-      format_gift = false;
+    format_gift = false;
   }
 
 	var header = theme + " : Q" + titre;

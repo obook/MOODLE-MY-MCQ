@@ -31,7 +31,7 @@ Outil de fabrication de question QCM au format GIFT pour Moodle
     <div data-role="panel" id="settingspanel" data-display="overlay">
         <label for="id_theme">Category:</label>
         <input type="text" name="id_theme" id="id_theme" value="My bank category">
-
+        <label for="sliderOutput">Code:</label>
         <select name="sliderOutput" id="sliderOutput" data-role="slider" data-mini="true">
             <option value="GIFT" selected>GIFT</option>
             <option value="XML">XML</option>
@@ -161,18 +161,26 @@ C'est fini !</textarea>
 
         <div data-role="collapsible" data-mini="true" data-collapsed="false" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" data-theme="b" data-content-theme="b">
             <h4>CODE - Copy into a text editor then import in questions bank</h4>
-                <select class="ui-shadow" name="sliderBank" id="sliderBank" data-role="slider" data-mini="true">
-                    <option value="OFF">OFF</option>
-                    <option value="BANK" selected>CAT</option>
-                </select>
+            <form>
+                <div class="ui-field-contain">
+                   <label for="sliderBank">Question only:</label>
+                                <select class="ui-shadow" name="sliderBank" id="sliderBank" data-role="slider" data-mini="true">
+                                    <option value="OFF" selected>OFF</option>
+                                    <option value="ON">ON</option>
+                                </select>
+                 </div>
+            </form>
+
             <div class ='result' id="id_result"></div>
+
             <a href="#" id="copy-button" class="ui-shadow ui-btn ui-corner-all ui-btn-icon-left ui-icon-grid">COPY</a>
+
         </div>
 
 	</div><!-- /content -->
 
 	<div data-role="footer" data-position="fixed" data-tap-toggle="false" data-theme="b">
-		<h4>Moodle MCQ GIFT Maker - ADM 2020/SMB33 2024 - <a href='https://github.com/obook/Moodle-MCQ-GIFT-Maker' target='_blank'>GitHub</a></h4>
+		<h4>Moodle MCQ GIFT/XML Maker - ADM 2020/SMB33 2024 - <a href='https://github.com/obook/Moodle-MCQ-GIFT-Maker' target='_blank'>GitHub</a></h4>
 	</div><!-- /footer -->
 
 	<script>
