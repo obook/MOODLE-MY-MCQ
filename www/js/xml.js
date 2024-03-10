@@ -68,9 +68,9 @@ function MakeXML(force=false) {
     code = code + Html2XMLFilter("<single>true</single>\n");
 
     code = code + Html2XMLFilter("\t<answer fraction=\"100\" format=\""+format_reponse+"\"><text>")+ Html2XMLFilter( reponse1, format_reponse ) + Html2XMLFilter("</text></answer>\n");
-    code = code + Html2XMLFilter("\t<answer fraction=\"-33.33333\" format=\""+format_reponse+"\"<text>") + Html2XMLFilter( reponse2, format_reponse ) + Html2XMLFilter("</text></answer>\n");
-    code = code + Html2XMLFilter("\t<answer fraction=\"-33.33333\" format=\""+format_reponse+"\"<text>") + Html2XMLFilter( reponse3, format_reponse ) + Html2XMLFilter("</text></answer>\n");
-    code = code + Html2XMLFilter("\t<answer fraction=\"-33.33333\" format=\""+format_reponse+"\"<text>") + Html2XMLFilter( reponse4, format_reponse ) + Html2XMLFilter("</text></answer>\n");
+    code = code + Html2XMLFilter("\t<answer fraction=\"-33.33333\" format=\""+format_reponse+"\"><text>") + Html2XMLFilter( reponse2, format_reponse ) + Html2XMLFilter("</text></answer>\n");
+    code = code + Html2XMLFilter("\t<answer fraction=\"-33.33333\" format=\""+format_reponse+"\"><text>") + Html2XMLFilter( reponse3, format_reponse ) + Html2XMLFilter("</text></answer>\n");
+    code = code + Html2XMLFilter("\t<answer fraction=\"-33.33333\" format=\""+format_reponse+"\"><text>") + Html2XMLFilter( reponse4, format_reponse ) + Html2XMLFilter("</text></answer>\n");
 
     /// fin question
     code = code + Html2XMLFilter("</question>\n");
