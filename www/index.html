@@ -11,13 +11,13 @@ Outil de fabrication de question QCM au format GIFT pour Moodle
 
     <!-- Jquery/JQueryMobile -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="./images/moodle-icon.png" type="image/icon type">
-	<link rel="stylesheet" href="vendor/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css" />
+    <link rel="icon" href="./images/moodle-icon.png" type="image/icon">
+	<link rel="stylesheet" href="vendor/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css">
 	<script src="vendor/jquerymobile.com_1.4.5_js_jquery.js"></script>
 	<script src="vendor/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script>
 
     <!-- Mathjax -->
-	<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+	<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
     <!-- Styles -->
     <link rel="stylesheet" type="text/css" href="css/index.css">
@@ -29,9 +29,8 @@ Outil de fabrication de question QCM au format GIFT pour Moodle
 
     <!-- Panel Settings -->
     <div data-role="panel" id="settingspanel" data-display="overlay">
-        <label for="text-basic">Category:</label>
-
-        <input type="text" name="text-basic" id="id_theme" value="My bank category">
+        <label for="id_theme">Category:</label>
+        <input type="text" name="id_theme" id="id_theme" value="My bank category">
 
         <select name="sliderOutput" id="sliderOutput" data-role="slider" data-mini="true">
             <option value="GIFT" selected>GIFT</option>
@@ -50,24 +49,24 @@ Outil de fabrication de question QCM au format GIFT pour Moodle
             <option value="0">Without negative points</option>
         </select>
 
-        <a href="#" data-rel="close" class="ui-btn ui-shadow ui-corner-all ui-icon-delete ui-btn-icon-left ui-btn-inline">Close</a>
+        <a href="#" data-rel="close" class="ui-btn ui-shadow ui-corner-all ui-icon-delete ui-btn-icon-left">Close</a>
     </div><!-- /panel Settings -->
 
     <!-- Panel Sample -->
     <div data-role="panel" id="samplepanel" data-display="overlay">
 
 <p><b>Code snippet</b> :
-<textarea readonly>Question about Python.
+<textarea readonly name="textareaPython" id="textareaPython">Question about Python.
 <pre><code>def Strange(x) :
     y=2*x+5
     return(y)
 </code></pre>
 What return Strange(0)?</textarea></p>
 <p><b> LaTeX </b> :
-<textarea readonly>
-Maths  \( LaTeXCodeHere \)</textarea></p>
+<textarea readonly name="textareaMathJax" id="textareaMathJax">
+Maths  \( Math LaTeX Here \)</textarea></p>
 
-        <a href="#" data-rel="close" class="ui-btn ui-shadow ui-corner-all ui-icon-delete ui-btn-icon-left ui-btn-inline">Close</a>
+        <a href="#" data-rel="close" class="ui-btn ui-shadow ui-corner-all ui-icon-delete ui-btn-icon-left">Close</a>
     </div><!-- /panel Sample -->
 
     <!-- Header -->
@@ -104,7 +103,7 @@ Maths  \( LaTeXCodeHere \)</textarea></p>
                 <div class="ui-block-d">
                     <fieldset data-role="controlgroup" data-type="horizontal" data-mini="false">
                         <a href="#samplepanel" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-icon-edit ui-btn-icon-right">Samples</a>
-                        <a href="#" id="id_reset"class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-btn-icon-right ui-icon-delete">Reset</a>
+                        <a href="#" id="id_reset" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-btn-icon-right ui-icon-delete">Reset</a>
                     </fieldset>                                      
                 </div>
 
@@ -176,7 +175,7 @@ C'est fini !</textarea>
 		<h4>Moodle MCQ GIFT Maker - ADM 2020/SMB33 2024 - <a href='https://github.com/obook/Moodle-MCQ-GIFT-Maker' target='_blank'>GitHub</a></h4>
 	</div><!-- /footer -->
 
-	<script type="text/javascript">
+	<script>
 
     let Module;
 
@@ -237,7 +236,7 @@ C'est fini !</textarea>
 
 </div><!-- /page -->
 
-<script type="text/javascript">
+<script>
 
 /* Alerte si on ferme l'onglet ou la page */
 
