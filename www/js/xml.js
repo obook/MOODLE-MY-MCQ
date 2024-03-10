@@ -58,7 +58,7 @@ function MakeXML(force=false) {
     code = code + Html2XMLFilter("<!-- Question "+numero+" -->\n");
     code = code + Html2XMLFilter("<question type=\"multichoice\">\n");
     code = code + Html2XMLFilter("\t<name><text>"+titre+"</text></name>\n");
-    code = code + Html2XMLFilter("\t<questiontext format=\""+format_question+"\"><text><![CDATA[\n"+question+"\n]]></text></questiontext>\n");
+    code = code + Html2XMLFilter("\t<questiontext format=\""+format_question+"\"><text>\n<![CDATA["+question+"]]>\n</text></questiontext>\n");
 
     if( feedback )
     {
