@@ -105,12 +105,12 @@ Which of the flollowing line(s) if inserted in line 6 above will compile?]]></te
 	*/
 	
 
-function MakeGift(force=false) {
-    var numero = $("#id_numero").val();
+function MakeGift(force=false, bank=true) {
+  var numero = $("#id_numero").val().toString().padStart(2, '0') ;
 	var titre = $("#id_titre").val();
 	var theme = $("#id_theme").val();
-	var titre = numero.toString().padStart(2, '0') + " - " + titre;
-    var question_object = $("#id_question");
+	var titre = numero+ " - " + titre;
+  var question_object = $("#id_question");
 	var question = EncodeSnippet(question_object.val());
 
     console.log("MakeGift");
@@ -142,12 +142,14 @@ function MakeGift(force=false) {
                  
     // console.log("id_points_negatifs = " + points );
 	
-	var code;
+	var code = "";
 
-    code = code + "// Category<br>\n";
-	code = "$CATEGORY: $course$/" + theme + "<br>\n<br>\n";
-	code = code + "::" + Html2GiftFilter( titre ) + "<br>\n";
-    code = code + "// Question<br>\n";
+    if(bank) {
+      code = code + "// Category<br>\n";
+      code = "$CATEGORY: $course$/" + theme + "<br>\n<br>\n";
+    }
+    code = code + "// Question "+numero+"<br>\n";
+    code = code + "::" + Html2GiftFilter( titre ) + "<br>\n";
     code = code + "::["+format_question+"] " + Html2GiftFilter(question) + "<br>\n";
 
     if( type == 1 ) // Une bonne réponse

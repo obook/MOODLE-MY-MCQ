@@ -162,8 +162,12 @@ C'est fini !</textarea>
 
         <div data-role="collapsible" data-mini="true" data-collapsed="false" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" data-theme="b" data-content-theme="b">
             <h4>CODE - Copy into a text editor then import in questions bank</h4>
-            <a href="#" id="copy-button" class="ui-shadow ui-btn ui-corner-all ui-btn-inline ui-btn-icon-left ui-icon-grid ui-mini">COPY</a>
+                <select class="ui-shadow" name="sliderBank" id="sliderBank" data-role="slider" data-mini="true">
+                    <option value="OFF">OFF</option>
+                    <option value="BANK" selected>CAT</option>
+                </select>
             <div class ='result' id="id_result"></div>
+            <a href="#" id="copy-button" class="ui-shadow ui-btn ui-corner-all ui-btn-icon-left ui-icon-grid">COPY</a>
         </div>
 
 	</div><!-- /content -->
@@ -213,7 +217,11 @@ C'est fini !</textarea>
     $("#sliderOutput").change(function()
 	{
         Module.SetFormatOutput($("#sliderOutput").val());
-        Module.Process(true);
+	});
+
+    $("#sliderBank").change(function()
+	{
+        Module.SetBankOutput($("#sliderBank").val());
 	});
 
     $('#copy-button').click(function() {

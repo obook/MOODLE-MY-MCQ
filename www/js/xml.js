@@ -9,7 +9,7 @@ export { MakeXML };
 
 var old_code = "";
 
-function MakeXML(force=false) {
+function MakeXML(force=false, bank=true) {
     var numero = $("#id_numero").val().toString().padStart(2, '0') ;
 	var titre = $("#id_titre").val();
 	var theme = $("#id_theme").val();
@@ -46,13 +46,14 @@ function MakeXML(force=false) {
                  
     // console.log("id_points_negatifs = " + points );
 	
-	var code;
+	var code = "";
 
-    code = Html2XMLFilter("<?xml version=\"1.0\" ?>\n<quiz>\n");
-
-    // Bank
-
-    code = code + Html2XMLFilter("<question type=\"category\">\n\t<category>\n\t\t<text>$course$/"+theme+"</text>\n\t</category>\n</question>\n");
+    if(bank)
+    {
+        code = Html2XMLFilter("<?xml version=\"1.0\" ?>\n<quiz>\n");
+        // Bank
+        code = code + Html2XMLFilter("<question type=\"category\">\n\t<category>\n\t\t<text>$course$/"+theme+"</text>\n\t</category>\n</question>\n");
+    }
 
     // Question
     code = code + Html2XMLFilter("<!-- Question "+numero+" -->\n");
@@ -74,9 +75,11 @@ function MakeXML(force=false) {
 
     /// fin question
     code = code + Html2XMLFilter("</question>\n");
-
-    // Fin  XML
-    code = code + Html2XMLFilter("</quiz>");
+    if(bank)
+    {
+        // Fin  XML
+        code = code + Html2XMLFilter("</quiz>");
+    }
 
     var code_object = $("#id_result");
 
