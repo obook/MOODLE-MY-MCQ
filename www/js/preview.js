@@ -24,10 +24,10 @@ var feedback = $("#id_feedback").val();
 
     apercu = EncodeSnippet(question_object.val(), true);
     apercu = apercu + "<br>\n<br>\n";	
-    apercu = apercu + "a. &nbsp;&nbsp;" + Html2GiftFilter( reponse1, "apercu" ) + "<br>\n";	
-    apercu = apercu + "b. &nbsp;&nbsp;" + Html2GiftFilter( reponse2, "apercu" ) + "<br>\n";
-    apercu = apercu + "c. &nbsp;&nbsp;" + Html2GiftFilter( reponse3, "apercu" ) + "<br>\n";
-    apercu = apercu + "d. &nbsp;&nbsp;" + Html2GiftFilter( reponse4, "apercu" ) + "<br>\n";
+    apercu = apercu + "a) &nbsp;&nbsp;" + Html2GiftFilter( reponse1, "apercu" ) + "<br>\n";	
+    apercu = apercu + "b) &nbsp;&nbsp;" + Html2GiftFilter( reponse2, "apercu" ) + "<br>\n";
+    apercu = apercu + "c) &nbsp;&nbsp;" + Html2GiftFilter( reponse3, "apercu" ) + "<br>\n";
+    apercu = apercu + "d) &nbsp;&nbsp;" + Html2GiftFilter( reponse4, "apercu" ) + "<br>\n";
     
     if( feedback ) {
             apercu = apercu + "<br>\nFeedback: " + feedback;
