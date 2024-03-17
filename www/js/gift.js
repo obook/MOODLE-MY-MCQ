@@ -16,7 +16,6 @@ let car;
         if( s.includes(car) )
         {
             s = s.split(car)[0];
-            console.log("On split sur le car ["+car+"], TITRE=["+s+"]")
             return s;
         }
     }
