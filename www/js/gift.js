@@ -9,13 +9,28 @@ export { MakeGift };
 
 var old_code = "";
 
+function MakeQuestionTitle(s) {
+let car;
+    var splitters = ["\n", "?", ".", ":", "<br>", "..."];
+    for (car of splitters) {
+        if( s.includes(car) )
+        {
+            s = s.split(car)[0];
+            console.log("On split sur le car ["+car+"], TITRE=["+s+"]")
+            return s;
+        }
+    }
+return("Question...");
+}
+
 function MakeGift(force=false, bank=true) {
-  var numero = $("#id_numero").val().toString().padStart(2, '0') ;
-	var titre = $("#id_titre").val();
-	var theme = $("#id_theme").val();
-	var titre = numero+ " - " + titre;
-  var question_object = $("#id_question");
+    var numero = $("#id_numero").val().toString().padStart(2, '0') ;
+    var theme = $("#id_theme").val();
+    var question_object = $("#id_question");
 	var question = EncodeSnippet(question_object.val());
+    
+    /* Title is from question's first line */
+    var titre = numero+ " - " + MakeQuestionTitle(question_object.val());
 
     console.log("MakeGift");
 
@@ -31,8 +46,18 @@ function MakeGift(force=false, bank=true) {
     var feedback = $("#id_feedback").val();
                  
     // console.log("id_points_negatifs = " + points );
+
+    /*
+
+        On va utiliser la premire ligne de la question pour fabriquer le titre
+
+    */
+
+
+
+    console.log("NEW TITLE=["+titre+"]")
 	
-	  var code = "";
+	var code = "";
 
     if(bank) {
       code = code + "// Category<br>\n";
