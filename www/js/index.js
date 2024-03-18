@@ -7,7 +7,7 @@
 import { Preview } from "./preview.js";
 import { MakeGift } from "./gift.js";
 import { MakeXML } from "./xml.js";
-import { EncodeSnippet, Html2GiftFilter } from "./snippet.js";
+import { EncodeSnippet, Html2GiftFilter, GetFirstLine} from "./snippet.js";
 
 export {Init, SetFormatOutput, SetBankOutput, Process};
 
@@ -63,11 +63,10 @@ function SetBankOutput(value) {
 function Process(force=false, bank=true)
 {
 	console.log("Process start...");
-	
+	var question_object = $("#id_question");
 	var numero = $("#id_numero").val();
-	var titre = $("#id_titre").val();
 	var theme = $("#id_theme").val();
-	var titre = numero.toString().padStart(2, '0') + " - " + titre;
+  var titre = numero+ " - " + GetFirstLine(question_object.val());
   // Réglage du titre de la fenêtre
   $(document).prop('title', theme);
 

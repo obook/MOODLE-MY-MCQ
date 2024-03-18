@@ -3,7 +3,7 @@
 * (C) obook 2020-2024
 *
 */
-export {EncodeSnippet, Html2GiftFilter, Html2XMLFilter};
+export {EncodeSnippet, Html2GiftFilter, Html2XMLFilter, GetFirstLine};
 
 function Html2GiftFilter(string, format) {
     if( format == "apercu" )
@@ -122,4 +122,16 @@ let succeed = false;
   */  
 return(question)
 }
-     
+
+function GetFirstLine(s) {
+let car;
+    var splitters = ["\n", "?", ".", ":", "<br>", "..."];
+    for (car of splitters) {
+        if( s.includes(car) )
+        {
+            s = s.split(car)[0];
+            return s;
+        }
+    }
+return("Question...");
+}
