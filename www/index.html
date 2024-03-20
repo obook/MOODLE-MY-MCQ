@@ -207,6 +207,11 @@ C'est fini !</textarea>
         Module.SetFormatOutput($("#sliderOutput").val());
 	});
 
+    $("#id_numero").change(function()
+	{
+        Module.QuestionNumberChanged($("#id_numero").val());
+	});
+
     $("#sliderBank").change(function()
 	{
         Module.SetBankOutput($("#sliderBank").val());

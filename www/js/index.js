@@ -9,7 +9,7 @@ import { MakeGift } from "./gift.js";
 import { MakeXML } from "./xml.js";
 import { EncodeSnippet, Html2GiftFilter, GetFirstLine} from "./snippet.js";
 
-export {Init, SetFormatOutput, SetBankOutput, Process};
+export {Init, SetFormatOutput, SetBankOutput, QuestionNumberChanged, Process};
 
 var delay = 2
 var counter = delay;
@@ -58,6 +58,11 @@ function SetBankOutput(value) {
       print_bank = false;
       Process(true, print_bank);
   }
+}
+
+function QuestionNumberChanged(number) {
+  console.log("QuestionNumberChanged to "+number);
+  localStorage.setItem("number", number);
 }
 
 function Process(force=false, bank=true)
