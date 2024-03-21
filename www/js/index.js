@@ -7,6 +7,7 @@
 import { Preview } from "./preview.js";
 import { MakeGift } from "./gift.js";
 import { MakeXML } from "./xml.js";
+import { StorageExists, StoreQuestion, RecallQuestion, StorageClear} from "./storage.js";
 import { EncodeSnippet, Html2GiftFilter, GetFirstLine} from "./snippet.js";
 
 export {Init, SetFormatOutput, SetBankOutput, QuestionNumberChanged, Process};
@@ -17,10 +18,12 @@ var clockId;
 var old_header = "";
 var format_gift = true;
 var print_bank = true;
+var actual_question_number = 1;
 
 function Init() {
   $("#sliderOutput").val('GIFT');
   $("#sliderBank").val('OFF');
+  StorageClear();
   Process(true, print_bank);
   clockId = setInterval(clock, 1000);
 }
@@ -61,8 +64,21 @@ function SetBankOutput(value) {
 }
 
 function QuestionNumberChanged(number) {
+  $("#id_titre").val("");
+  $("#id_question").val("");
+  $("#id_reponse1").val("");
+  $("#id_reponse2").val("");
+  $("#id_reponse3").val("");
+  $("#id_reponse4").val("");
+  $("#id_feedback").val("");
   console.log("QuestionNumberChanged to "+number);
-  localStorage.setItem("number", number);
+  if( StorageExists(number) ) {
+    console.log("QuestionNumberChanged : storage exist !");
+  }
+  else{
+    console.log("QuestionNumberChanged : storage DO NOT exist !");
+    StoreQuestion(number);
+  }
 }
 
 function Process(force=false, bank=true)
@@ -74,7 +90,6 @@ function Process(force=false, bank=true)
   var titre = numero+ " - " + GetFirstLine(question_object.val());
   // Réglage du titre de la fenêtre
   $(document).prop('title', theme);
-
 
   if ($("#sliderOutput").val() == 'GIFT') {
     format_gift = true;
@@ -96,6 +111,9 @@ function Process(force=false, bank=true)
     MakeGift(force, bank);
   else
     MakeXML(force, bank);
+
+
+  StoreQuestion(numero);
 
   console.log("Process ended.");
 }
