@@ -191,14 +191,7 @@ C'est fini !</textarea>
 	{
 		if ( confirm( "Clear all ?" ) )
 		{
-			$("#id_titre").val("");
-			$("#id_numero").val("01");
-			$("#id_question").val("");
-			$("#id_reponse1").val("");
-			$("#id_reponse2").val("");
-			$("#id_reponse3").val("");
-			$("#id_reponse4").val("");
-			$("#id_feedback").val("");
+            Module.ClearAll();
 		}
 	});
 

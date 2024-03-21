@@ -52,16 +52,25 @@ function StoreQuestion(number) {
 }
 
 function RecallQuestion(number) {
+  // Vérifier qu'elle existe ...
+
   var prefix = "storage_"+number+"_";
   var number_id = prefix + "id";
-  if (localStorage.getItem(number_id)) {
-    console.log("RecallQuestion ["+number_id+"]=TRUE for "+number+ " : "+localStorage.getItem(number_id));
 
-    $("#id_reponse1").val();
-    $("#id_reponse2").val();
-    $("#id_reponse3").val();
-    $("#id_reponse4").val();
-    $("#id_feedback").val();
+  if (localStorage.getItem(number_id)) {
+    var question_key = prefix + "question";
+    var answer1_key = prefix + " answer1";
+    var answer2_key = prefix + " answer2";
+    var answer3_key = prefix + " answer3";
+    var answer4_key = prefix + " answer4";
+    var feedback_key = prefix + " feedback";  
+    console.log("RecallQuestion ["+number_id+"]=TRUE for "+number+ " : "+localStorage.getItem(number_id));
+    $("#id_question").val(localStorage.getItem(question_key));
+    $("#id_reponse1").val(localStorage.getItem(answer1_key));
+    $("#id_reponse2").val(localStorage.getItem(answer2_key));
+    $("#id_reponse3").val(localStorage.getItem(answer3_key));
+    $("#id_reponse4").val(localStorage.getItem(answer4_key));
+    $("#id_feedback").val(localStorage.getItem(feedback_key));
     return(true);
   }
 }

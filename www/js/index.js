@@ -10,7 +10,7 @@ import { MakeXML } from "./xml.js";
 import { StorageExists, StoreQuestion, RecallQuestion, StorageClear} from "./storage.js";
 import { EncodeSnippet, Html2GiftFilter, GetFirstLine} from "./snippet.js";
 
-export {Init, SetFormatOutput, SetBankOutput, QuestionNumberChanged, Process};
+export {Init, SetFormatOutput, SetBankOutput, QuestionNumberChanged, Process, ClearAll};
 
 var delay = 2
 var counter = delay;
@@ -23,9 +23,20 @@ var actual_question_number = 1;
 function Init() {
   $("#sliderOutput").val('GIFT');
   $("#sliderBank").val('OFF');
-  StorageClear();
   Process(true, print_bank);
   clockId = setInterval(clock, 1000);
+}
+
+function ClearAll() {
+  StorageClear();
+  $("#id_titre").val("");
+  $("#id_numero").val("01");
+  $("#id_question").val("");
+  $("#id_reponse1").val("");
+  $("#id_reponse2").val("");
+  $("#id_reponse3").val("");
+  $("#id_reponse4").val("");
+  $("#id_feedback").val("");
 }
 
 function clock() {
@@ -74,6 +85,7 @@ function QuestionNumberChanged(number) {
   console.log("QuestionNumberChanged to "+number);
   if( StorageExists(number) ) {
     console.log("QuestionNumberChanged : storage exist !");
+    RecallQuestion(number);
   }
   else{
     console.log("QuestionNumberChanged : storage DO NOT exist !");
