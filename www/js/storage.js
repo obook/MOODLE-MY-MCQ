@@ -10,6 +10,20 @@ function StorageClear() {
   localStorage.clear();
 }
 
+function StorageMax(current=1) {
+var max = 1;
+
+  if( localStorage.getItem('storage_max') )
+    max = localStorage.getItem('storage_max');
+
+  if(current>max)
+    max = current;
+
+  localStorage.setItem('storage_max', max);
+
+  return max;
+}
+
 function StorageExists(number) {
   var prefix = "storage_"+number+"_";
   var number_id = prefix + "id";
@@ -24,6 +38,7 @@ return(false);
 }
 
 function StoreQuestion(number) {
+    var max = "storage_max";
     var prefix = "storage_"+number+"_";
     var number_id = prefix + "id";
     var question_key = prefix + "question";
@@ -41,6 +56,8 @@ function StoreQuestion(number) {
     var reponse3 = $("#id_reponse3").val();
     var reponse4 = $("#id_reponse4").val();
     var feedback = $("#id_feedback").val();
+
+    StorageMax(number);
 
     localStorage.setItem(number_id, "set");
     localStorage.setItem(question_key, question);

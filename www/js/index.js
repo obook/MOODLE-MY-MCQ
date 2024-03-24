@@ -86,6 +86,7 @@ function QuestionNumberChanged(number) {
   if( StorageExists(number) ) {
     console.log("QuestionNumberChanged : storage exist !");
     RecallQuestion(number);
+    Process();
   }
   else{
     console.log("QuestionNumberChanged : storage DO NOT exist !");
