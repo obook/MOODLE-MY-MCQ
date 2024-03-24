@@ -2,7 +2,16 @@
 *
 * (C) obook 2020-2024
 *
-*/ 
+*/
+
+let Question = {
+  text: "",
+  answer1: "",
+  answer2: "",
+  answer3: "",
+  answer4: "",
+  feedback: ""
+};
 
 export { StorageExists, StoreQuestion, RecallQuestion, StorageClear};
 
@@ -13,8 +22,11 @@ function StorageClear() {
 function StorageMax(current=1) {
 var max = 1;
 
-  if( localStorage.getItem('storage_max') )
+  try {
     max = localStorage.getItem('storage_max');
+  } catch (error) {
+    console.log("StorageMax:getItem failed");
+  }
 
   if(current>max)
     max = current;
@@ -25,16 +37,16 @@ var max = 1;
 }
 
 function StorageExists(number) {
-  var prefix = "storage_"+number+"_";
-  var number_id = prefix + "id";
-  if (localStorage.getItem(number_id)) {
-    console.log("StorageExists ["+number_id+"]=TRUE for "+number+ " : "+localStorage.getItem(number_id));
-    return(true);
+  var number_id = "storage_"+number+"_id";
+
+  try {
+    localStorage.getItem('number_id');
+  } catch (error) {
+    console.log("StorageExists "+number+" :False");
+    return false;
   }
-  else{
-    console.log("StorageExists ["+number_id+"]=FALSE for "+number);   
-  }
-return(false);
+
+return(true);
 }
 
 function StoreQuestion(number) {
@@ -69,25 +81,42 @@ function StoreQuestion(number) {
 }
 
 function RecallQuestion(number) {
-  // Vérifier qu'elle existe ...
+  let question = Object.create(Question);
+  question=GetQuestion(number);
 
+  if (!question)
+    return(false);
+
+  $("#id_question").val(question.text);
+  $("#id_reponse1").val(question.answer1);
+  $("#id_reponse2").val(question.answer2);
+  $("#id_reponse3").val(question.answer3);
+  $("#id_reponse4").val(question.answer4);
+  $("#id_feedback").val(question.feedback);
+ 
+return(true);
+}
+
+function GetQuestion(number) {
   var prefix = "storage_"+number+"_";
-  var number_id = prefix + "id";
 
-  if (localStorage.getItem(number_id)) {
+  if ( !StorageExists(number))
+    return null;
+
+    let question = Object.create(Question);
     var question_key = prefix + "question";
     var answer1_key = prefix + " answer1";
     var answer2_key = prefix + " answer2";
     var answer3_key = prefix + " answer3";
     var answer4_key = prefix + " answer4";
-    var feedback_key = prefix + " feedback";  
-    console.log("RecallQuestion ["+number_id+"]=TRUE for "+number+ " : "+localStorage.getItem(number_id));
-    $("#id_question").val(localStorage.getItem(question_key));
-    $("#id_reponse1").val(localStorage.getItem(answer1_key));
-    $("#id_reponse2").val(localStorage.getItem(answer2_key));
-    $("#id_reponse3").val(localStorage.getItem(answer3_key));
-    $("#id_reponse4").val(localStorage.getItem(answer4_key));
-    $("#id_feedback").val(localStorage.getItem(feedback_key));
-    return(true);
-  }
+    var feedback_key = prefix + " feedback"; 
+
+    question.text = localStorage.getItem(question_key);
+    question.answer1 = localStorage.getItem(answer1_key);
+    question.answer2 = localStorage.getItem(answer2_key);
+    question.answer3 = localStorage.getItem(answer3_key);
+    question.answer4 = localStorage.getItem(answer4_key);
+    question.feedback = localStorage.getItem(feedback_key);
+
+return(question);
 }
