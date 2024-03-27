@@ -44,18 +44,18 @@ function MakeGift(force=false, bank=true) {
         if (points == 1) /* Points négatifs */
         {
             code = code + "// One correct awswer : n°1, With negative points<br>\n{<br>\n";
-            code = code + "&nbsp; = [html] " + Html2GiftFilter( reponse1, "html" ) + "<br>\n";
-            code = code + "&nbsp; ~%-33.33333% [html] " + Html2GiftFilter( reponse2, "html") + "<br>\n";
-            code = code + "&nbsp; ~%-33.33333% [html] " + Html2GiftFilter( reponse3, "html" ) + "<br>\n";
-            code = code + "&nbsp; ~%-33.33333% [html] " +  Html2GiftFilter( reponse4, "html" ) + "<br>\n";
+            code = code + " = [html] " + Html2GiftFilter( reponse1, "html" ) + "<br>\n";
+            code = code + " ~%-33.33333% [html] " + Html2GiftFilter( reponse2, "html") + "<br>\n";
+            code = code + " ~%-33.33333% [html] " + Html2GiftFilter( reponse3, "html" ) + "<br>\n";
+            code = code + " ~%-33.33333% [html] " +  Html2GiftFilter( reponse4, "html" ) + "<br>\n";
         }
         else
         {
             code = code + "// One correct awswer : n°1, Without negative points<br>\n{<br>\n";
-            code = code + "&nbsp; = [html] " + Html2GiftFilter( reponse1, "html" ) + "<br>\n";
-            code = code + "&nbsp; ~ [html] " + Html2GiftFilter( reponse2, "html" ) + "<br>\n";
-            code = code + "&nbsp; ~ [html] " + Html2GiftFilter( reponse3, "html" ) + "<br>\n";
-            code = code + "&nbsp; ~ [html]] " +  Html2GiftFilter( reponse4, "html" ) + "<br>\n";          
+            code = code + " = [html] " + Html2GiftFilter( reponse1, "html" ) + "<br>\n";
+            code = code + " ~ [html] " + Html2GiftFilter( reponse2, "html" ) + "<br>\n";
+            code = code + " ~ [html] " + Html2GiftFilter( reponse3, "html" ) + "<br>\n";
+            code = code + " ~ [html]] " +  Html2GiftFilter( reponse4, "html" ) + "<br>\n";
         }
     }
     else if( type == 2 ) // Deux bonnes réponses
@@ -63,18 +63,18 @@ function MakeGift(force=false, bank=true) {
         if (points == 1) /* Points négatifs */
         {
             code = code + "// Two correct awswers : n°1 et n°2, With negative points<br>\n{<br>\n";
-            code = code + "&nbsp; ~%50% [html] " + Html2GiftFilter( reponse1, "html" ) + "<br>\n";
-            code = code + "&nbsp; ~%50% [html] " + Html2GiftFilter( reponse2, "html" ) + "<br>\n";
-            code = code + "&nbsp; ~%-33.33333% [html] " + Html2GiftFilter( reponse3, "html" ) + "<br>\n";
-            code = code + "&nbsp; ~%-33.33333% [html] " +  Html2GiftFilter( reponse4, "html" ) + "<br>\n";
+            code = code + " ~%50% [html] " + Html2GiftFilter( reponse1, "html" ) + "<br>\n";
+            code = code + " ~%50% [html] " + Html2GiftFilter( reponse2, "html" ) + "<br>\n";
+            code = code + " ~%-33.33333% [html] " + Html2GiftFilter( reponse3, "html" ) + "<br>\n";
+            code = code + " ~%-33.33333% [html] " +  Html2GiftFilter( reponse4, "html" ) + "<br>\n";
         }
         else
         {
             code = code + "// Two correct awswers : n°1 et n°2, Without negative points<br>\n{<br>\n";
-            code = code + "&nbsp; ~%50% [html] " + Html2GiftFilter( reponse1, "html" ) + "<br>\n";
-            code = code + "&nbsp; ~%50% [html] " + Html2GiftFilter( reponse2, "html" ) + "<br>\n";
-            code = code + "&nbsp; ~ [html] " + Html2GiftFilter( reponse3, "html" ) + "<br>\n";
-            code = code + "&nbsp; ~ [html] " +  Html2GiftFilter( reponse4, "html" ) + "<br>\n";           
+            code = code + " ~%50% [html] " + Html2GiftFilter( reponse1, "html" ) + "<br>\n";
+            code = code + " ~%50% [html] " + Html2GiftFilter( reponse2, "html" ) + "<br>\n";
+            code = code + " ~ [html] " + Html2GiftFilter( reponse3, "html" ) + "<br>\n";
+            code = code + " ~ [html] " +  Html2GiftFilter( reponse4, "html" ) + "<br>\n";
         }
     }
     else if( type == 3 ) // Trois bonnes réponses
@@ -82,32 +82,32 @@ function MakeGift(force=false, bank=true) {
         if (points == 1) /* Points négatifs */
         {
             code = code + "// Three correct awswers : n°1, n°2 et n°3, With negative points<br>\n{<br>\n";
-            code = code + "&nbsp; ~%33.33333% [html] " + Html2GiftFilter( reponse1, "html" ) + "<br>\n";
-            code = code + "&nbsp; ~%33.33333% [html] " + Html2GiftFilter( reponse2, "html" ) + "<br>\n";
-            code = code + "&nbsp; ~%33.33333% [html] " + Html2GiftFilter( reponse3, "html" ) + "<br>\n";
-            code = code + "&nbsp; ~%-100% [html] " +  Html2GiftFilter( reponse4, "html" ) + "<br>\n";
+            code = code + " ~%33.33333% [html] " + Html2GiftFilter( reponse1, "html" ) + "<br>\n";
+            code = code + " ~%33.33333% [html] " + Html2GiftFilter( reponse2, "html" ) + "<br>\n";
+            code = code + " ~%33.33333% [html] " + Html2GiftFilter( reponse3, "html" ) + "<br>\n";
+            code = code + " ~%-100% [html] " +  Html2GiftFilter( reponse4, "html" ) + "<br>\n";
         }
         else
         {
             code = code + "// Three correct awswers : n°1, n°2 et n°3, Without negative points<br>\n{<br>\n";
-            code = code + "&nbsp; ~%33.33333% [html] " + Html2GiftFilter( reponse1, "html" ) + "<br>\n";
-            code = code + "&nbsp; ~%33.33333% [html] " + Html2GiftFilter( reponse2, "html" ) + "<br>\n";
-            code = code + "&nbsp; ~%33.33333% [html] " + Html2GiftFilter( reponse3, "html" ) + "<br>\n";
-            code = code + "&nbsp; ~ [html] " +  Html2GiftFilter( reponse4, "html" ) + "<br>\n";          
+            code = code + " ~%33.33333% [html] " + Html2GiftFilter( reponse1, "html" ) + "<br>\n";
+            code = code + " ~%33.33333% [html] " + Html2GiftFilter( reponse2, "html" ) + "<br>\n";
+            code = code + " ~%33.33333% [html] " + Html2GiftFilter( reponse3, "html" ) + "<br>\n";
+            code = code + " ~ [html] " +  Html2GiftFilter( reponse4, "html" ) + "<br>\n";
         }
     }
     else // Quatre bonnes réponses
     {
         code = code + "// Four correct awswers<br>\n{<br>\n";
-        code = code + "&nbsp; ~%25% [html] " + Html2GiftFilter( reponse1, "html" ) + "<br>\n";
-        code = code + "&nbsp; ~%25% [html] " + Html2GiftFilter( reponse2, "html" ) + "<br>\n";
-        code = code + "&nbsp; ~%25% [html] " + Html2GiftFilter( reponse3, "html" ) + "<br>\n";
-        code = code + "&nbsp; ~%25% [html] " +  Html2GiftFilter( reponse4, "html" ) + "<br>\n";
+        code = code + " ~%25% [html] " + Html2GiftFilter( reponse1, "html" ) + "<br>\n";
+        code = code + " ~%25% [html] " + Html2GiftFilter( reponse2, "html" ) + "<br>\n";
+        code = code + " ~%25% [html] " + Html2GiftFilter( reponse3, "html" ) + "<br>\n";
+        code = code + " ~%25% [html] " +  Html2GiftFilter( reponse4, "html" ) + "<br>\n";
     }
     
     if( feedback )
     {
-         code = code + "&nbsp; #### [html] " + Html2GiftFilter( feedback ) + "<br>\n";
+         code = code + " #### [html] " + Html2GiftFilter( feedback ) + "<br>\n";
     }
     
 	code = code + "}";
