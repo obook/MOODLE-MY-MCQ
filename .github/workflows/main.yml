@@ -1,5 +1,5 @@
 on: push
-name: 🚀 Deploy website on push
+name: 🚀 Deploy https://smb33.keosystems.com/qcm/ on push
 jobs:
   web-deploy:
     name: 🎉 Deploy
