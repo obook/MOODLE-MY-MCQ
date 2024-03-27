@@ -22,7 +22,18 @@ var reponse3 = $("#id_reponse3").val();
 var reponse4 = $("#id_reponse4").val();
 var feedback = $("#id_feedback").val();
 
+// A voir, les retours à la ligne, hors code, ne sont pas dans le preview
+
+    //console.log("Question 1 = ["+question_object.val()+"]");
+
     apercu = EncodeSnippet(question_object.val(), true);
+    
+    //console.log("Question 2 = ["+question_object.val()+"]");
+
+    var find = apercu.replaceAll("\n","<br>\r\n");
+    
+    //console.log("apercu.replaceAll="+find );
+
     apercu = apercu + "<br>\n<br>\n";	
     apercu = apercu + "a) &nbsp;&nbsp;" + Html2GiftFilter( reponse1, "apercu" ) + "<br>\n";	
     apercu = apercu + "b) &nbsp;&nbsp;" + Html2GiftFilter( reponse2, "apercu" ) + "<br>\n";
