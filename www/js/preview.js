@@ -30,7 +30,7 @@ var feedback = $("#id_feedback").val();
     
     //console.log("Question 2 = ["+question_object.val()+"]");
 
-    var find = apercu.replaceAll("\n","<br>\r\n");
+    // var find = apercu.replaceAll("\n","<br>\r\n");
     
     //console.log("apercu.replaceAll="+find );
 

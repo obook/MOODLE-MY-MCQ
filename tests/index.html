@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<!--
+Outil de fabrication de question QCM au format GIFT pour Moodle
+(c) obooklage Académie de Créteil - Académie de Bordeaux
+06/05/2020 - 08/03/2024
+-->
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+	<title>Moodle MCQ GIFT Maker</title>
+
+    <!-- Jquery/JQueryMobile -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="../www/images/moodle-icon.png" type="image/icon">
+	<link rel="stylesheet" href="../www/vendor/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css">
+	<script src="../www/vendor/jquerymobile.com_1.4.5_js_jquery.js"></script>
+	<script src="../www/vendor/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+    <!-- Mathjax 
+	<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+-->
+    <!-- Styles -->
+    <link rel="stylesheet" type="text/css" href="../www/css/index.css">
+</head>
+<body class="no-mathjax">
+
+  <div data-role="page" id="index" data-theme="b">
+
+    <!-- Header -->
+
+    <div data-role="header" data-position="fixed" data-tap-toggle="false" data-theme="b"> <!-- style="height: 16em;" -->
+      <h1 id="id_header">Moodle MCQGIFTMaker Tests Area</h1>
+  </div><!-- /header -->
+
+    <!-- Content -->
+	<div role="main" class="ui-content">
+  <textarea cols="80" rows="10" name="textarea" id="id_question">
+    Consider the following Python program.
+    What does the variable r contain at the end of the program?
+    <pre><code>x=4
+    if 3*x-6<0 :
+        x=1
+        r=-1
+    else :
+        x=-1
+        r=1</code></pre>
+    Tank you !
+    </textarea>
+
+    <a href="#" id="fill" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-btn-icon-left ui-icon-gear">Fill</a>
+
+    </div>
+  </div>
+
+  <script>
+
+    $("#fill").click(function()
+	{
+        // alert("FILL !!");
+        var message = "line 1 \nline 2<pre><code>Code</code></pre>End...";
+        message = EncodeSnippet(message, true);
+        $("#id_question").html(message);
+
+	});
+
+function EncodeSnippet(question, preview=false) {
+let start_code = false;
+let index_start = -1;
+let index_end = -1;
+let succeed = false;
+
+// console.log("succeed = "+succeed);
+
+    for (let i = 0; i < question.length-1; i++) {
+        let c = question[i];
+        let start_tag_code = question.slice(i, i+6).toLowerCase();
+        let end_tag_code = question.slice(i, i+7).toLowerCase();
+
+        if ( start_tag_code.indexOf("<code>") == 0 )
+        {
+            // console.log("ScanForCode début '<code>' détecté.")
+            start_code = true;
+            index_start = i;
+        }
+        else if ( end_tag_code.indexOf("</code>") == 0 )
+        {
+            // console.log("ScanForCode fin '</code>' détecté.")
+            start_code = false;
+            index_end = i;
+
+            let begin = question.slice(0, index_start+6);
+            let code = question.slice(index_start+6, index_end);
+            let end = question.slice(index_end, question.length);
+
+            if (preview)
+                code = code.replaceAll("<","&amp;lt;"); 
+            else
+            {
+                code = code.replaceAll("<","&amp;lt;");
+                code = code.replaceAll(">","&amp;gt;");
+                code = code.replaceAll(" ","&amp;nbsp;");
+            }
+
+            question = begin+code+end;
+            succeed = true;
+
+        /*  */
+            console.log("BEGIN=["+begin+"]");
+            console.log("CODE=["+code+"]");
+            console.log("END=["+end+"]");
+            console.log("NEW QUESTION=["+question+"]");
+      
+
+            break;
+        }
+    }
+/*
+    if (succeed == true)
+        EncodeSnippet(question, preview);
+  */  
+return(question)
+}
+
+    </script>
+</body>
+</html>
