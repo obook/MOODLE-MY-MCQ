@@ -1,50 +1,41 @@
 /*
-.custom-corners .ui-bar {
-  -webkit-border-top-left-radius: inherit;
-  border-top-left-radius: inherit;
-  -webkit-border-top-right-radius: inherit;
-  border-top-right-radius: inherit;
-}
-
-.custom-corners .ui-body {
-  border-top-width: 0;
-  -webkit-border-bottom-left-radius: inherit;
-  border-bottom-left-radius: inherit;
-  -webkit-border-bottom-right-radius: inherit;
-  border-bottom-right-radius: inherit;
-}
+*
+* (C) obook 2020-2024
+*
 */
-#id_apercu {
-  text-shadow:none !important;
-  /* border:#000000 1px solid; */
-  color:#000000 ! important;
-  background:#4da13c00 !important;
-  /*
-  padding-top:5px;
-  padding-bottom:5px;
-  padding-right:5px;
-  padding-left:5px; */
-  /* overflow:scroll; */
-  /* height: 50% !important; */
-  overflow:scroll;
-}
 
 pre {
-  text-shadow:none !important;
-  font-weight:normal !important;
-  font-family:Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
+  text-shadow:none;
+  font-weight:normal;
+  font-family: Consolas,monospace;
   display: block;
-  padding: 12px;
+  padding: 6px;
   color: rgb(0, 0, 0);
-  background:#e6e6e6;
+  background:#cccccc;
+  border-radius: 6px;
+  font-family: "courier new", courier, monospace;
+  font-size: 0.6vw;
  }
 
  .number {
   width: 100px !important;
  }
 
- .result {
+ #id_result {
   text-shadow:none !important;
   background: rgba(12, 12, 12, 0.562) !important;
   color:#e6e6e6 !important;
+ }
+
+ #id_apercu {
+  text-shadow:none;
+  font-weight:normal;
+  font-size:0.7vw;
+  padding: 10px;
+  margin:10px;
+  border-radius: 3px;
+ }
+
+ #id_question {
+    background-color: #444444;
  }

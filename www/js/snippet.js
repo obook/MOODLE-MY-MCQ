@@ -127,7 +127,7 @@ let succeed = false;
 
             if (preview)
             {
-                code = code.replaceAll("<","&amp;lt;");
+                // code = code.replaceAll("<","&amp;lt;");
             }
             else
             {
