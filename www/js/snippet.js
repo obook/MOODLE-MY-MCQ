@@ -124,7 +124,11 @@ let succeed = false;
             let end = question.slice(index_end, question.length);
 
             if (preview)
-                code = code.replaceAll("<","&lt;"); 
+            {
+                begin = begin.replace(/(\r\n|\r|\n)/g, '<br>\n');
+                code = code.replaceAll("<","&amp;lt;");
+                end = end.replace(/(\r\n|\r|\n)/g, '<br>\n');
+            }
             else
             {
                 code = code.replaceAll("<","&amp;lt;");
