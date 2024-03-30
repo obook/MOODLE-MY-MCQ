@@ -94,6 +94,13 @@ function Html2XMLFilter(string, format) {
 return string;
 }
 
+/*
+
+Only support ONE source code.
+tags "pre" and "code" in LOWCASE
+
+*/
+
 function EncodeSnippet(question, preview=false) {
 let start_code = false;
 let index_start = -1;
@@ -125,28 +132,22 @@ let succeed = false;
 
             begin = begin.replace(/(\r\n|\r|\n)/g, '<br>\n');
 
-            if (preview)
-            {
-                // code = code.replaceAll("<","&amp;lt;");
-            }
-            else
-            {
-                code = code.replaceAll("<","&amp;lt;");
-                code = code.replaceAll(">","&amp;gt;");
+            code = code.replaceAll("<","&lt;");
+            code = code.replaceAll(">","&gt;");
+            if (!preview)
                 code = code.replaceAll(" ","&amp;nbsp;");
-            }
 
             end = end.replace(/(\r\n|\r|\n)/g, '<br>\n');
 
             question = begin+code+end;
             succeed = true;
 
-        /*
+        /*  
             console.log("BEGIN=["+begin+"]");
             console.log("CODE=["+code+"]");
             console.log("END=["+end+"]");
             console.log("NEW QUESTION=["+question+"]");
-        */
+      */
 
             break;
         }
