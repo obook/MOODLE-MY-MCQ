@@ -123,11 +123,11 @@ let succeed = false;
             let code = question.slice(index_start+6, index_end);
             let end = question.slice(index_end, question.length);
 
+            begin = begin.replace(/(\r\n|\r|\n)/g, '<br>\n');
+
             if (preview)
             {
-                begin = begin.replace(/(\r\n|\r|\n)/g, '<br>\n');
                 code = code.replaceAll("<","&amp;lt;");
-                end = end.replace(/(\r\n|\r|\n)/g, '<br>\n');
             }
             else
             {
@@ -135,6 +135,8 @@ let succeed = false;
                 code = code.replaceAll(">","&amp;gt;");
                 code = code.replaceAll(" ","&amp;nbsp;");
             }
+
+            end = end.replace(/(\r\n|\r|\n)/g, '<br>\n');
 
             question = begin+code+end;
             succeed = true;

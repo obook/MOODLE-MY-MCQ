@@ -1,0 +1,12 @@
+$CATEGORY: $course$/Test Moodle MCQ GIFT/XML Maker
+
+// Question 01
+::01 - Consider the following Python program.
+::[html] Consider the following Python program.<br>\nWhat does the variable r contain at the end of the program?<br>\n<pre><code>x\=4\nif&nbsp;3*x-6&lt;0&nbsp;\:\n&nbsp;&nbsp;&nbsp;&nbsp;x\=1\n&nbsp;&nbsp;&nbsp;&nbsp;r\=-1\nelse&nbsp;\:\n&nbsp;&nbsp;&nbsp;&nbsp;x\=-1\n&nbsp;&nbsp;&nbsp;&nbsp;r\=1</code></pre>\nThank you !<br>\nAnd nice day...
+// One correct awswer : n°1, With negative points
+{
+= [html] 5
+~%-33.33333% [html] 0
+~%-33.33333% [html] x
+~%-33.33333% [html] 2
+}
