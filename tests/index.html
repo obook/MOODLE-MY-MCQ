@@ -85,12 +85,36 @@ Tank you !
     $("#fill").click(function()
 	{
         // alert("FILL !!");
-        console.log("On rempli...");
-        var content_preview = "line 1 \nline 2<pre><code>Ici\nmon code...</code></pre>End\nOf\n\The\nProgram...";
-        content_preview = EncodeSnippet(content_preview, true);
+        
+        var content_preview = "line 1 <num>22</num>\nline 2 <num>23</num><pre><code>Ici mon code 1</code></pre>End Of The Program...<pre><code>Ici mon code 2</code></pre>\n<num>24</num>";
+        content_preview = EncodePreview(content_preview, true);
         $("#id_preview").html(content_preview);
 
 	});
+
+function EncodePreview(question)
+{
+    const regexp = /<pre><code>(.*?)<\/code><\/pre>/g; 
+	const pieces_of_code = [...question.matchAll(regexp)];
+
+    question = question.replace(/(\r\n|\r|\n)/g, '<br>\n');
+	
+	console.log("EncodeSnippet START question=["+question+"]");
+
+    for (let i = 0; i < pieces_of_code.length; i++) {
+        piece_of_code = pieces_of_code[i][1];
+        console.log("Code n°"+i+" trouvé=["+piece_of_code+"]");
+        var new_piece_of_code = piece_of_code;
+        new_piece_of_code = new_piece_of_code.replaceAll("<","&lt;");
+        new_piece_of_code = new_piece_of_code.replaceAll(">","&gt;");
+        question = question.replaceAll(piece_of_code, new_piece_of_code);
+        console.log("Après remplacement, question=["+question+"]");
+    }
+
+    console.log("EncodeSnippet END question=["+question+"]");
+
+    return(question);
+}
 
 function EncodeSnippet(question, preview=false) {
 let start_code = false;
@@ -100,6 +124,33 @@ let succeed = false;
 
 // console.log("succeed = "+succeed);
 
+/**
+Essai d'extraction des blocs de code
+const tableau = /<pre><code>(.*?)<\/code><\/pre>/g.exec(question);
+*/
+    const regexp = /<pre><code>(.*?)<\/code><\/pre>/g; 
+	const pieces_of_code = [...question.matchAll(regexp)];
+
+    question = question.replace(/(\r\n|\r|\n)/g, '<br>\n');
+	
+	console.log("EncodeSnippet START question=["+question+"]");
+
+    for (let i = 0; i < pieces_of_code.length; i++) {
+        piece_of_code = pieces_of_code[i][1];
+        console.log("Code n°"+i+" trouvé=["+piece_of_code+"]");
+        var new_piece_of_code = piece_of_code;
+        new_piece_of_code = new_piece_of_code.replaceAll("<","&lt;");
+        new_piece_of_code = new_piece_of_code.replaceAll(">","&gt;");
+        if (!preview)
+            new_piece_of_code = new_piece_of_code.replaceAll(" ","&amp;nbsp;");
+        question = question.replaceAll(piece_of_code, new_piece_of_code);
+        console.log("Après remplacement, question=["+question+"]");
+    }
+
+    console.log("EncodeSnippet END question=["+question+"]");
+
+    return(question);
+	
     for (let i = 0; i < question.length-1; i++) {
         let c = question[i];
         let start_tag_code = question.slice(i, i+6).toLowerCase();
@@ -121,19 +172,14 @@ let succeed = false;
             let code = question.slice(index_start+6, index_end);
             let end = question.slice(index_end, question.length);
 
-            if (preview)
-            {
-                console.log("EncodeSnippet=preview");
-                begin = begin.replace(/(\r\n|\r|\n)/g, '<br>\n');
-                code = code.replaceAll("<","&amp;lt;");
-                end = end.replace(/(\r\n|\r|\n)/g, '<br>\n');
-            }
-            else
-            {
-                code = code.replaceAll("<","&amp;lt;");
-                code = code.replaceAll(">","&amp;gt;");
+            begin = begin.replace(/(\r\n|\r|\n)/g, '<br>\n');
+
+            code = code.replaceAll("<","&lt;");
+            code = code.replaceAll(">","&gt;");
+            if (!preview)
                 code = code.replaceAll(" ","&amp;nbsp;");
-            }
+
+            end = end.replace(/(\r\n|\r|\n)/g, '<br>\n');
 
             question = begin+code+end;
             succeed = true;
