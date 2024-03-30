@@ -132,23 +132,18 @@ return(question)
 
 function EncodePreview(question)
 {
-    const regexp = /<pre><code>(.*?)<\/code><\/pre>/g; 
-	const pieces_of_code = [...question.matchAll(regexp)];
-
     question = question.replace(/(\r\n|\r|\n)/g, '<br>');
-	// console.log("EncodeSnippet START question=["+question+"]");
+    const regexp = /<pre><code>(.*?)<\/code><\/pre>/g;
+    const codes = [...question.matchAll(regexp)];
 
-    for (let i = 0; i < pieces_of_code.length; i++) {
-        piece_of_code = pieces_of_code[i][1];
-        //console.log("Code n°"+i+" trouvé=["+piece_of_code+"]");
-        var new_piece_of_code = piece_of_code;
-        new_piece_of_code = new_piece_of_code.replaceAll("<","&lt;");
-        new_piece_of_code = new_piece_of_code.replaceAll(">","&gt;");
-        question = question.replaceAll(piece_of_code, new_piece_of_code);
-        //console.log("Après remplacement, question=["+question+"]");
+    for (let i = 0; i < codes.length; i++) {
+        let code = codes[i][1];
+        let new_code = code;
+        new_code = new_code.replaceAll("<br>","\n");
+        new_code = new_code.replaceAll("<","&lt;");
+        new_code = new_code.replaceAll(">","&gt;");
+        question = question.replaceAll(code, new_code);
     }
-
-    // console.log("EncodeSnippet END question=["+question+"]");
 
     return(question);
 }
