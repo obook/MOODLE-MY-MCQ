@@ -18,12 +18,12 @@ pre {
  }
 
  .number {
-  width: 100px !important;
+  width: 10%;
  }
 
  #id_result {
   text-shadow:none !important;
-  background: rgba(12, 12, 12, 0.562) !important;
+  background: rgba(12, 12, 12, 0.562);
   color:#e6e6e6 !important;
  }
 
@@ -38,4 +38,12 @@ pre {
 
  #id_question {
     background-color: #444444;
+ }
+
+ #id_feedback {
+  background-color: #444444 !important;
+ }
+
+ .class_answer {
+  background-color: #444444 !important;
  }
