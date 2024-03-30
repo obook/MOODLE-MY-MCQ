@@ -21,10 +21,18 @@ pre {
   width: 10%;
  }
 
- #id_result {
-  text-shadow:none !important;
+ #id_result{
+   text-shadow:none;
+   background: rgba(12, 12, 12, 0.562);
+   color:#e6e6e6;
+   font-size: 0.8vw;
+  }
+ 
+ #id_result pre{
+  text-shadow:none;
   background: rgba(12, 12, 12, 0.562);
-  color:#e6e6e6 !important;
+  color:#e6e6e6;
+  font-size: 0.8vw;
  }
 
  #id_apercu {

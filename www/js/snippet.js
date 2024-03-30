@@ -3,7 +3,7 @@
 * (C) obook 2020-2024
 *
 */
-export {EncodeSnippet, Html2GiftFilter, Html2XMLFilter, PreviewFilter, GetFirstLine};
+export {EncodeSnippet, EncodePreview, Html2GiftFilter, Html2XMLFilter, GetFirstLine};
 
 function Html2GiftFilter(string, format) {
     if( format == "apercu" )
@@ -30,35 +30,6 @@ function Html2GiftFilter(string, format) {
     // Line feed
 
     string = string.replaceAll('\u000A', '\\n');
-
-return string;
-}
-
-function PreviewFilter(string, format) {
-    if( format == "apercu" )
-        return(string);
-    /*
-    string = string.replace(/:/g, '\:')
-    string = string.replace(/{/g, '\\{')
-    string = string.replace(/}/g, '\\}')
-    string = string.replace(/=/g, '\\=')
-    string = string.replace(/~/g, '\\~')
-    string = string.replace(/#/g, '\\#')
-    string = string.replace(/</g, '&lt;')
-    string = string.replace(/>/g, '&gt;')
-    */
-    string = string.replaceAll('=', '\\=');
-    string = string.replaceAll('<', '&lt;');
-    string = string.replaceAll('>', '&gt;');
-    string = string.replaceAll(':', '\\:');
-    string = string.replaceAll('{', '\\{');
-    string = string.replaceAll('}', '\\}');
-    string = string.replaceAll('~', '\\~');
-    string = string.replaceAll('#', '\\#');
-
-    // Line feed
-
-    //string = string.replaceAll('\u000A', '\\n');
 
 return string;
 }
@@ -157,6 +128,29 @@ let succeed = false;
         EncodeSnippet(question, preview);
   */  
 return(question)
+}
+
+function EncodePreview(question)
+{
+    const regexp = /<pre><code>(.*?)<\/code><\/pre>/g; 
+	const pieces_of_code = [...question.matchAll(regexp)];
+
+    question = question.replace(/(\r\n|\r|\n)/g, '<br>');
+	// console.log("EncodeSnippet START question=["+question+"]");
+
+    for (let i = 0; i < pieces_of_code.length; i++) {
+        piece_of_code = pieces_of_code[i][1];
+        //console.log("Code n°"+i+" trouvé=["+piece_of_code+"]");
+        var new_piece_of_code = piece_of_code;
+        new_piece_of_code = new_piece_of_code.replaceAll("<","&lt;");
+        new_piece_of_code = new_piece_of_code.replaceAll(">","&gt;");
+        question = question.replaceAll(piece_of_code, new_piece_of_code);
+        //console.log("Après remplacement, question=["+question+"]");
+    }
+
+    // console.log("EncodeSnippet END question=["+question+"]");
+
+    return(question);
 }
 
 function GetFirstLine(s) {

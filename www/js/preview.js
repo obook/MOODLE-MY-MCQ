@@ -4,7 +4,7 @@
 *
 */
 
-import { EncodeSnippet, Html2GiftFilter } from "./snippet.js";
+import { EncodeSnippet, EncodePreview, Html2GiftFilter } from "./snippet.js";
 export { Preview };
 
 var old_apercu = "";
@@ -26,7 +26,7 @@ var feedback = $("#id_feedback").val();
 
     //console.log("Question 1 = ["+question_object.val()+"]");
 
-    apercu = EncodeSnippet(question_object.val(), true);
+    apercu = EncodePreview(question_object.val(), true);
     
     //console.log("Question 2 = ["+question_object.val()+"]");
 
