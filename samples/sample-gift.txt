@@ -1,4 +1,4 @@
-$CATEGORY: $course$/Test Moodle MCQ GIFT/XML Maker
+$CATEGORY: $course$/Test Moodle MCQ GIFT Maker
 
 // Question 01
 ::01 - Consider the following Python program.

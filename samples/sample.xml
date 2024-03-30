@@ -1,0 +1,29 @@
+<?xml version="1.0" ?>
+<quiz>
+<question type="category">
+	<category>
+		<text>$course$/Test Moodle MCQ XML Maker</text>
+	</category>
+</question>
+<!-- Question 01 -->
+<question type="multichoice">
+	<name><text>01 - Consider the following Python program.</text></name>
+	<questiontext format="html">
+<text><![CDATA[Consider the following Python program.<br>
+What does the variable r contain at the end of the program?<br>
+<pre><code>x=4
+if&nbsp;3*x-6&lt;0&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;x=1
+&nbsp;&nbsp;&nbsp;&nbsp;r=-1
+else&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;x=-1
+&nbsp;&nbsp;&nbsp;&nbsp;r=1</code></pre>Tank you !<br>
+Have nice day...]]></text>
+</questiontext>
+<single>true</single>
+	<answer fraction="100" format="html"><text>5</text></answer>
+	<answer fraction="-33.33333" format="html"><text>0</text></answer>
+	<answer fraction="-33.33333" format="html"><text>x</text></answer>
+	<answer fraction="-33.33333" format="html"><text>2</text></answer>
+</question>
+</quiz>
