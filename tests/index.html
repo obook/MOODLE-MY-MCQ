@@ -8,14 +8,29 @@ Outil de fabrication de question QCM au format GIFT pour Moodle
 <head>
     <meta charset="UTF-8">
 	<title>Moodle MCQ GIFT Maker</title>
-
     <!-- Jquery/JQueryMobile -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="../www/images/moodle-icon.png" type="image/icon">
 	<link rel="stylesheet" href="../www/vendor/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css">
 	<script src="../www/vendor/jquerymobile.com_1.4.5_js_jquery.js"></script>
 	<script src="../www/vendor/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script>
-
+<style>
+#id_preview {
+  text-shadow:none !important;
+  border:#FF0000 1px solid;
+  color:#000000 ! important;
+  background-color: #CCCCCC !important;;
+  /* background:#4da13c00 !important; */
+  /*
+  padding-top:5px;
+  padding-bottom:5px;
+  padding-right:5px;
+  padding-left:5px; */
+  /* overflow:scroll; */
+  /* height: 50% !important; */
+  overflow:scroll;
+}
+</style>
     <!-- Mathjax 
 	<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 -->
@@ -34,7 +49,20 @@ Outil de fabrication de question QCM au format GIFT pour Moodle
 
     <!-- Content -->
 	<div role="main" class="ui-content">
-  <textarea cols="80" rows="10" name="textarea" id="id_question">
+        <div id="id_preview"><!--  class="mathjax" -->
+Consider the following Python program.<br>
+What does the variable r contain at the end of the program?
+<pre><code>x=4
+if 3*x-6<0 :
+    x=1
+    r=-1
+else :
+    x=-1
+    r=1</code></pre>
+Tank you !
+        </div>
+        <!--
+  <textarea cols="80" rows="10" name="textarea" id="id_preview">
     Consider the following Python program.
     What does the variable r contain at the end of the program?
     <pre><code>x=4
@@ -46,7 +74,7 @@ Outil de fabrication de question QCM au format GIFT pour Moodle
         r=1</code></pre>
     Tank you !
     </textarea>
-
+-->
     <a href="#" id="fill" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-btn-icon-left ui-icon-gear">Fill</a>
 
     </div>
@@ -57,9 +85,10 @@ Outil de fabrication de question QCM au format GIFT pour Moodle
     $("#fill").click(function()
 	{
         // alert("FILL !!");
-        var message = "line 1 \nline 2<pre><code>Code</code></pre>End...";
-        message = EncodeSnippet(message, true);
-        $("#id_question").html(message);
+        console.log("On rempli...");
+        var content_preview = "line 1 \nline 2<pre><code>Ici\nmon code...</code></pre>End\nOf\n\The\nProgram...";
+        content_preview = EncodeSnippet(content_preview, true);
+        $("#id_preview").html(content_preview);
 
 	});
 
@@ -93,7 +122,12 @@ let succeed = false;
             let end = question.slice(index_end, question.length);
 
             if (preview)
-                code = code.replaceAll("<","&amp;lt;"); 
+            {
+                console.log("EncodeSnippet=preview");
+                begin = begin.replace(/(\r\n|\r|\n)/g, '<br>\n');
+                code = code.replaceAll("<","&amp;lt;");
+                end = end.replace(/(\r\n|\r|\n)/g, '<br>\n');
+            }
             else
             {
                 code = code.replaceAll("<","&amp;lt;");
