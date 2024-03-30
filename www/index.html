@@ -94,7 +94,9 @@ Maths  \( Math LaTeX Here \)</textarea></p>
                 </div>
             </fieldset>
 
-		  <textarea cols="80" rows="10" name="textarea" id="id_question">
+            <fieldset class="ui-grid-a">
+                <div class="ui-block-a">
+		            <textarea rows="10" name="textarea" id="id_question">
 Consider the following Python program.
 What does the variable r contain at the end of the program?
 <pre><code>x=4
@@ -103,14 +105,20 @@ if 3*x-6<0 :
     r=-1
 else :
     x=-1
-    r=1</code></pre>Tank you !
+    r=1</code></pre>Thank you.
 </textarea>
+                </div>
+                <div class="ui-block-b" data-theme="b" data-content-theme="a"></div>
+                    <span style="float:right; background-color: #ffffff; width: 50%;">
+                        <div id="id_apercu" class="mathjax"></div> <!--   overflow:scroll;  -->
+                    </span>  
+                </div>                
    <!-- test with HTML tags
 <textarea cols="80" rows="10" name="textarea" id="id_question">Voici un code HTML :
 <pre><code> Hello, voici mon formulaire : <form><button>BOUTON</button></form></code></pre>
 C'est fini !</textarea>
  -->    
-        </div>
+        </fieldset>
 
         <div data-role="collapsible" data-mini="true" data-collapsed="true" data-theme="b" data-content-theme="b" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
             <h4>Answers</h4>
@@ -134,12 +142,12 @@ C'est fini !</textarea>
             <h4>Global feedback (optionnal)</h4>
             <textarea cols="80" rows="5" name="textarea" id="id_feedback"></textarea>
         </div>
-
+   <!--
         <div data-role="collapsible" data-mini="true" data-collapsed="false" data-theme="b" data-content-theme="a" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
             <h4>Preview</h4>
-        <div id="id_apercu" class="mathjax"></div> <!--   overflow:scroll;  -->
+       <div id="id_apercu" class="mathjax"></div>  overflow:scroll;
         </div>
-
+    -->
         <div data-role="collapsible" data-mini="true" data-collapsed="false" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" data-theme="b" data-content-theme="b">
             <h4>Code - Copy into a text editor then import in questions bank</h4>
             <form>
