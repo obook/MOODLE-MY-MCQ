@@ -121,3 +121,12 @@ function MakeGift(force=false, bank=true) {
     }
 
 }
+
+
+function MakeQuestionsGift(number)
+{
+
+
+
+
+}

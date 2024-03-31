@@ -19,7 +19,7 @@ function MakeXML(force=false, bank=true) {
     /* Title is from question's first line */
     var titre = numero+ " - " + GetFirstLine(question_object.val());
 
-    console.log("MakeXML");
+    // console.log("MakeXML");
 
     var type = $("#id_question_type").val(); /* 1,2,3 ou 4 bonnes réponses */
     var points = $("#id_points_negatifs").val(); /* 0 = sans points négatifs, 1 = avec points négatifs */

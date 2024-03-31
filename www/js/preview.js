@@ -5,12 +5,12 @@
 */
 
 import { EncodeSnippet, EncodePreview, Html2GiftFilter } from "./snippet.js";
-export { Preview };
+export { MakePreview };
 
 let old_apercu = "";
 let old_apercu_title = "";
 
-function Preview() {
+function MakePreview() {
 let apercu;
 let numero = $("#id_numero").val();
 let titre = $("#id_titre").val();

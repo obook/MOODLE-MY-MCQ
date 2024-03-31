@@ -4,7 +4,7 @@
 *
 */
 
-import { Preview } from "./preview.js";
+import { MakePreview } from "./preview.js";
 import { MakeGift } from "./gift.js";
 import { MakeXML } from "./xml.js";
 import { StorageExists, StoreQuestion, RecallQuestion, StorageClear} from "./storage.js";
@@ -23,6 +23,7 @@ var actual_question_number = 1;
 function Init() {
   $("#sliderOutput").val('GIFT');
   $("#sliderBank").val('OFF');
+  RecallQuestion(actual_question_number);
   Process(true, print_bank);
   clockId = setInterval(clock, 1000);
 }
@@ -30,7 +31,7 @@ function Init() {
 function ClearAll() {
   StorageClear();
   $("#id_titre").val("");
-  $("#id_numero").val("01");
+  $("#id_numero").val("1");
   $("#id_question").val("");
   $("#id_reponse1").val("");
   $("#id_reponse2").val("");
@@ -75,28 +76,23 @@ function SetBankOutput(value) {
 }
 
 function QuestionNumberChanged(number) {
-  $("#id_titre").val("");
-  $("#id_question").val("");
-  $("#id_reponse1").val("");
-  $("#id_reponse2").val("");
-  $("#id_reponse3").val("");
-  $("#id_reponse4").val("");
-  $("#id_feedback").val("");
-  console.log("QuestionNumberChanged to "+number);
   if( StorageExists(number) ) {
-    console.log("QuestionNumberChanged : storage exist !");
     RecallQuestion(number);
-    Process();
   }
-  else{
-    console.log("QuestionNumberChanged : storage DO NOT exist !");
-    StoreQuestion(number);
+  else {
+    $("#id_titre").val("");
+    $("#id_question").val("");
+    $("#id_reponse1").val("");
+    $("#id_reponse2").val("");
+    $("#id_reponse3").val("");
+    $("#id_reponse4").val("");
+    $("#id_feedback").val("");
   }
+  Process();
 }
 
-function Process(force=false, bank=true)
-{
-	console.log("Process start...");
+function Process(force=false, bank=true) {
+	//console.log("Process start...");
 	var question_object = $("#id_question");
 	var numero = $("#id_numero").val();
 	var theme = $("#id_theme").val();
@@ -114,13 +110,12 @@ function Process(force=false, bank=true)
   }
 
 	var header = theme + " : Q" + titre;
-  if( old_header != header )
-  {
+  if( old_header != header )  {
       $("#id_header").html(header);
       old_header = header;
   }
 
-  Preview();
+  MakePreview();
 
   if(format_gift)
     MakeGift(force, bank);
@@ -130,7 +125,7 @@ function Process(force=false, bank=true)
 
   StoreQuestion(numero);
 
-  console.log("Process ended.");
+  //console.log("Process ended.");
 }
 
 Init();

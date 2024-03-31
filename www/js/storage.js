@@ -6,7 +6,7 @@
 
 let Question = {
   number: 0, /* >= 1 */
-  format: "", /* GIFT ou XML */ 
+  format: "", /* GIFT or XML */ 
   text: "",
   answer1: "",
   answer2: "",
@@ -15,7 +15,7 @@ let Question = {
   feedback: ""
 };
 
-export { StorageExists, StoreQuestion, RecallQuestion, StorageClear};
+export { StorageExists, StoreQuestion, RecallQuestion, StorageClear, Question};
 
 function StorageClear() {
   localStorage.clear();
@@ -25,13 +25,13 @@ function StorageExists(number) {
   let key = "Q"+ number;
 
   try {
-    localStorage.getItem(key);
+    if (localStorage.getItem(key))
+      return(true);
   } catch (error) {
-    console.log("StorageExists "+number+" :False");
-    return false;
+      console.log("StorageExists "+number+" :False");
   }
 
-return(true);
+return(false);
 }
 
 /* Store as Qn key, where n is a number >= 1
@@ -64,6 +64,8 @@ function RecallQuestion(number) {
 
   if(!questionobj.text)
     return(false);
+
+  console.log("RecallQuestion "+number+" done");
 
   $("#id_question").val(questionobj.text);
   $("#id_reponse1").val(questionobj.answer1);
