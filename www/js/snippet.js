@@ -8,16 +8,7 @@ export {EncodeSnippet, EncodePreview, Html2GiftFilter, Html2XMLFilter, GetFirstL
 function Html2GiftFilter(string, format) {
     if( format == "apercu" )
         return(string);
-    /*
-    string = string.replace(/:/g, '\:')
-    string = string.replace(/{/g, '\\{')
-    string = string.replace(/}/g, '\\}')
-    string = string.replace(/=/g, '\\=')
-    string = string.replace(/~/g, '\\~')
-    string = string.replace(/#/g, '\\#')
-    string = string.replace(/</g, '&lt;')
-    string = string.replace(/>/g, '&gt;')
-    */
+
     string = string.replaceAll('=', '\\=');
     string = string.replaceAll('<', '&lt;');
     string = string.replaceAll('>', '&gt;');
@@ -26,9 +17,7 @@ function Html2GiftFilter(string, format) {
     string = string.replaceAll('}', '\\}');
     string = string.replaceAll('~', '\\~');
     string = string.replaceAll('#', '\\#');
-
     // Line feed
-
     string = string.replaceAll('\u000A', '\\n');
 
 return string;
@@ -37,28 +26,6 @@ return string;
 function Html2XMLFilter(string, format) {
     if( format == "apercu" )
         return(string);
-    /*
-    string = string.replace(/:/g, '\:')
-    string = string.replace(/{/g, '\\{')
-    string = string.replace(/}/g, '\\}')
-    string = string.replace(/=/g, '\\=')
-    string = string.replace(/~/g, '\\~')
-    string = string.replace(/#/g, '\\#')
-    string = string.replace(/</g, '&lt;')
-    string = string.replace(/>/g, '&gt;')
-    
-    string = string.replaceAll('=', '\\=');
-    string = string.replaceAll(':', '\\:');
-    string = string.replaceAll('{', '\\{');
-    string = string.replaceAll('}', '\\}');
-    string = string.replaceAll('~', '\\~');
-    string = string.replaceAll('#', '\\#');
-
-    // Line feed
-
-    string = string.replaceAll('\u000A', '\\n');
-*/
-
     string = string.replaceAll('<', '&lt;');
     string = string.replaceAll('>', '&gt;');
     // string = string.replaceAll('\t', '');
@@ -130,6 +97,9 @@ let succeed = false;
 return(question)
 }
 
+/*
+Support multi codes snippets
+ */
 function EncodePreview(question)
 {
     question = question.replace(/(\r\n|\r|\n)/g, '<br>');

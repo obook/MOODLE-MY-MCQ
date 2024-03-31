@@ -36,14 +36,14 @@ function MakeXML(force=false, bank=true) {
     {
         code = Html2XMLFilter("<?xml version=\"1.0\" ?>\n<quiz>\n");
         // Bank
-        code = code + Html2XMLFilter("<question type=\"category\">\n\t<category>\n\t\t<text>$course$/"+theme+"</text>\n\t</category>\n</question>\n");
+        code = code + Html2XMLFilter("<question type=\"category\">\n <category>\n  <text>$course$/"+theme+"</text>\n </category>\n</question>\n");
     }
 
     // Question
     code = code + Html2XMLFilter("<!-- Question "+numero+" -->\n");
     code = code + Html2XMLFilter("<question type=\"multichoice\">\n");
-    code = code + Html2XMLFilter("\t<name><text>"+titre+"</text></name>\n");
-    code = code + Html2XMLFilter("\t<questiontext format=\"html\">\n<text><![CDATA["+question+"]]></text>\n</questiontext>\n");
+    code = code + Html2XMLFilter("    <name><text>"+titre+"</text></name>\n");
+    code = code + Html2XMLFilter("    <questiontext format=\"html\">\n<text><![CDATA["+question+"]]></text>\n</questiontext>\n");
 
     if( feedback )
     {
@@ -52,10 +52,10 @@ function MakeXML(force=false, bank=true) {
 
     code = code + Html2XMLFilter("<single>true</single>\n");
 
-    code = code + Html2XMLFilter("\t<answer fraction=\"100\" format=\"html\"\><text>")+ Html2XMLFilter( reponse1, "html" ) + Html2XMLFilter("</text></answer>\n");
-    code = code + Html2XMLFilter("\t<answer fraction=\"-33.33333\" format=\"html\"\><text>") + Html2XMLFilter( reponse2, "html" ) + Html2XMLFilter("</text></answer>\n");
-    code = code + Html2XMLFilter("\t<answer fraction=\"-33.33333\" format=\"html\"\><text>") + Html2XMLFilter( reponse3, "html" ) + Html2XMLFilter("</text></answer>\n");
-    code = code + Html2XMLFilter("\t<answer fraction=\"-33.33333\" format=\"html\"\><text>") + Html2XMLFilter( reponse4, "html" ) + Html2XMLFilter("</text></answer>\n");
+    code = code + Html2XMLFilter("    <answer fraction=\"100\" format=\"html\"\><text>")+ Html2XMLFilter( reponse1, "html" ) + Html2XMLFilter("</text></answer>\n");
+    code = code + Html2XMLFilter("    <answer fraction=\"-33.33333\" format=\"html\"\><text>") + Html2XMLFilter( reponse2, "html" ) + Html2XMLFilter("</text></answer>\n");
+    code = code + Html2XMLFilter("    <answer fraction=\"-33.33333\" format=\"html\"\><text>") + Html2XMLFilter( reponse3, "html" ) + Html2XMLFilter("</text></answer>\n");
+    code = code + Html2XMLFilter("    <answer fraction=\"-33.33333\" format=\"html\"\><text>") + Html2XMLFilter( reponse4, "html" ) + Html2XMLFilter("</text></answer>\n");
 
     /// fin question
     code = code + Html2XMLFilter("</question>\n");
@@ -65,7 +65,7 @@ function MakeXML(force=false, bank=true) {
         code = code + Html2XMLFilter("</quiz>");
     }
 
-    var code_object = $("#id_result");
+    var code_object = $("#id_code");
 
     if( old_code != code || force )
     {
@@ -73,5 +73,4 @@ function MakeXML(force=false, bank=true) {
         // code_object.html(code);
         old_code = code;
     }
-
 }

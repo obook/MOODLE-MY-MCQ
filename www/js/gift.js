@@ -7,29 +7,29 @@
 import { EncodeSnippet, Html2GiftFilter, GetFirstLine} from "./snippet.js";
 export { MakeGift };
 
-var old_code = "";
+let old_code = "";
 
 function MakeGift(force=false, bank=true) {
-    var numero = $("#id_numero").val().toString().padStart(2, '0') ;
-    var theme = $("#id_theme").val();
-    var question_object = $("#id_question");
-	var question = EncodeSnippet(question_object.val());
+    let numero = $("#id_numero").val().toString().padStart(2, '0') ;
+    let theme = $("#id_theme").val();
+    let question_object = $("#id_question");
+	let question = EncodeSnippet(question_object.val());
     
     /* Title is from question's first line */
-    var titre = numero+ " - " + GetFirstLine(question_object.val());
+    let titre = numero+ " - " + GetFirstLine(question_object.val());
 
-    console.log("MakeGift");
+    // console.log("MakeGift");
 
-    var type = $("#id_question_type").val(); /* 1,2,3 ou 4 bonnes réponses */
-    var points = $("#id_points_negatifs").val(); /* 0 = sans points négatifs, 1 = avec points négatifs */
+    let type = $("#id_question_type").val(); /* 1,2,3 ou 4 bonnes réponses */
+    let points = $("#id_points_negatifs").val(); /* 0 = sans points négatifs, 1 = avec points négatifs */
   
-    var reponse1 = $("#id_reponse1").val();
-    var reponse2 = $("#id_reponse2").val();
-    var reponse3 = $("#id_reponse3").val();
-    var reponse4 = $("#id_reponse4").val();
-    var feedback = $("#id_feedback").val();
+    let reponse1 = $("#id_reponse1").val();
+    let reponse2 = $("#id_reponse2").val();
+    let reponse3 = $("#id_reponse3").val();
+    let reponse4 = $("#id_reponse4").val();
+    let feedback = $("#id_feedback").val();
                  
-	var code = "";
+	let code = "";
 
     if(bank) {
       code = code + "// Category<br>\n";
@@ -112,7 +112,7 @@ function MakeGift(force=false, bank=true) {
     
 	code = code + "}";
 
-    var code_object = $("#id_result");
+    let code_object = $("#id_code");
 
     if( old_code != code || force )
     {

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-Outil de fabrication de question QCM au format GIFT pour Moodle
+Outil de fabrication de question QCM au format GIFT et XML pour Moodle
 (c) obooklage Académie de Créteil - Académie de Bordeaux
 06/05/2020 - 08/03/2024
 -->
@@ -55,7 +55,7 @@ Outil de fabrication de question QCM au format GIFT pour Moodle
     <!-- Panel Sample -->
     <div data-role="panel" id="samplepanel" data-display="overlay">
 
-<p><b>Code snippet</b>
+        <p><b>Code snippet</b>
 <textarea readonly name="textareaPython" id="textareaPython">Question about Python.
 <pre><code>def Strange(x) :
     y=2*x+5
@@ -97,8 +97,8 @@ Displayed $$ 2x^2-3x+1 $$</textarea></p>
 
 
             <div class="ui-grid-a">
-                <div class="ui-block-a">Editor</div>
-                <div class="ui-block-b">Preview</div>
+                <div class="ui-block-a" style="padding-left: 7px;">Editor</div>
+                <div class="ui-block-b" style="padding-left: 7px;">Preview</div>
                 <div class="ui-block-a">
 <textarea name="textarea" id="id_question">Consider the following Python program.
 <pre><code>x=4
@@ -110,7 +110,7 @@ else :
     r=1</code></pre>What does the variable r contain at the end of the program?</textarea>
                 </div>
                 <div class="ui-block-b">
-                    <div id="id_apercu" class="mathjax ui-bar ui-bar-a"></div>
+                    <div id="id_preview" class="mathjax ui-bar ui-bar-a"></div>
                 </div>
             </div><!-- /grid-c -->
         </div>
@@ -150,7 +150,7 @@ else :
                  </div>
             </form>
 
-            <div class ='result' id="id_result"></div>
+            <div id="id_code"></div>
 
             <a href="#" id="copy-button" class="ui-shadow ui-btn ui-corner-all ui-btn-icon-left ui-icon-grid">COPY</a>
 
@@ -164,7 +164,7 @@ else :
 
 	<script>
 
-    let Module;
+    let IndexModule=null;
 
     $(document).delegate('.ui-page', 'pageshow', function () {
         console.log("pageshow");
@@ -189,28 +189,28 @@ else :
 	{
 		if ( confirm( "Clear all ?" ) )
 		{
-            Module.ClearAll();
+            IndexModule.ClearAll();
 		}
 	});
 
     $("#sliderOutput").change(function()
 	{
-        Module.SetFormatOutput($("#sliderOutput").val());
+        IndexModule.SetFormatOutput($("#sliderOutput").val());
 	});
 
     $("#id_numero").change(function()
 	{
-        Module.QuestionNumberChanged($("#id_numero").val());
+        IndexModule.QuestionNumberChanged($("#id_numero").val());
 	});
 
     $("#sliderBank").change(function()
 	{
-        Module.SetBankOutput($("#sliderBank").val());
+        IndexModule.SetBankOutput($("#sliderBank").val());
 	});
 
     $('#copy-button').click(function() {
-        var textToCopy = $('#id_result').text();
-        var tempTextarea = $('<textarea>');
+        let textToCopy = $('#id_code').text();
+        let tempTextarea = $('<textarea>');
         $('body').append(tempTextarea);
         tempTextarea.val(textToCopy).select();
         document.execCommand('copy');
@@ -242,7 +242,7 @@ window.onbeforeunload = function(e) {
 <script type="module">
     // import {Init} from "./js/index.js";
     import * as M from "./js/index.js";
-    Module = M;
+    IndexModule = M;
 </script>
 
 <!-- MathJax Settings-->

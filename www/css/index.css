@@ -14,44 +14,53 @@ pre {
   background:#cccccc;
   border-radius: 6px;
   font-family: "courier new", courier, monospace;
-  font-size: 0.6vw;
  }
 
  .number {
   width: 10%;
  }
 
- #id_result{
-   text-shadow:none;
-   background: rgba(12, 12, 12, 0.562);
-   color:#e6e6e6;
-   font-size: 0.8vw;
-  }
- 
- #id_result pre{
-  text-shadow:none;
-  background: rgba(12, 12, 12, 0.562);
-  color:#e6e6e6;
-  font-size: 0.8vw;
- }
-
- #id_apercu {
-  text-shadow:none;
-  font-weight:normal;
-  font-size:0.7vw;
-  padding: 10px;
-  margin:10px;
-  border-radius: 4px;
- }
-
  #id_question {
-    background-color: #444444;
+  background-color: #444444;
+}
+
+ .class_answer {
+  background-color: #444444 !important;
  }
 
  #id_feedback {
   background-color: #444444 !important;
  }
 
- .class_answer {
-  background-color: #444444 !important;
+ #id_preview {
+  text-shadow:none;
+  font-weight:normal;
+  padding: 10px;
+  margin: 9px;
+  border-radius: 4px;
+ }
+
+ #id_code {
+  text-shadow:none;
+  font-weight:normal;
+  padding: 10px;
+  margin: 9px;
+  border-radius: 4px;
+ }
+
+ #id_code {
+  text-shadow:none;
+  font-weight:normal;
+  background: #000000;
+  border-radius: 4px;
+ }
+
+ #id_code pre{
+  text-shadow:none;
+  font-weight:normal;
+  color: #ffffff;
+  background: #000000;
+  padding: 0px;
+  margin: 09px;
+  border-radius: 4px;
  }
