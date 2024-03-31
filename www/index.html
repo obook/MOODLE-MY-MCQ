@@ -56,7 +56,7 @@ Outil de fabrication de question QCM au format GIFT et XML pour Moodle
     <div data-role="panel" id="samplepanel" data-display="overlay">
 
         <p><b>Code snippet</b>
-<textarea readonly name="textareaPython" id="textareaPython">Question about Python.
+<textarea readonly name="textareaPython" id="textareaPython" style="width: 100%;">Question about Python.
 <pre><code>def Strange(x) :
     y=2*x+5
     return(y)
@@ -114,7 +114,7 @@ else :
             </div><!-- /grid-c -->
         </div>
 
-        <div data-role="collapsible" data-collapsed="true" data-theme="b" data-content-theme="b" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
+        <div data-role="collapsible" data-collapsed="false" data-theme="b" data-content-theme="b" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
             <h4>Answers</h4>
               <div class="ui-field-contain">
 
@@ -224,7 +224,7 @@ else :
 
 <script>
 
-/* Alerte si on ferme l'onglet ou la page */
+/* Alerte si on ferme l'onglet ou la page
 
 window.addEventListener('beforeunload', function (e) {
   // Cancel the event
@@ -236,7 +236,7 @@ window.addEventListener('beforeunload', function (e) {
 window.onbeforeunload = function(e) {
   return 'Are you sure you want to leave this page?  You will lose any unsaved data.';
 };
-
+ */
 </script>
 
 <!-- Main script -->

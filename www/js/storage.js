@@ -51,6 +51,8 @@ function StoreQuestion(number) {
 
     if(questionobj.text)
       localStorage.setItem(key, JSON.stringify(questionobj));
+
+    // Test StorageWalk();
 }
 
 function RecallQuestion(number) {
@@ -76,3 +78,23 @@ function RecallQuestion(number) {
 
 return(true);
 }
+
+function StorageMax() {
+let i = 1;
+while (StorageExists(i)) {
+  i++;
+  }
+return(i);
+}
+
+function StorageWalk() {
+let max = StorageMax();
+let questionobj = Object.create(Question);
+
+  for (let index = 1; index < max; index++) {
+    let questionobj = Object.create(Question);
+    let key = "Q"+ index;
+    questionobj = JSON.parse(localStorage.getItem(key));
+    console.log("Walk-> Get "+index+"="+questionobj.text)
+  }
+ }

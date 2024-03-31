@@ -119,11 +119,12 @@ function Process(force=false, bank=true) {
 
   MakePreview();
 
+ // $("#id_question").height($("#id_preview").height()+8);
+
   if(format_gift)
     MakeGift(force, bank);
   else
     MakeXML(force, bank);
-
 
   StoreQuestion(numero);
 
