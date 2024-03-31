@@ -10,7 +10,7 @@ export { MakeGift };
 let old_code = "";
 
 function MakeGift(force=false, bank=true) {
-    let numero = $("#id_numero").val().toString().padStart(2, '0') ;
+    let numero = $("#id_numero").val().toString().padStart(2, '0');
     let theme = $("#id_theme").val();
     let question_object = $("#id_question");
 	let question = EncodeSnippet(question_object.val());

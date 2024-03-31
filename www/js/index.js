@@ -100,15 +100,17 @@ function Process(force=false, bank=true)
 	var question_object = $("#id_question");
 	var numero = $("#id_numero").val();
 	var theme = $("#id_theme").val();
-  var titre = numero+ " - " + GetFirstLine(question_object.val());
+  var titre = numero.padStart(2, '0')+ " - " + GetFirstLine(question_object.val());
   // Réglage du titre de la fenêtre
   $(document).prop('title', theme);
 
   if ($("#sliderOutput").val() == 'GIFT') {
     format_gift = true;
+    $("#id_outype").html("GIFT");
   }
   else {
     format_gift = false;
+    $("#id_outype").html("XML");
   }
 
 	var header = theme + " : Q" + titre;
