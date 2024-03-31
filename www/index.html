@@ -15,7 +15,7 @@ Outil de fabrication de question QCM au format GIFT et XML pour Moodle
 	<link rel="stylesheet" href="vendor/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css">
 	<script src="vendor/jquerymobile.com_1.4.5_js_jquery.js"></script>
 	<script src="vendor/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script>
-
+    <script type="text/javascript" src="vendor/jqm-spinbox.min.js"></script>
     <!-- Mathjax -->
 	<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
@@ -85,7 +85,7 @@ Displayed $$ 2x^2-3x+1 $$</textarea></p>
 
             <div class="ui-grid-a">
                 <div class="ui-block-a">
-                    <input type="number" min="1" name="numero" id="id_numero" placeholder="Question number" value="1" data-wrapper-class="number">
+                    <input data-role="spinbox" type="number" min="1" name="numero" id="id_numero" placeholder="Question number" value="1" data-wrapper-class="number">
                 </div>
                 <div class="ui-block-b"></div>
                     <div style="float:right">

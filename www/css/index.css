@@ -16,8 +16,8 @@ pre {
   font-family: "courier new", courier, monospace;
  }
 
- .number {
-  width: 10%;
+#id_numero {
+  /*width: 20%; */
  }
 
  #id_question {
