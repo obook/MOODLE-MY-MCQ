@@ -79,6 +79,9 @@ function SetBankOutput(value) {
 function QuestionNumberChanged(number) {
   if( StorageExists(number) ) {
     RecallQuestion(number);
+    /* Resize textarea */
+    $("#id_question").height("0px");
+    $("#id_question").height( $("#id_question")[0].scrollHeight);
   }
   else {
     $("#id_titre").val("");
@@ -118,8 +121,6 @@ function Process(force=false, bank=true) {
   }
 
   MakePreview();
-
- // $("#id_question").height($("#id_preview").height()+8);
 
   if(format_gift)
     MakeGift(force, bank);
