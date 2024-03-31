@@ -19,6 +19,7 @@ var old_header = "";
 var format_gift = true;
 var print_bank = true;
 var actual_question_number = 1;
+var last_question_number = 1;
 
 function Init() {
   $("#sliderOutput").val('GIFT');
@@ -89,6 +90,7 @@ function QuestionNumberChanged(number) {
     $("#id_feedback").val("");
   }
   Process();
+  last_question_number = number;
 }
 
 function Process(force=false, bank=true) {
