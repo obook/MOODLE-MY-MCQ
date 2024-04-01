@@ -165,6 +165,8 @@ else :
 
     let IndexModule=null;
 
+    /* Events */
+
     $(document).delegate('.ui-page', 'pageshow', function () {
         console.log("pageshow");
         // Init();
@@ -174,47 +176,42 @@ else :
 		console.log('pagecreate@index');
 	});
 
-    $(document).on("pagebeforeshow", "#index", function()
-	{
+    $(document).on("pagebeforeshow", "#index", function() {
         console.log('pagebeforeshow@index');
     });
 
-    $(document).on("pageaftershow", "#index", function()
-	{
+    $(document).on("pageaftershow", "#index", function() {
         console.log('pageaftershow@index');
     });
 
-	$( "#id_reset" ).click(function()
-	{
+	$( "#id_reset" ).click(function() {
 		if ( confirm( "Clear all ?" ) )
 		{
             IndexModule.ClearAll();
 		}
 	});
 
-    $("#sliderOutput").change(function()
-	{
+    $("#sliderOutput").change(function() {
         IndexModule.SetFormatOutput($("#sliderOutput").val());
 	});
 
-    $("#id_numero").change(function()
-	{
+    $("#id_numero").change(function() {
         $("#id_numero").addClass("ui-disabled");
         IndexModule.QuestionNumberChanged($("#id_numero").val());
         $("#id_numero").removeClass("ui-disabled");
 	});
 
-    $("#sliderBank").change(function()
-	{
+    $("#sliderBank").change(function() {
         IndexModule.SetBankOutput($("#sliderBank").val());
 	});
 
+    /* Clipboard */
     $('#copy-button').click(function() {
-        let textToCopy = $('#id_code').text();
-        let tempTextarea = $('<textarea>');
+        let textToCopy = $("#id_code").text();
+        let tempTextarea = $("<textarea id='id_tempcode'>");
         $('body').append(tempTextarea);
         tempTextarea.val(textToCopy).select();
-        document.execCommand('copy');
+        document.execCommand("copy");
         $('#copy-button').fadeOut(300).fadeIn(0);
     });
 
@@ -222,39 +219,21 @@ else :
 
 </div><!-- /page -->
 
-<script>
-
-/* Alerte si on ferme l'onglet ou la page
-
-window.addEventListener('beforeunload', function (e) {
-  // Cancel the event
-  e.preventDefault(); // If you prevent default behavior in Mozilla Firefox prompt will always be shown
-  // Chrome requires returnValue to be set
-  e.returnValue = '';
-});
-
-window.onbeforeunload = function(e) {
-  return 'Are you sure you want to leave this page?  You will lose any unsaved data.';
-};
- */
-</script>
-
 <!-- Main script -->
 <script type="module">
-    // import {Init} from "./js/index.js";
     import * as M from "./js/index.js";
     IndexModule = M;
 </script>
 
 <!-- MathJax Settings-->
 <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-    tex2jax: {
-        inlineMath: [['$','$'],['\\(','\\)']],
-        processClass: "mathjax",
-        ignoreClass: "no-mathjax"
-    }
-    });
+MathJax.Hub.Config({
+tex2jax: {
+    inlineMath: [['$','$'],['\\(','\\)']],
+    processClass: "mathjax",
+    ignoreClass: "no-mathjax"
+}
+});
 </script>
 </body>
 </html>

@@ -4,7 +4,7 @@
 *
 */
 
-import { EncodeSnippet, EncodePreview, Html2GiftFilter } from "./snippet.js";
+import { Html2GiftFilter } from "./snippet.js";
 export { MakePreview };
 
 let old_apercu = "";
@@ -22,18 +22,8 @@ let reponse3 = $("#id_reponse3").val();
 let reponse4 = $("#id_reponse4").val();
 let feedback = $("#id_feedback").val();
 
-// A voir, les retours à la ligne, hors code, ne sont pas dans le preview
-
-    //console.log("Question 1 = ["+question_object.val()+"]");
 
     apercu = EncodePreview(question_object.val(), true);
-    
-    //console.log("Question 2 = ["+question_object.val()+"]");
-
-    // let find = apercu.replaceAll("\n","<br>\r\n");
-    
-    //console.log("apercu.replaceAll="+find );
-
     apercu = apercu + "<br>\n<br>\n";	
     apercu = apercu + "a) &nbsp;&nbsp;" + Html2GiftFilter( reponse1, "apercu" ) + "<br>\n";	
     apercu = apercu + "b) &nbsp;&nbsp;" + Html2GiftFilter( reponse2, "apercu" ) + "<br>\n";
@@ -47,17 +37,36 @@ let feedback = $("#id_feedback").val();
     if( old_apercu != apercu ) {
         let math = document.getElementById("id_preview");
         $("#id_preview").html(apercu);
-        MathJax.Hub.Queue(["Typeset",MathJax.Hub,math]); /* MathJax not found ! */
+        MathJax.Hub.Queue(["Typeset",MathJax.Hub,math]);
         old_apercu = apercu;
-        /* $("#id_code").trigger("create"); */
     }
     
     let apercu_title;
     apercu_title = "Aperçu " + titre;
 
-    if( old_apercu_title != apercu_title )
-    {
+    if( old_apercu_title != apercu_title ) {
         $("#id_code_title").html(apercu_title);
         old_apercu_title = apercu_title;
     }
+}
+
+/*
+Support multi codes snippets
+ */
+function EncodePreview(question)
+{
+    question = question.replace(/(\r\n|\r|\n)/g, '<br>');
+    const regexp = /<pre><code>(.*?)<\/code><\/pre>/g;
+    const codes = [...question.matchAll(regexp)];
+
+    for (let i = 0; i < codes.length; i++) {
+        let code = codes[i][1];
+        let new_code = code;
+        new_code = new_code.replaceAll("<br>","\n");
+        new_code = new_code.replaceAll("<","&lt;");
+        new_code = new_code.replaceAll(">","&gt;");
+        question = question.replaceAll(code, new_code);
+    }
+
+    return(question);
 }

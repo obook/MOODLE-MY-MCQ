@@ -7,8 +7,9 @@
 import { MakePreview } from "./preview.js";
 import { MakeGift } from "./gift.js";
 import { MakeXML } from "./xml.js";
+import { ClearCurrentQuestion } from "./question.js";
+import { GetFirstLine} from "./snippet.js";
 import { StorageExists, StoreQuestion, RecallQuestion, StorageClear} from "./storage.js";
-import { EncodeSnippet, Html2GiftFilter, GetFirstLine} from "./snippet.js";
 
 export {Init, SetFormatOutput, SetBankOutput, QuestionNumberChanged, Process, ClearAll};
 
@@ -31,14 +32,7 @@ function Init() {
 
 function ClearAll() {
   StorageClear();
-  $("#id_titre").val("");
-  $("#id_numero").val("1");
-  $("#id_question").val("");
-  $("#id_reponse1").val("");
-  $("#id_reponse2").val("");
-  $("#id_reponse3").val("");
-  $("#id_reponse4").val("");
-  $("#id_feedback").val("");
+  ClearCurrentQuestion(1);
 }
 
 function clock() {
@@ -84,13 +78,7 @@ function QuestionNumberChanged(number) {
     $("#id_question").height( $("#id_question")[0].scrollHeight);
   }
   else {
-    $("#id_titre").val("");
-    $("#id_question").val("");
-    $("#id_reponse1").val("");
-    $("#id_reponse2").val("");
-    $("#id_reponse3").val("");
-    $("#id_reponse4").val("");
-    $("#id_feedback").val("");
+    ClearCurrentQuestion();
   }
   Process();
   last_question_number = number;

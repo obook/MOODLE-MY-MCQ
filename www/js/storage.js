@@ -4,18 +4,8 @@
 *
 */
 
-let Question = {
-  number: 0, /* >= 1 */
-  format: "", /* GIFT or XML */ 
-  text: "",
-  answer1: "",
-  answer2: "",
-  answer3: "",
-  answer4: "",
-  feedback: ""
-};
-
-export { StorageExists, StoreQuestion, RecallQuestion, StorageClear, Question};
+import { QuestionObj, GetCurrentQuestion, SetCurrentQuestion} from "./question.js";
+export { StorageExists, StoreQuestion, RecallQuestion, StorageClear};
 
 function StorageClear() {
   localStorage.clear();
@@ -38,19 +28,10 @@ return(false);
 */
 function StoreQuestion(number) {
   let key = "Q"+ number;
-  let questionobj = Object.create(Question);
-  
-    questionobj.number = number;
-    questionobj.format = $("#sliderOutput").val();
-    questionobj.text = $("#id_question").val();
-    questionobj.answer1 = $("#id_reponse1").val();
-    questionobj.answer2 = $("#id_reponse2").val();
-    questionobj.answer3 = $("#id_reponse3").val();
-    questionobj.answer4 = $("#id_reponse4").val();
-    questionobj.feedback = $("#id_feedback").val();
+  let questionobj = GetCurrentQuestion();
 
-    if(questionobj.text)
-      localStorage.setItem(key, JSON.stringify(questionobj));
+  if(questionobj)
+    localStorage.setItem(key, JSON.stringify(questionobj));
 
     // Test StorageWalk();
 }
@@ -61,7 +42,7 @@ function RecallQuestion(number) {
     return false;
 
   let key = "Q"+ number;
-  let questionobj = Object.create(Question);
+  let questionobj = Object.create(QuestionObj);
   questionobj = JSON.parse(localStorage.getItem(key));
 
   if(!questionobj.text)
@@ -69,12 +50,7 @@ function RecallQuestion(number) {
 
   console.log("RecallQuestion "+number+" done");
 
-  $("#id_question").val(questionobj.text);
-  $("#id_reponse1").val(questionobj.answer1);
-  $("#id_reponse2").val(questionobj.answer2);
-  $("#id_reponse3").val(questionobj.answer3);
-  $("#id_reponse4").val(questionobj.answer4);
-  $("#id_feedback").val(questionobj.feedback);
+  SetCurrentQuestion(questionobj);
 
 return(true);
 }
@@ -91,10 +67,10 @@ function StorageWalk() {
 let max = StorageMax();
 let questionobj = Object.create(Question);
 
-  for (let index = 1; index < max; index++) {
-    let questionobj = Object.create(Question);
+  for (let number = 1; number < max; number++) {
+    let questionobj = number.create(Question);
     let key = "Q"+ index;
     questionobj = JSON.parse(localStorage.getItem(key));
-    console.log("Walk-> Get "+index+"="+questionobj.text)
+    console.log("Walk-> Get "+number+"="+questionobj.text)
   }
  }

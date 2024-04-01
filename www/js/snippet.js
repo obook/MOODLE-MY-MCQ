@@ -3,7 +3,7 @@
 * (C) obook 2020-2024
 *
 */
-export {EncodeSnippet, EncodePreview, Html2GiftFilter, Html2XMLFilter, GetFirstLine};
+export {EncodeSnippet, Html2GiftFilter, Html2XMLFilter, GetFirstLine};
 
 function Html2GiftFilter(string, format) {
     if( format == "apercu" )
@@ -95,27 +95,6 @@ let succeed = false;
         EncodeSnippet(question, preview);
   */  
 return(question)
-}
-
-/*
-Support multi codes snippets
- */
-function EncodePreview(question)
-{
-    question = question.replace(/(\r\n|\r|\n)/g, '<br>');
-    const regexp = /<pre><code>(.*?)<\/code><\/pre>/g;
-    const codes = [...question.matchAll(regexp)];
-
-    for (let i = 0; i < codes.length; i++) {
-        let code = codes[i][1];
-        let new_code = code;
-        new_code = new_code.replaceAll("<br>","\n");
-        new_code = new_code.replaceAll("<","&lt;");
-        new_code = new_code.replaceAll(">","&gt;");
-        question = question.replaceAll(code, new_code);
-    }
-
-    return(question);
 }
 
 function GetFirstLine(s) {
