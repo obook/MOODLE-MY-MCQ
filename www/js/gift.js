@@ -5,12 +5,14 @@
 */ 
 
 import { EncodeSnippet, Html2GiftFilter, GetFirstLine} from "./snippet.js";
-import { QuestionObj, GetCurrentQuestion } from "./question.js";
+import { GetCurrentQuestion } from "./question.js";
 export { MakeGift };
 
 let old_code = "";
 
 function MakeGift(force=false, bank=true) {
+let code = "";
+
     const questionobj = GetCurrentQuestion();
     if(!questionobj)
     {
@@ -21,21 +23,22 @@ function MakeGift(force=false, bank=true) {
 
     let numero = questionobj.number.padStart(2, '0');
     let theme = $("#id_theme").val();
+
+    if(bank) {
+        code = code + "// Category<br>\n";
+        code = "$CATEGORY: $course$/" + theme + "<br>\n<br>\n";
+      }
+      
 	let question = EncodeSnippet(questionobj.text);
     
     /* Title is from question's first line */
     let titre = numero+ " - " + GetFirstLine(questionobj.text);
-
     // console.log("MakeGift");
 
     let type = $("#id_question_type").val(); /* 1,2,3 ou 4 bonnes réponses */
     let points = $("#id_points_negatifs").val(); /* 0 = sans points négatifs, 1 = avec points négatifs */            
-	let code = "";
 
-    if(bank) {
-      code = code + "// Category<br>\n";
-      code = "$CATEGORY: $course$/" + theme + "<br>\n<br>\n";
-    }
+
     code = code + "// Question "+numero+"<br>\n";
     code = code + "::" + Html2GiftFilter( titre ) + "<br>\n";
     code = code + "::[html] " + Html2GiftFilter(question) + "<br>\n";

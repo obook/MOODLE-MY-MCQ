@@ -60,4 +60,7 @@ function ClearCurrentQuestion(number=null) {
 
     if(number)
         $("#id_numero").val(number);
+
+    $("#id_code").html("");
+    $("#id_preview").html("");
 }

@@ -73,7 +73,7 @@ function SetBankOutput(value) {
 function QuestionNumberChanged(number) {
   if( StorageExists(number) ) {
     RecallQuestion(number);
-    console.log("QuestionNumberChanged "+number+" RecallQuestion OK");
+    // console.log("QuestionNumberChanged "+number+" RecallQuestion OK");
     /* Resize textarea */
     $("#id_question").height("0px");
     $("#id_question").height( $("#id_question")[0].scrollHeight);

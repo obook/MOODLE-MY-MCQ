@@ -49,7 +49,7 @@ function RecallQuestion(number) {
   if(!questionobj.text)
     return(false);
 
-  console.log("RecallQuestion "+number);
+  // console.log("RecallQuestion "+number);
 
   SetCurrentQuestion(questionobj);
 
