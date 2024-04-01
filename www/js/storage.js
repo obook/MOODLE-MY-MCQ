@@ -18,9 +18,10 @@ function StorageExists(number) {
     if (localStorage.getItem(key))
       return(true);
   } catch (error) {
-      console.log("StorageExists "+number+" :False");
+      console.log("StorageExists error trig !");
   }
 
+  console.log("StorageExists "+number+" :False");
 return(false);
 }
 
@@ -48,7 +49,7 @@ function RecallQuestion(number) {
   if(!questionobj.text)
     return(false);
 
-  console.log("RecallQuestion "+number+" done");
+  console.log("RecallQuestion "+number);
 
   SetCurrentQuestion(questionobj);
 

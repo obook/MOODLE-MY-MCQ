@@ -17,6 +17,9 @@ let QuestionObj = {
     feedback: ""
   };
 
+  /*
+  Usage : const questionobj = GetCurrentQuestion();
+  */
 function GetCurrentQuestion() {
 let questionobj = Object.create(QuestionObj);
     
