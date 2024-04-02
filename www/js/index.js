@@ -9,7 +9,7 @@ import { MakeGift } from "./gift.js";
 import { MakeXML } from "./xml.js";
 import { ClearCurrentQuestion } from "./question.js";
 import { GetFirstLine} from "./snippet.js";
-import { StorageExists, StoreQuestion, RecallQuestion, StorageClear} from "./storage.js";
+import { StorageExists, StoreQuestion, RecallQuestion, StorageClear, StorageConfig} from "./storage.js";
 
 export {Init, SetFormatOutput, SetBankOutput, QuestionNumberChanged, Process, ClearAll};
 
@@ -21,10 +21,16 @@ var format_gift = true;
 var print_bank = true;
 var actual_question_number = 1;
 var last_question_number = 1;
+var configobj = null;
 
 function Init() {
   $("#sliderOutput").val('GIFT');
   $("#sliderBank").val('OFF');
+
+  configobj = StorageConfig();
+  if(configobj)
+    $("#id_theme").val(configobj.category);
+  
   RecallQuestion(actual_question_number);
   Process(true, print_bank);
   clockId = setInterval(clock, 1000);
@@ -117,6 +123,8 @@ function Process(force=false, bank=true) {
     MakeXML(force, bank);
 
   StoreQuestion(numero);
+
+  StorageConfig(theme);
 
   //console.log("Process ended.");
 }

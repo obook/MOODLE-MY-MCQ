@@ -5,7 +5,13 @@
 */
 
 import { QuestionObj, GetCurrentQuestion, SetCurrentQuestion} from "./question.js";
-export { StorageExists, StoreQuestion, RecallQuestion, StorageClear};
+export { StorageExists, StoreQuestion, RecallQuestion, StorageClear, ConfigObj, StorageConfig};
+
+let ConfigObj = {
+  category: null, /* Bank thema */
+  format: null, /* GIFT or XML */ 
+  sliderBank: null, /* Print question only or not */
+};
 
 function StorageClear() {
   localStorage.clear();
@@ -55,6 +61,25 @@ function RecallQuestion(number) {
 
 return(true);
 }
+
+function StorageConfig(category=null) {
+let key = "Conf";
+let configobj = Object.create(ConfigObj);
+
+ // save
+  if(category) {
+    configobj.category = category;
+    localStorage.setItem(key, JSON.stringify(configobj));
+    return configobj;
+  }
+
+  //recall
+  configobj = JSON.parse(localStorage.getItem(key));
+
+return(configobj);
+}
+
+////////////// Projet ...
 
 function StorageMax() {
 let i = 1;
