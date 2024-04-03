@@ -8,9 +8,9 @@ import { QuestionObj, GetCurrentQuestion, SetCurrentQuestion} from "./question.j
 export { StorageExists, StoreQuestion, RecallQuestion, StorageClear, ConfigObj, StorageConfig};
 
 let ConfigObj = {
-  category: null, /* Bank thema */
-  format: null, /* GIFT or XML */ 
-  sliderBank: null, /* Print question only or not */
+  category: "My bank category", /* Bank thema */
+  format: "GIFT", /* GIFT or XML */ 
+  questiononly: false, /* Print question only or not */
 };
 
 function StorageClear() {
@@ -77,6 +77,27 @@ let configobj = Object.create(ConfigObj);
   configobj = JSON.parse(localStorage.getItem(key));
 
 return(configobj);
+}
+
+/* A voir : gestion des erreurs */
+
+function SetBankName(name)
+{
+  let key = "Conf";
+  let configobj = Object.create(ConfigObj);
+  configobj = JSON.parse(localStorage.getItem(key));
+  configobj.category = name;
+  localStorage.setItem(key, JSON.stringify(configobj));
+}
+
+function GetBankName()
+{
+  let key = "Conf";
+  let configobj = Object.create(ConfigObj);
+  configobj = JSON.parse(localStorage.getItem(key));
+  if( configobj)
+    return configobj.category;
+return("My bank category");
 }
 
 ////////////// Projet ...
