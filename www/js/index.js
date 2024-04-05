@@ -5,14 +5,14 @@
 */
 
 import { MakePreview } from "./preview.js";
-import { MakeGift } from "./gift.js";
+import { MakeGift, SaveGift } from "./gift.js";
 import { MakeXML } from "./xml.js";
 import { ClearCurrentQuestion } from "./question.js";
 import { GetFirstLine} from "./snippet.js";
 import { StorageExists, StoreQuestion, RecallQuestion, StorageClear} from "./storage.js";
 import { ConfigMax, ConfigTheme, ConfigFormatOutput, ConfigQuestionOnly} from "./config.js";
 
-export {Init, SetFormatOutput, SetQuestionOnly, QuestionNumberChanged, ClearAll};
+export {Init, SetFormatOutput, SetQuestionOnly, QuestionNumberChanged, ClearAll, SaveCode};
 
 var delay = 2
 var counter = delay;
@@ -134,6 +134,10 @@ function Process(force=false, question_only=false) {
   ConfigTheme(theme); // créé une nouvelle config
 
   //console.log("Process ended.");
+}
+
+function SaveCode() {
+  SaveGift();
 }
 
 Init();

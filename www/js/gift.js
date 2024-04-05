@@ -6,7 +6,7 @@
 
 import { EncodeSnippet, Html2GiftFilter, GetFirstLine} from "./snippet.js";
 import { GetCurrentQuestion } from "./question.js";
-export { MakeGift };
+export { MakeGift, SaveGift };
 
 let old_code = "";
 
@@ -125,12 +125,12 @@ let code = "";
     }
 
 }
-
-
-function MakeQuestionsGift(number)
-{
-
-
-
-
-}
+const SaveGift = () => {
+    const link = document.createElement("a");
+    const content = document.querySelector("textarea").value;
+    const file = new Blob([content], { type: 'text/plain' });
+    link.href = URL.createObjectURL(file);
+    link.download = "sample.txt";
+    link.click();
+    URL.revokeObjectURL(link.href);
+ };

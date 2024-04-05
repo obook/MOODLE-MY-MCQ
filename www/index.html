@@ -15,7 +15,7 @@ Outil de fabrication de question QCM au format GIFT et XML pour Moodle
 	<link rel="stylesheet" href="vendor/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css">
 	<script src="vendor/jquerymobile.com_1.4.5_js_jquery.js"></script>
 	<script src="vendor/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script>
-    <script type="text/javascript" src="vendor/jqm-spinbox.min.js"></script>
+    <script src="vendor/jqm-spinbox.min.js"></script>
     <!-- Mathjax -->
 	<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
@@ -70,7 +70,6 @@ Displayed $$ 2x^2-3x+1 $$</textarea></p>
     </div><!-- /panel Sample -->
 
     <!-- Header -->
-
 	<div data-role="header" data-position="fixed" data-tap-toggle="false" data-theme="b"> <!-- style="height: 16em;" -->
         <a href="#settingspanel" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-btn-icon-left ui-icon-gear">Settings</a>
 		<h1 id="id_header">Moodle MCQ GIFT Maker</h1>
@@ -85,7 +84,7 @@ Displayed $$ 2x^2-3x+1 $$</textarea></p>
 
             <div class="ui-grid-a">
                 <div class="ui-block-a">
-                    <input type="text" name="numero" id="id_numero" data-role="spinbox" name="spin" id="spin" value="1" min="1" max="100" />
+                    <input type="text" name="numero" id="id_numero" data-role="spinbox" value="1" min="1" max="100">
                 </div>
                 <div class="ui-block-b"></div>
                     <div style="float:right">
@@ -159,14 +158,14 @@ else :
                 </div>
             </div>
         
-        </div>
-
 	</div><!-- /content -->
 
+    <!-- footer -->
 	<div data-role="footer" data-position="fixed" data-tap-toggle="false" data-theme="b">
 		<h4>Moodle MCQ GIFT/XML Maker - ADM 2020/SMB33 2024 - <a href='https://github.com/obook/MoodleMCQMaker' target='_blank'>GitHub</a></h4>
 	</div><!-- /footer -->
 
+    <!-- Scripts -->
 	<script>
 
     let IndexModule=null;
@@ -223,10 +222,12 @@ else :
 
     $('#save-button').click(function() {
         //$('#save-button').fadeOut(300).fadeIn(0);
-        alert("Not implemented yet");
+        // 
+        // SaveGift();
+        IndexModule.SaveCode();
     });
 
-    </script>
+    </script><!-- /Scripts -->
 
 </div><!-- /page -->
 

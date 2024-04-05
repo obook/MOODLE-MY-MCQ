@@ -8,19 +8,18 @@ export { ConfigMax, ConfigTheme, ConfigFormatOutput, ConfigQuestionOnly};
 
 let ConfigObjkey = "CONFv1.1";
 
-function ConfigObjectFunction(version) {
-    let config = {
+function ConfigObject(version) {
+    let conf = {
         version: ConfigObjkey,
         category: "Default bank category", /* Bank thema */
         format: "GIFT", /* GIFT or XML */ 
         questiononly: false, /* Print question only or not */
         max: 1, /* Maximum questions */
     };
-return config;
+return conf;
 }
 
-let conf = ConfigObjectFunction();
-
+let conf = ConfigObject();
 
 function LoadConfig() {
     if(!localStorage.getItem(ConfigObjkey)) /* La configuration n'existe pas */
@@ -70,7 +69,7 @@ return(conf.format)
 
 function ConfigQuestionOnly(value=null) {
     // Charger la config
-    conf = JSON.parse(localStorage.getItem(ConfigObjkey));
+    conf = LoadConfig();
 
     // Régler la catégorie
     if(value != null) {
