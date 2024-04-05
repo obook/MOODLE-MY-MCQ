@@ -5,13 +5,7 @@
 */
 
 import { QuestionObj, GetCurrentQuestion, SetCurrentQuestion} from "./question.js";
-export { StorageExists, StoreQuestion, RecallQuestion, StorageClear, ConfigObj, StorageConfig};
-
-let ConfigObj = {
-  category: "My bank category", /* Bank thema */
-  format: "GIFT", /* GIFT or XML */ 
-  questiononly: false, /* Print question only or not */
-};
+export { StorageExists, StoreQuestion, RecallQuestion, StorageClear};
 
 function StorageClear() {
   localStorage.clear();
@@ -62,78 +56,7 @@ function RecallQuestion(number) {
 return(true);
 }
 
-function StorageConfig(category=null) {
-let key = "Conf";
-let configobj = Object.create(ConfigObj);
-
-  if(category) {
-     // save
-    configobj.category = category;
-    localStorage.setItem(key, JSON.stringify(configobj));
-  }
-  else {
-    //recall
-    configobj = JSON.parse(localStorage.getItem(key));
-  }
-
-return(configobj);
-}
-
-function NewStorageConfig(ConfigObj=null) {
-  let key = "Conf";
-
-    if(ConfigObj) {
-       // save
-      localStorage.setItem(key, JSON.stringify(configobj));
-    }
-    else {
-      //recall
-      let configobj = JSON.parse(localStorage.getItem(key));
-    }
-  
-  return(configobj);
-  }
-
-/* A voir : gestion des erreurs */
-
-function StorageBankName(category=null) {
-  // let key = "Conf";
-  if(category) { /* Save */
-    ConfigObj = NewStorageConfig();
-    ConfigObj.category = category;
-    return NewStorageConfig(ConfigObj);
-  }
-  else
-    return NewStorageConfig().category;
-}
-
-function StorageBankFormat(format=null) {
-  // let key = "Conf";
-  if(format) {
-    return NewStorageConfig(format).format;
-  }
-  else
-    return NewStorageConfig().format;
-}
-
-function GetBankName() {
-  let key = "Conf";
-  let configobj = Object.create(ConfigObj);
-  configobj = JSON.parse(localStorage.getItem(key));
-  if( configobj)
-    return configobj.category;
-return("My bank category");
-}
-
 ////////////// Projet ...
-
-function StorageMax() {
-let i = 1;
-while (StorageExists(i)) {
-  i++;
-  }
-return(i);
-}
 
 function StorageWalk() {
 let max = StorageMax();

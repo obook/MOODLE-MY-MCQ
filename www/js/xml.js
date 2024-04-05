@@ -9,7 +9,7 @@ export { MakeXML };
 
 var old_code = "";
 
-function MakeXML(force=false, bank=true) {
+function MakeXML(force=false, question_only=true) {
     var numero = $("#id_numero").val().toString().padStart(2, '0') ;
 	var theme = $("#id_theme").val();
 	var titre = numero + " - " + titre;
@@ -32,7 +32,7 @@ function MakeXML(force=false, bank=true) {
 
 	var code = "";
 
-    if(bank)
+    if(!question_only)
     {
         code = Html2XMLFilter("<?xml version=\"1.0\" ?>\n<quiz>\n");
         // Bank
@@ -59,7 +59,7 @@ function MakeXML(force=false, bank=true) {
 
     /// fin question
     code = code + Html2XMLFilter("</question>\n");
-    if(bank)
+    if(!question_only)
     {
         // Fin  XML
         code = code + Html2XMLFilter("</quiz>");

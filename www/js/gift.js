@@ -10,7 +10,7 @@ export { MakeGift };
 
 let old_code = "";
 
-function MakeGift(force=false, bank=true) {
+function MakeGift(force=false, question_only=true) {
 let code = "";
 
     const questionobj = GetCurrentQuestion();
@@ -24,7 +24,7 @@ let code = "";
     let numero = questionobj.number.padStart(2, '0');
     let theme = $("#id_theme").val();
 
-    if(bank) {
+    if(!question_only) {
         code = code + "// Category<br>\n";
         code = "$CATEGORY: $course$/" + theme + "<br>\n<br>\n";
       }

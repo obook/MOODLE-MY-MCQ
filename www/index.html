@@ -150,9 +150,15 @@ else :
             </form>
 
             <div id="id_code"></div>
-
-            <a href="#" id="copy-button" class="ui-shadow ui-btn ui-corner-all ui-btn-icon-left ui-icon-grid">COPY</a>
-
+            <div class="ui-grid-a">
+                <div class="ui-block-a">
+                    <a href="#" id="copy-button" class="ui-shadow ui-btn ui-corner-all ui-btn-icon-left ui-icon-grid">COPY</a>
+                </div>
+                <div class="ui-block-b"></div>
+                    <a href="#" id="save-button" class="ui-shadow ui-btn ui-corner-all ui-btn-icon-left ui-icon-action">SAVE</a>
+                </div>
+            </div>
+        
         </div>
 
 	</div><!-- /content -->
@@ -202,7 +208,7 @@ else :
 	});
 
     $("#sliderBank").change(function() {
-        IndexModule.SetBankOutput($("#sliderBank").val());
+        IndexModule.SetQuestionOnly($("#sliderBank").val());
 	});
 
     /* Clipboard */
@@ -213,6 +219,11 @@ else :
         tempTextarea.val(textToCopy).select();
         document.execCommand("copy");
         $('#copy-button').fadeOut(300).fadeIn(0);
+    });
+
+    $('#save-button').click(function() {
+        //$('#save-button').fadeOut(300).fadeIn(0);
+        alert("Not implemented yet");
     });
 
     </script>
