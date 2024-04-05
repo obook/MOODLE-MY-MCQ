@@ -45,41 +45,30 @@ function ClearAll() {
 
 function clock() {
     counter--;
-    if(counter == 0)
-    {
+    if(counter == 0) {
         Process(false, question_only);
         counter = delay+1;
     }
 }
 
 function SetFormatOutput(value) {
-    if (value == 'GIFT') {
-        console.log("SetFormatOutput:GIFT");
+    if (value == 'GIFT')
         format_gift = true;
-        Process(true, question_only);
-    }
-    else {
-        console.log("SetFormatOutput:XML");
+    else
         format_gift = false;
-        Process(true, question_only); 
-    }
 
     ConfigFormatOutput(value);
+    Process(true, question_only);
 }
 
 function SetQuestionOnly(value) {
-  console.log("SetQuestionOnly:", value); /* OFF = with bank */
-
   if (value == 'OFF')
       question_only = false;
   else
       question_only = true;
-
-  console.log("SetQuestionOnly:", question_only);
-
-  Process(true, question_only);
-
+    
   ConfigQuestionOnly(question_only);
+  Process(true, question_only);
 }
 
 function QuestionNumberChanged(number) {
@@ -129,8 +118,7 @@ function Process(force=false, question_only=false) {
     MakeXML(force, question_only);
 
   StoreQuestion(numero);
-
-  ConfigTheme(theme); // créé une nouvelle config
+  ConfigTheme(theme);
 
   //console.log("Process ended.");
 }
