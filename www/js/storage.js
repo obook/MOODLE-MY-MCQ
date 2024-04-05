@@ -66,32 +66,57 @@ function StorageConfig(category=null) {
 let key = "Conf";
 let configobj = Object.create(ConfigObj);
 
- // save
   if(category) {
+     // save
     configobj.category = category;
     localStorage.setItem(key, JSON.stringify(configobj));
-    return configobj;
   }
-
-  //recall
-  configobj = JSON.parse(localStorage.getItem(key));
+  else {
+    //recall
+    configobj = JSON.parse(localStorage.getItem(key));
+  }
 
 return(configobj);
 }
 
+function NewStorageConfig(ConfigObj=null) {
+  let key = "Conf";
+
+    if(ConfigObj) {
+       // save
+      localStorage.setItem(key, JSON.stringify(configobj));
+    }
+    else {
+      //recall
+      let configobj = JSON.parse(localStorage.getItem(key));
+    }
+  
+  return(configobj);
+  }
+
 /* A voir : gestion des erreurs */
 
-function SetBankName(name)
-{
-  let key = "Conf";
-  let configobj = Object.create(ConfigObj);
-  configobj = JSON.parse(localStorage.getItem(key));
-  configobj.category = name;
-  localStorage.setItem(key, JSON.stringify(configobj));
+function StorageBankName(category=null) {
+  // let key = "Conf";
+  if(category) { /* Save */
+    ConfigObj = NewStorageConfig();
+    ConfigObj.category = category;
+    return NewStorageConfig(ConfigObj);
+  }
+  else
+    return NewStorageConfig().category;
 }
 
-function GetBankName()
-{
+function StorageBankFormat(format=null) {
+  // let key = "Conf";
+  if(format) {
+    return NewStorageConfig(format).format;
+  }
+  else
+    return NewStorageConfig().format;
+}
+
+function GetBankName() {
   let key = "Conf";
   let configobj = Object.create(ConfigObj);
   configobj = JSON.parse(localStorage.getItem(key));
