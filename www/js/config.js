@@ -21,9 +21,18 @@ return config;
 
 let conf = ConfigObjectFunction();
 
+
+function LoadConfig() {
+    if(!localStorage.getItem(ConfigObjkey)) /* La configuration n'existe pas */
+        localStorage.setItem(ConfigObjkey, JSON.stringify(conf));
+    else
+        conf = JSON.parse(localStorage.getItem(ConfigObjkey));
+return(conf);
+}
+
 function ConfigMax(number=null) {
     // Charger la config
-    conf = JSON.parse(localStorage.getItem(ConfigObjkey));
+    conf = LoadConfig();
 
     // Régler le max
     let max = conf.max;
@@ -36,7 +45,7 @@ return(conf.max);
 
 function ConfigTheme(category=null) {
     // Charger la config
-    conf = JSON.parse(localStorage.getItem(ConfigObjkey));
+    conf = LoadConfig();
 
     // Régler la catégorie
     if(category) {
@@ -48,7 +57,7 @@ return(conf.category)
 
 function ConfigFormatOutput(format=null) {
     // Charger la config
-    conf = JSON.parse(localStorage.getItem(ConfigObjkey));
+    conf = LoadConfig();
 
     // Régler la catégorie
     if(format) {
@@ -60,8 +69,6 @@ return(conf.format)
 }
 
 function ConfigQuestionOnly(value=null) {
-    console.log("ConfigQuestionOnly received:", value);
-
     // Charger la config
     conf = JSON.parse(localStorage.getItem(ConfigObjkey));
 
@@ -70,8 +77,6 @@ function ConfigQuestionOnly(value=null) {
         conf.questiononly = value;
         localStorage.setItem(ConfigObjkey, JSON.stringify(conf));
     }
-
-    console.log("ConfigQuestionOnly:", conf.questiononly);
 
 return(conf.questiononly)
 }
