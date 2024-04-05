@@ -136,7 +136,10 @@ function Process(force=false, question_only=false) {
 }
 
 function SaveCode() {
-  SaveGift(ConfigTheme());
+  if(format_gift)
+    SaveGift(ConfigTheme());
+  else
+    alert("Not implemented yet");
 }
 
 Init();
