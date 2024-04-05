@@ -25,12 +25,11 @@ var actual_question_number = 1;
 function Init() {
   $("#sliderOutput").val(ConfigFormatOutput());
   question_only = ConfigQuestionOnly(); /* true or false */
-  if(question_only) {
+
+  if(question_only)
     $("#sliderBank").val('ON');
-  }
-  else {
+  else
     $("#sliderBank").val('OFF');
-  }
   
   $("#id_theme").val(ConfigTheme());
   RecallQuestion(actual_question_number);
@@ -74,7 +73,6 @@ function SetQuestionOnly(value) {
 function QuestionNumberChanged(number) {
   if( StorageExists(number) ) {
     RecallQuestion(number);
-    // console.log("QuestionNumberChanged "+number+" RecallQuestion OK");
     /* Resize textarea */
     $("#id_question").height("0px");
     $("#id_question").height( $("#id_question")[0].scrollHeight);
