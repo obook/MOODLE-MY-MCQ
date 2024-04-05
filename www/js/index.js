@@ -95,7 +95,6 @@ function QuestionNumberChanged(number) {
   }
   ConfigMax(number);
   Process();
-  last_question_number = number;
 }
 
 function Process(force=false, question_only=false) {
