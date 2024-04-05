@@ -9,6 +9,7 @@ import { GetCurrentQuestion } from "./question.js";
 export { MakeGift, SaveGift };
 
 let old_code = "";
+let current_code = "";
 
 function MakeGift(force=false, question_only=true) {
 let code = "";
@@ -121,16 +122,16 @@ let code = "";
     if( old_code != code || force )
     {
         code_object.html("<code>"+code+"<code>");
+        current_code = code;
         old_code = code;
     }
 
 }
-const SaveGift = () => {
+const SaveGift = (filename) => {
     const link = document.createElement("a");
-    const content = document.querySelector("textarea").value;
-    const file = new Blob([content], { type: 'text/plain' });
+    const file = new Blob([$("#id_code").text()], { type: 'text/plain' });
     link.href = URL.createObjectURL(file);
-    link.download = "sample.txt";
+    link.download = filename+".txt";
     link.click();
     URL.revokeObjectURL(link.href);
  };

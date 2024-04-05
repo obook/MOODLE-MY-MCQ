@@ -136,7 +136,7 @@ function Process(force=false, question_only=false) {
 }
 
 function SaveCode() {
-  SaveGift();
+  SaveGift(ConfigTheme());
 }
 
 Init();
