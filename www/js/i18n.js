@@ -53,7 +53,7 @@ $(function () {
                     code: '(copy into a text editor then import in questions bank)',
                     questiononly: 'Question only:',
                     copy: 'COPY',
-                    save: 'SAVE',
+                    save: 'EXPORT',
               }
             }
           },
@@ -87,7 +87,7 @@ $(function () {
                     code: '(copier dans un éditeur de texte puis l\'importer dans la banque de question)',
                     questiononly: 'Question uniquement:',
                     copy: 'COPIER',
-                    save: 'SAUVEGARDER',
+                    save: 'EXPORTER',
               }
             }
           },
