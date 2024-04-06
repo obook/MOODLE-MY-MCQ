@@ -90,6 +90,40 @@ $(function () {
               }
             }
           },
+          hi: {
+            translation: {
+                head: {
+                    description:'मूडल एमसीक्यू गिफ्ट/एक्सएमएल मेकर टूल',
+                },
+              index: {
+                    settings: 'सेटिंग्स',
+                    category: 'श्रेणी',
+                    outcode: 'कोड',
+                    type1: 'एक सही उत्तर',
+                    type2: 'दो सही उत्तर',
+                    type3: 'तीन सही उत्तर',
+                    type4: 'चार सही उत्तर',
+                    withnegativepoints : 'नकारात्मक बिंदुओं के साथ',
+                    withoutnegativepoints: 'नकारात्मक बिंदुओं के बिना',
+                    close: 'बंद करें',
+                    question: 'प्रश्न',
+                    samples : 'नमूने',
+                    reset: 'रीसेट',
+                    editor: 'संपादक',
+                    preview: 'पूर्वावलोकन',
+                    answers: 'उत्तर',
+                    answer1 : 'उत्तर 1 (सही)',
+                    answer2 : 'उत्तर 2',
+                    answer3 : 'उत्तर 3',
+                    answer4 : 'उत्तर 4',
+                    feedback:'वैश्विक प्रतिक्रिया (वैकल्पिक)',
+                    code: '(टेक्स्ट एडिटर में कॉपी करें फिर प्रश्न बैंक में आयात करें)',
+                    questiononly: 'केवल प्रश्न:',
+                    copy: 'कॉपी',
+                    save: 'सहेजें',
+              }
+            }
+          },
         }
       }, (err, t) => {
         if (err)
