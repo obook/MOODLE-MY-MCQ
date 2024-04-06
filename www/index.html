@@ -180,10 +180,23 @@ else :
 
     /* Events */
 
+    $(document).delegate('.ui-page', 'pageshow', function () {
+        console.log("pageshow");
+        // Init();
+	});
+
+	$(document).on("pagecreate", "#index", function() {
+		console.log('pagecreate@index');
+	});
+
     $(document).on("pagebeforeshow", "#index", function() {
         console.log('pagebeforeshow@index');
-        $("#id_question_type").trigger("reset");
     });  
+
+    $(document).on("pageaftershow", "#index", function() {
+        console.log('pageaftershow@index');
+        /* $("#id_question_type").trigger("reset"); test for translation = failed */
+    });
 
 	$("#id_reset").click(function() {
 		if (confirm( "Clear all ?" ))
