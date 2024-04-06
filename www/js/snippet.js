@@ -5,13 +5,17 @@
 */
 export {EncodeSnippet, Html2GiftFilter, Html2XMLFilter, GetFirstLine};
 
-function Html2GiftFilter(string, format) {
-    if( format == "apercu" )
+/*
+format :
+"hml" for website
+"text" for ? (ex-preview ?)
+"file" for save to file
+*/
+function Html2GiftFilter(string, format="html") {
+    if( format == "text" ) /* ? */
         return(string);
 
     string = string.replaceAll('=', '\\=');
-    string = string.replaceAll('<', '&lt;');
-    string = string.replaceAll('>', '&gt;');
     string = string.replaceAll(':', '\\:');
     string = string.replaceAll('{', '\\{');
     string = string.replaceAll('}', '\\}');
@@ -19,6 +23,14 @@ function Html2GiftFilter(string, format) {
     string = string.replaceAll('#', '\\#');
     // Line feed
     string = string.replaceAll('\u000A', '\\n');
+    
+    if( format == "file" )
+    {
+        return(string);
+    }
+
+    string = string.replaceAll('<', '&lt;');
+    string = string.replaceAll('>', '&gt;');
 
 return string;
 }
@@ -36,6 +48,8 @@ return string;
 
 Only support ONE source code.
 tags "pre" and "code" in LOWCASE
+
+preview = print for web
 
 */
 
@@ -70,10 +84,10 @@ let succeed = false;
 
             begin = begin.replace(/(\r\n|\r|\n)/g, '<br>\n');
 
-            code = code.replaceAll("<","&lt;");
-            code = code.replaceAll(">","&gt;");
-            if (!preview)
-                code = code.replaceAll(" ","&amp;nbsp;");
+            code = code.replaceAll("<","&amp;lt;");
+            code = code.replaceAll(">","&amp;gt;");
+            if (preview)
+               code = code.replaceAll(" ","nbsp;");
 
             end = end.replace(/(\r\n|\r|\n)/g, '<br>\n');
 

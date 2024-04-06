@@ -5,7 +5,7 @@
 */
 
 import { QuestionObj, GetCurrentQuestion, SetCurrentQuestion} from "./question.js";
-export { StorageExists, StoreQuestion, RecallQuestion, StorageClear};
+export { StorageExists, StoreQuestion, GetQuestion, RecallQuestion, StorageClear};
 
 function StorageClear() {
   localStorage.clear();
@@ -39,6 +39,14 @@ function StoreQuestion(number) {
 
 function RecallQuestion(number) {
   
+  let questionobj = GetQuestion(number);
+  SetCurrentQuestion(questionobj);
+
+return(true);
+}
+
+function GetQuestion(number) {
+  
   if ( !StorageExists(number))
     return false;
 
@@ -47,13 +55,9 @@ function RecallQuestion(number) {
   questionobj = JSON.parse(localStorage.getItem(key));
 
   if(!questionobj.text)
-    return(false);
+    return(null);
 
-  // console.log("RecallQuestion "+number);
-
-  SetCurrentQuestion(questionobj);
-
-return(true);
+return(questionobj);
 }
 
 ////////////// Projet ...
