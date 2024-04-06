@@ -9,6 +9,7 @@ Outil de fabrication de question QCM au format GIFT et XML pour Moodle
     <meta charset="UTF-8">
 	<title>Moodle MCQ GIFT Maker</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Moodle MCQ GIFT/XML Maker tool">
     <link rel="icon" href="./images/moodle-icon.png" type="image/icon">
 
     <!-- Jquery/JQueryMobile -->
@@ -44,15 +45,15 @@ Outil de fabrication de question QCM au format GIFT et XML pour Moodle
         </select>
 
         <select name="select-h-1a" id="id_question_type">
-            <option value="1"><span data-i18n="index.type1">One correct awswer</span></option><!-- internalization bug -->
-            <option value="2">Two correct awswers</option>
-            <option value="3">Three correct awswers</option>
-            <option value="4">Four correct awswers</option>
+            <option value="1" data-i18n="index.type1">One correct awswer</option><!-- internalization bug -->
+            <option value="2" data-i18n="index.type2">Two correct awswers</option>
+            <option value="3" data-i18n="index.type3">Three correct awswers</option>
+            <option value="4" data-i18n="index.type4">Four correct awswers</option>
         </select>
 
         <select name="select-h-1b" id="id_points_negatifs">
-            <option value="1">With negative points</option>
-            <option value="0">Without negative points</option>
+            <option value="1" data-i18n="index.withnegativepoints">With negative points</option>
+            <option value="0" data-i18n="index.withoutnegativepoints">Without negative points</option>
         </select>
 
         <a href="#" data-rel="close" class="ui-btn ui-shadow ui-corner-all ui-icon-delete ui-btn-icon-left" data-i18n="index.close">Close</a>
@@ -94,8 +95,8 @@ Displayed $$ 2x^2-3x+1 $$</textarea></p>
                 </div>
                 <div class="ui-block-b"></div>
                     <div style="float:right">
-                        <a href="#samplepanel" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-icon-edit ui-btn-icon-right" data-i18n="index.samples">Samples</a> 
-                        <div class="ui-block-c"><a href="#" id="id_reset" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-btn-icon-right ui-icon-delete" data-i18n="index.reset">Reset</a>
+                        <a href="#samplepanel" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-icon-eye ui-btn-icon-left" data-i18n="index.samples">Samples</a> 
+                        <div class="ui-block-c"><a href="#" id="id_reset" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-btn-icon-left ui-icon-delete" data-i18n="index.reset">Reset</a>
                     </div>
                 </div>
             </div>
@@ -146,11 +147,11 @@ else :
             <h4><span id="id_outype">Code</span> <span data-i18n="index.code">(copy into a text editor then import in questions bank)</span></h4>
             <form>
                 <div class="ui-field-contain">
-                   <label for="sliderBank">Question only:</label>
-                                <select class="ui-shadow" name="sliderBank" id="sliderBank" data-role="slider" data-mini="true">
-                                    <option value="OFF" selected>OFF</option>
-                                    <option value="ON">ON</option>
-                                </select>
+                   <label for="sliderBank" data-i18n="index.questiononly">Question only:</label>
+                        <select class="ui-shadow" name="sliderBank" id="sliderBank" data-role="slider" data-mini="true">
+                            <option value="OFF" selected>OFF</option>
+                            <option value="ON">ON</option>
+                        </select>
                  </div>
             </form>
 
@@ -179,28 +180,14 @@ else :
 
     /* Events */
 
-    $(document).delegate('.ui-page', 'pageshow', function () {
-        console.log("pageshow");
-        // Init();
-	});
-
-	$(document).on("pagecreate", "#index", function() {
-		console.log('pagecreate@index');
-	});
-
     $(document).on("pagebeforeshow", "#index", function() {
         console.log('pagebeforeshow@index');
-    });
+        $("#id_question_type").trigger("reset");
+    });  
 
-    $(document).on("pageaftershow", "#index", function() {
-        console.log('pageaftershow@index');
-    });
-
-	$( "#id_reset" ).click(function() {
-		if ( confirm( "Clear all ?" ) )
-		{
+	$("#id_reset").click(function() {
+		if (confirm( "Clear all ?" ))
             IndexModule.ClearAll();
-		}
 	});
 
     $("#sliderOutput").change(function() {
@@ -208,9 +195,7 @@ else :
 	});
 
     $("#id_numero").change(function() {
-        //$("#id_numero").addClass("ui-disabled");
         IndexModule.QuestionNumberChanged($("#id_numero").val());
-        //$("#id_numero").removeClass("ui-disabled");
 	});
 
     $("#sliderBank").change(function() {
@@ -227,10 +212,8 @@ else :
         $('#copy-button').fadeOut(300).fadeIn(0);
     });
 
+    /* Save code to file */
     $('#save-button').click(function() {
-        //$('#save-button').fadeOut(300).fadeIn(0);
-        // 
-        // SaveGift();
         IndexModule.SaveCode();
     });
 
