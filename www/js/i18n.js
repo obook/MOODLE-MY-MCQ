@@ -7,7 +7,8 @@
 */
 const lngs = {
     en: { nativeName: 'English' },
-    fr: { nativeName: 'French' }
+    fr: { nativeName: 'French' },
+    hi: { nativeName: 'Hindi' },
   };
   
 const rerender = () => {
