@@ -98,10 +98,12 @@ function Process(force=false, question_only=false) {
   if ($("#sliderOutput").val() == 'GIFT') {
     format_gift = true;
     $("#id_outype").html("GIFT");
+    $("#id_exporttype").html("GIFT");
   }
   else {
     format_gift = false;
     $("#id_outype").html("XML");
+    $("#id_exporttype").html("XML");
   }
 
 	var header = theme + " : Q" + titre;
