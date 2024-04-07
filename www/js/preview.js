@@ -32,7 +32,7 @@ let titre = $("#id_titre").val();
     apercu = apercu + "d) &nbsp;&nbsp;" + Html2PreviewFilter( questionobj.answer4, false ) + "<br>\n";
     
     if( questionobj.feedback ) {
-            apercu = apercu + "<br>\nFeedback: " + questionobj.feedback;
+            apercu = apercu + "<br>\nFeedback: " + Html2PreviewFilter(questionobj.feedback, false );
     }
     
     if( old_apercu != apercu ) {
