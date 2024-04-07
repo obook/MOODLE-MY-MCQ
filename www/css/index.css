@@ -14,10 +14,7 @@ pre {
   background:#cccccc;
   border-radius: 6px;
   font-family: "courier new", courier, monospace;
- }
-
-#id_numero {
-  /*width: 20%; */
+  margin: 0;
  }
 
 .class_sample {
