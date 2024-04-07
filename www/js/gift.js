@@ -124,7 +124,7 @@ let endline = '\n';
     }
     
     if( questionobj.feedback )
-         code = code + " #### [html] " + Html2QuestionFilter( questionobj.feedback, tofile ) + endline;
+         code = code + " #### [html] " + Html2AnswerFilter( questionobj.feedback, tofile ) + endline;
     
 	code = code + "}";
 
