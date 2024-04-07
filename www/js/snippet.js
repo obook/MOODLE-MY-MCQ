@@ -59,7 +59,7 @@ let index_start = -1;
 let index_end = -1;
 let succeed = false;
 
-    console.log("EncodeSnippet:QUESTION=["+question+"] to file=",tofile);
+    // console.log("EncodeSnippet:QUESTION=["+question+"] to file=",tofile);
 
     for (let i = 0; i < question.length-1; i++) {
         let c = question[i];
@@ -101,13 +101,13 @@ let succeed = false;
             question = begin+code+end;
             succeed = true;
 
-        /*    */
+        /*   
             console.log("EncodeSnippet:BEGIN=["+begin+"]");
             console.log("EncodeSnippet:CODE=["+code+"]");
             console.log("EncodeSnippet:END=["+end+"]");
             console.log("EncodeSnippet:NEW QUESTION=["+question+"]");
     
-
+        */
             break;
         }
     }

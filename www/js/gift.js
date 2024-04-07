@@ -62,7 +62,7 @@ let endline = '\n';
 
     let question = EncodeSnippet(questionobj.text, tofile);
 
-    console.log("EncodeGift:EncodeSnippet=[", question,"]");
+    // console.log("EncodeGift:EncodeSnippet=[", question,"]");
 
     /* pas de <br> pour le fichier */
     code = code + "// Question "+numero+endline;
