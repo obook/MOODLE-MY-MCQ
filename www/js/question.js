@@ -41,6 +41,7 @@ return(questionobj);
 }
 
 function SetCurrentQuestion(varObj) {
+  if(varObj) {
     $("#id_numero").val(varObj.number);
     $("#id_question").val(varObj.text);
     $("#id_reponse1").val(varObj.answer1);
@@ -48,6 +49,7 @@ function SetCurrentQuestion(varObj) {
     $("#id_reponse3").val(varObj.answer3);
     $("#id_reponse4").val(varObj.answer4);
     $("#id_feedback").val(varObj.feedback);
+  }
 }
 
 function ClearCurrentQuestion(number=null) {
@@ -61,6 +63,8 @@ function ClearCurrentQuestion(number=null) {
 
     if(number)
         $("#id_numero").val(number);
+    else
+      $("#id_numero").val("1");
 
     $("#id_code").html("");
     $("#id_preview").html("");
