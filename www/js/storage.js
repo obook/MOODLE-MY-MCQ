@@ -21,6 +21,6 @@ function StorageExists(number) {
       console.log("StorageExists error trig !");
   }
 
-  console.log("StorageExists "+number+" :False");
+  // console.log("StorageExists "+number+" :False");
 return(false);
 }

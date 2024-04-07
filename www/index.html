@@ -193,21 +193,19 @@ else :
     /* Events */
 
     $(document).delegate('.ui-page', 'pageshow', function () {
-        console.log("pageshow");
-        // Init();
+        //console.log("pageshow");
 	});
 
 	$(document).on("pagecreate", "#index", function() {
-		console.log('pagecreate@index');
+		//console.log('pagecreate@index');
 	});
 
     $(document).on("pagebeforeshow", "#index", function() {
-        console.log('pagebeforeshow@index');
+        //console.log('pagebeforeshow@index');
     });  
 
     $(document).on("pageaftershow", "#index", function() {
-        console.log('pageaftershow@index');
-        /* $("#id_question_type").trigger("reset"); test for translation = failed */
+        //console.log('pageaftershow@index');
     });
 
 	$("#id_reset").click(function() {
