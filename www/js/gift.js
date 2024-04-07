@@ -143,6 +143,8 @@ let questions = "";
     /* Build all questions */
     let max = ConfigMax();
     let theme = $("#id_theme").val();
+    let number;
+    let count = 0;
     questions = "// Category\n";
     questions = questions + "$CATEGORY: $course$/" + theme ;
 
@@ -152,7 +154,13 @@ let questions = "";
         if(questionobj) {
             let code = EncodeGift(questionobj, "\n", true);
             questions = questions+"\n\n"+code;
+            count++;
         }
+    }
+
+    if(!count) {
+        alert("No any question");
+        return;
     }
 
     const link = document.createElement("a");

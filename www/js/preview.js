@@ -38,7 +38,11 @@ let titre = $("#id_titre").val();
     if( old_apercu != apercu ) {
         let math = document.getElementById("id_preview");
         $("#id_preview").html(apercu);
-        MathJax.Hub.Queue(["Typeset",MathJax.Hub,math]);
+        try {
+            MathJax.Hub.Queue(["Typeset",MathJax.Hub,math]);
+        } catch (error) {
+            console.error("MathJax.Hub.Queue:", error);
+        }
         old_apercu = apercu;
     }
 }

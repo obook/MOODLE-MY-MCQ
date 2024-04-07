@@ -10,7 +10,7 @@ import { MakeXML } from "./xml.js";
 import { ClearCurrentQuestion, StoreQuestion, RecallQuestion } from "./question.js";
 import { GetFirstLine} from "./snippet.js";
 import { StorageExists, StorageClear} from "./storage.js";
-import { ConfigMax, ConfigTheme, ConfigFormatOutput, ConfigQuestionOnly} from "./config.js";
+import { ConfigMax, ConfigTheme, ConfigFormatOutput, ConfigQuestionOnly,ConfigClear} from "./config.js";
 
 export {Init, SetFormatOutput, SetQuestionOnly, QuestionNumberChanged, ClearAll, SaveCode};
 
@@ -40,6 +40,7 @@ function Init() {
 
 function ClearAll() {
   StorageClear();
+  ConfigClear();
   ClearCurrentQuestion(1);
 }
 

@@ -4,7 +4,7 @@
 *
 */
 
-export { ConfigMax, ConfigTheme, ConfigFormatOutput, ConfigQuestionOnly};
+export { ConfigMax, ConfigTheme, ConfigFormatOutput, ConfigQuestionOnly, ConfigClear};
 
 let ConfigObjkey = "CONFv1.1";
 
@@ -79,3 +79,11 @@ function ConfigQuestionOnly(value=null) {
 
 return(conf.questiononly)
 }
+
+function ConfigClear() {
+    // Charger la config
+    conf = LoadConfig();
+    conf.max = 1;
+    localStorage.setItem(ConfigObjkey, JSON.stringify(conf));
+}
+
