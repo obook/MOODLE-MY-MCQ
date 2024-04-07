@@ -111,10 +111,6 @@ let succeed = false;
             break;
         }
     }
-/*
-    if (succeed == true)
-        EncodeSnippet(question, preview);
-  */  
 return(question)
 }
 

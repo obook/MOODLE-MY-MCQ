@@ -32,7 +32,7 @@ function Init() {
     $("#sliderBank").val('OFF');
   
   $("#id_theme").val(ConfigTheme());
-  $("#id_numero").val(actual_question_number);
+  $("#id_numero").val("1"); /* Do not works !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
   RecallQuestion(actual_question_number);
   Process(true, question_only);
   clockId = setInterval(clock, 1000);

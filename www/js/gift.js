@@ -64,11 +64,8 @@ let endline = '\n';
 
     // console.log("EncodeGift:EncodeSnippet=[", question,"]");
 
-    /* pas de <br> pour le fichier */
     code = code + "// Question "+numero+endline;
     code = code + "::" + Html2GiftFilter( titre ) + endline;
-    /* Avec ,"text" : je n'ai pas les indentations dans le code, le code à copier est pourri
-    */
     code = code + "::[html] " + Html2GiftFilter(question, tofile) + endline;
 
     /* aller cherche plutot dans la config ? */
@@ -139,53 +136,6 @@ let endline = '\n';
 
 return(code);
 }
-
-/* Bugs :
-
-// Code incorrect créé
-
-// Question 01
-::01 - Consider the following Python program.
-::[html] Consider the following Python program.<br>\n<pre><code>x\=4\nif&amp;nbsp;3*x-6&lt;0&amp;nbsp;\:\n&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;x\=1\n&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;r\=-1\nelse&amp;nbsp;\:\n&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;if&amp;nbsp;(true)&amp;nbsp;\:\n&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;print("coucou"')\n&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;x\=-1\n&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;r\=1</code></pre>What does the variable \( r \) contain at the end of the program?
-// One correct awswer : n°1, With negative points
-{
- = [html] 5
- ~%-33.33333% [html] 0
- ~%-33.33333% [html] x
- ~%-33.33333% [html] 2
-}
-
-// Code correct
-
-// Question 01
-::01 - Première question...
-::[html] Première question...<br>\nConsider the following Python program.<br>\n<pre><code>x\=4\nif&nbsp;3*x-6<0&nbsp;\:\n&nbsp;&nbsp;&nbsp;&nbsp;x\=1\n&nbsp;&nbsp;&nbsp;&nbsp;r\=-1\nelse&nbsp;\:\n&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(true)&nbsp;\:\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("coucou")\n&nbsp;&nbsp;&nbsp;&nbsp;x\=-1\n&nbsp;&nbsp;&nbsp;&nbsp;r\=1</code></pre>What does the variable r contain at the end of the program?
-// One correct awswer : n°1, With negative points
-{
- = [html] 5
- ~%-33.33333% [html] 0
- ~%-33.33333% [html] x
- ~%-33.33333% [html] 2
-}
-
-
-// Code Moodle
-
-// question: 579  name: Question depuis Moodle
-::Question depuis Moodle::[html]<p dir\="ltr" style\="text-align\: left;">Voici du code...</p><p dir\="ltr" style\="text-align\: left;"></p><pre><code>x\=4\nif 3*x-6&lt;0 \:\n    x\=1\n    r\=-1\nelse \:\n    if (true) \:\n        print("coucou")\n    x\=-1\n    r\=1</code></pre><br><p></p><p dir\="ltr" style\="text-align\: left;">Voila !</p><p dir\="ltr" style\="text-align\: left;"><br></p>{
-	=<p dir\="ltr" style\="text-align\: left;">A</p>
-	~<p dir\="ltr" style\="text-align\: left;">B</p>
-	~<p dir\="ltr" style\="text-align\: left;">C</p>
-	~<p dir\="ltr" style\="text-align\: left;">D</p>
-}
-
-
-RESTE EN BUG :
-
-Dans l'affichage du code, les doubles espaces dans la partie code sont affichés comme un seul espace, 
--> bien que le bouton copier fonctionne !
--> le copier coller ne fonctionne plus
-*/
 
 const SaveGift = (filename) => {
 let questions = "";
