@@ -133,11 +133,10 @@ return(question)
 
 function GetFirstLine(str) {
 let car;
-    var splitters = [".", "?", "!", ":", "&", "<", "...", "\n"];
+    var splitters = [".", "?", "!", ":", "&", "<", "...", "\n"]; /* Priority order */
     for (let i = 0; i < str.length; i++) {
         for (let j = 0; j < splitters.length; j++) {
             if (str[i]==splitters[j]) {
-                // console.log("GetFirstLine find ["+splitters[j]+"] at ", i, " return ["+str.substring(0, i)+"]");
                 return str.substring(0, i);
             }
         }
