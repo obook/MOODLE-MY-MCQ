@@ -5,11 +5,11 @@
 */
 
 import { EncodeSnippet, Html2XMLFilter, GetFirstLine} from "./snippet.js";
-export { MakeXML };
+export { PrintXML };
 
 var old_code = "";
 
-function MakeXML(force=false, question_only=true) {
+function PrintXML(force=false, question_only=true) {
     var numero = $("#id_numero").val().toString().padStart(2, '0') ;
 	var theme = $("#id_theme").val();
 	var titre = numero + " - " + titre;

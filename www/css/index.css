@@ -47,14 +47,14 @@ pre {
   margin: 9px;
   border-radius: 4px;
  }
-
+/*
  #id_code {
   text-shadow:none;
   font-weight:normal;
   background: #000000;
   border-radius: 4px;
  }
-
+*/
  #id_code pre{
   text-shadow:none;
   font-weight:normal;
@@ -63,4 +63,5 @@ pre {
   padding: 0px;
   margin: 09px;
   border-radius: 4px;
+  overflow: auto;
  }

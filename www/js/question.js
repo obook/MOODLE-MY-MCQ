@@ -41,15 +41,15 @@ return(questionobj);
 }
 
 function SetCurrentQuestion(varObj) {
-  if(varObj) {
-    $("#id_numero").val(varObj.number);
-    $("#id_question").val(varObj.text);
-    $("#id_reponse1").val(varObj.answer1);
-    $("#id_reponse2").val(varObj.answer2);
-    $("#id_reponse3").val(varObj.answer3);
-    $("#id_reponse4").val(varObj.answer4);
-    $("#id_feedback").val(varObj.feedback);
-  }
+  if(!varObj)
+    return;
+  $("#id_numero").val(varObj.number);
+  $("#id_question").val(varObj.text);
+  $("#id_reponse1").val(varObj.answer1);
+  $("#id_reponse2").val(varObj.answer2);
+  $("#id_reponse3").val(varObj.answer3);
+  $("#id_reponse4").val(varObj.answer4);
+  $("#id_feedback").val(varObj.feedback);
 }
 
 function ClearCurrentQuestion(number=null) {

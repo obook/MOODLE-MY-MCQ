@@ -5,8 +5,8 @@
 */
 
 import { MakePreview } from "./preview.js";
-import { MakeGift, SaveGift } from "./gift.js";
-import { MakeXML } from "./xml.js";
+import { PrintGift, SaveGift } from "./gift.js";
+import { PrintXML } from "./xml.js";
 import { ClearCurrentQuestion, StoreQuestion, RecallQuestion } from "./question.js";
 import { GetFirstLine} from "./snippet.js";
 import { StorageExists, StorageClear} from "./storage.js";
@@ -113,9 +113,9 @@ function Process(force=false, question_only=false) {
   MakePreview();
 
   if(format_gift)
-    MakeGift(force, question_only);
+    PrintGift(force, question_only);
   else
-    MakeXML(force, question_only);
+    PrintXML(force, question_only);
 
   StoreQuestion(numero);
   ConfigTheme(theme);
