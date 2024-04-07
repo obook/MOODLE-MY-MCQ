@@ -11,10 +11,10 @@ format :
 "text" for ? (ex-preview ?)
 "file" for save to file
 */
-function Html2GiftFilter(string, format="html") {
-    if( format == "text" ) /* ? */
+function Html2GiftFilter(string, tofile=false) {
+   /* if(!html)  ? 
         return(string);
-
+*/
     string = string.replaceAll('=', '\\=');
     string = string.replaceAll(':', '\\:');
     string = string.replaceAll('{', '\\{');
@@ -24,7 +24,7 @@ function Html2GiftFilter(string, format="html") {
     // Line feed
     string = string.replaceAll('\u000A', '\\n');
     
-    if( format == "file" )
+    if(tofile)
     {
         return(string);
     }
@@ -53,27 +53,25 @@ preview = print for web
 
 */
 
-function EncodeSnippet(question, preview=false) {
+function EncodeSnippet(question, tofile=false) {
 let start_code = false;
 let index_start = -1;
 let index_end = -1;
 let succeed = false;
 
-// console.log("succeed = "+succeed);
+    console.log("EncodeSnippet:QUESTION=["+question+"] to file=",tofile);
 
     for (let i = 0; i < question.length-1; i++) {
         let c = question[i];
         let start_tag_code = question.slice(i, i+6).toLowerCase();
         let end_tag_code = question.slice(i, i+7).toLowerCase();
 
-        if ( start_tag_code.indexOf("<code>") == 0 )
-        {
+        if ( start_tag_code.indexOf("<code>") == 0 ) {
             // console.log("ScanForCode début '<code>' détecté.")
             start_code = true;
             index_start = i;
         }
-        else if ( end_tag_code.indexOf("</code>") == 0 )
-        {
+        else if ( end_tag_code.indexOf("</code>") == 0 ) {
             // console.log("ScanForCode fin '</code>' détecté.")
             start_code = false;
             index_end = i;
@@ -84,22 +82,31 @@ let succeed = false;
 
             begin = begin.replace(/(\r\n|\r|\n)/g, '<br>\n');
 
-            code = code.replaceAll("<","&amp;lt;");
-            code = code.replaceAll(">","&amp;gt;");
-            if (preview)
+            if(tofile) {
+                code = code.replaceAll("<","&lt;"); /* &amp;lt;" ? */
+                code = code.replaceAll(">","&gt;");
+            }
+            else{
+                code = code.replaceAll("<","&amp;lt;"); /* &amp;lt;" ? */
+                code = code.replaceAll(">","&amp;gt;");               
+            }
+
+            /*
+            if (tofile)
                code = code.replaceAll(" ","nbsp;");
+            */
 
             end = end.replace(/(\r\n|\r|\n)/g, '<br>\n');
 
             question = begin+code+end;
             succeed = true;
 
-        /*  
-            console.log("BEGIN=["+begin+"]");
-            console.log("CODE=["+code+"]");
-            console.log("END=["+end+"]");
-            console.log("NEW QUESTION=["+question+"]");
-      */
+        /*    */
+            console.log("EncodeSnippet:BEGIN=["+begin+"]");
+            console.log("EncodeSnippet:CODE=["+code+"]");
+            console.log("EncodeSnippet:END=["+end+"]");
+            console.log("EncodeSnippet:NEW QUESTION=["+question+"]");
+    
 
             break;
         }

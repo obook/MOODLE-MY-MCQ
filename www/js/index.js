@@ -7,9 +7,9 @@
 import { MakePreview } from "./preview.js";
 import { MakeGift, SaveGift } from "./gift.js";
 import { MakeXML } from "./xml.js";
-import { ClearCurrentQuestion } from "./question.js";
+import { ClearCurrentQuestion, StoreQuestion, RecallQuestion } from "./question.js";
 import { GetFirstLine} from "./snippet.js";
-import { StorageExists, StoreQuestion, RecallQuestion, StorageClear} from "./storage.js";
+import { StorageExists, StorageClear} from "./storage.js";
 import { ConfigMax, ConfigTheme, ConfigFormatOutput, ConfigQuestionOnly} from "./config.js";
 
 export {Init, SetFormatOutput, SetQuestionOnly, QuestionNumberChanged, ClearAll, SaveCode};

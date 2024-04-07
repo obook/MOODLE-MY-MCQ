@@ -4,12 +4,13 @@
 *
 */
 
-export {QuestionObj, GetCurrentQuestion, SetCurrentQuestion, ClearCurrentQuestion};
+export {QuestionObj, GetCurrentQuestion, SetCurrentQuestion, ClearCurrentQuestion, StoreQuestion, GetQuestion, RecallQuestion};
+import {StorageExists} from "./storage.js";
 
 let QuestionObj = {
     number: 0, /* >= 1 */
     format: "", /* GIFT or XML */ 
-    text: "",
+    text: "", /* Question text */
     answer1: "",
     answer2: "",
     answer3: "",
@@ -64,3 +65,40 @@ function ClearCurrentQuestion(number=null) {
     $("#id_code").html("");
     $("#id_preview").html("");
 }
+
+
+/* Store as Qn key, where n is a number >= 1
+*/
+function StoreQuestion(number) {
+    let key = "Q"+ number;
+    let questionobj = GetCurrentQuestion();
+  
+    if(questionobj)
+      localStorage.setItem(key, JSON.stringify(questionobj));
+  
+      // Test StorageWalk();
+  }
+  
+  function RecallQuestion(number) {
+    
+    let questionobj = GetQuestion(number);
+    SetCurrentQuestion(questionobj);
+  
+  return(true);
+  }
+  
+function GetQuestion(number) {
+  
+    if ( !StorageExists(number))
+      return false;
+  
+    let key = "Q"+ number;
+    let questionobj = Object.create(QuestionObj);
+    questionobj = JSON.parse(localStorage.getItem(key));
+  
+    if(!questionobj.text)
+      return(null);
+  
+  return(questionobj);
+  }
+

@@ -5,13 +5,14 @@
 */ 
 
 import { Html2GiftFilter, GetFirstLine, EncodeSnippet} from "./snippet.js";
-import { GetCurrentQuestion } from "./question.js";
-import { GetQuestion } from "./storage.js";
+import { GetCurrentQuestion, GetQuestion } from "./question.js";
 import { ConfigMax } from "./config.js";
 export { MakeGift, SaveGift };
 
 let old_code = "";
 let current_code = "";
+let bToFile = true;
+let bToHtml = false;
 
 /*
 Print Gift code 
@@ -34,30 +35,41 @@ let code = "";
         code = "$CATEGORY: $course$/" + theme + "<br>\n<br>\n";
     }
 
-    code = code + EncodeGift(questionobj);
+    code = code + EncodeGift(questionobj, bToHtml);
 
     if( old_code != code || force )
     {
-        $("#id_code").html(code);
+        $("#id_code").html("<code>"+code+"<code>");
         current_code = code;
         old_code = code;
     }
 
 }
+/*
 
-function EncodeGift(questionobj, endline='<br>\n', format='html') {
+Make GIFT code for web and for save to file
+
+*/
+function EncodeGift(questionobj, tofile=false) { /* tofile is for put in exported text file */
 let code = "";
 let numero = questionobj.number.padStart(2, '0');
 let titre = numero+ " - " + GetFirstLine(questionobj.text);
+let endline = '\n';
 
-    let question = EncodeSnippet(questionobj.text);
+    if(!tofile) {
+        endline='<br>\n';
+    }
+
+    let question = EncodeSnippet(questionobj.text, tofile);
+
+    console.log("EncodeGift:EncodeSnippet=[", question,"]");
 
     /* pas de <br> pour le fichier */
     code = code + "// Question "+numero+endline;
     code = code + "::" + Html2GiftFilter( titre ) + endline;
     /* Avec ,"text" : je n'ai pas les indentations dans le code, le code à copier est pourri
     */
-    code = code + "::[html] " + Html2GiftFilter(question, format) + endline;
+    code = code + "::[html] " + Html2GiftFilter(question, tofile) + endline;
 
     /* aller cherche plutot dans la config ? */
 
@@ -180,7 +192,6 @@ let questions = "";
 
     /* Build all questions */
     let max = ConfigMax();
-
     let theme = $("#id_theme").val();
     questions = "// Category\n";
     questions = questions + "$CATEGORY: $course$/" + theme ;
@@ -189,7 +200,7 @@ let questions = "";
 
         let questionobj = GetQuestion(number);
         if(questionobj) {
-            let code = EncodeGift(questionobj, "\n", 'file');
+            let code = EncodeGift(questionobj, "\n", true);
             questions = questions+"\n\n"+code;
         }
     }
