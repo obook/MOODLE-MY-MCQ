@@ -131,14 +131,15 @@ let succeed = false;
 return(question)
 }
 
-function GetFirstLine(s) {
+function GetFirstLine(str) {
 let car;
     var splitters = [".", "?", "!", ":", "&", "<", "...", "\n"];
-    for (car of splitters) {
-        if( s.includes(car) )
-        {
-            s = s.split(car)[0];
-            return s;
+    for (let i = 0; i < str.length; i++) {
+        for (let j = 0; j < splitters.length; j++) {
+            if (str[i]==splitters[j]) {
+                // console.log("GetFirstLine find ["+splitters[j]+"] at ", i, " return ["+str.substring(0, i)+"]");
+                return str.substring(0, i);
+            }
         }
     }
 return("Question...");
