@@ -20,6 +20,10 @@ pre {
   /*width: 20%; */
  }
 
+.class_sample {
+  background-color: #444444 !important;
+ }
+
  #id_question {
   background-color: #444444;
 }
