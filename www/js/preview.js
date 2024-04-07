@@ -4,7 +4,7 @@
 *
 */
 
-import { Html2GiftFilter } from "./snippet.js";
+import { Html2PreviewFilter } from "./snippet.js";
 import { GetCurrentQuestion } from "./question.js";
 export { MakePreview };
 
@@ -26,10 +26,10 @@ let titre = $("#id_titre").val();
 
     apercu = EncodePreview(questionobj.text, true);
     apercu = apercu + "<br>\n<br>\n";	
-    apercu = apercu + "a) &nbsp;&nbsp;" + Html2GiftFilter( questionobj.answer1, false ) + "<br>\n";	
-    apercu = apercu + "b) &nbsp;&nbsp;" + Html2GiftFilter( questionobj.answer2, false ) + "<br>\n";
-    apercu = apercu + "c) &nbsp;&nbsp;" + Html2GiftFilter( questionobj.answer3, false ) + "<br>\n";
-    apercu = apercu + "d) &nbsp;&nbsp;" + Html2GiftFilter( questionobj.answer4, false ) + "<br>\n";
+    apercu = apercu + "a) &nbsp;&nbsp;" + Html2PreviewFilter( questionobj.answer1, false ) + "<br>\n";	
+    apercu = apercu + "b) &nbsp;&nbsp;" + Html2PreviewFilter( questionobj.answer2, false ) + "<br>\n";
+    apercu = apercu + "c) &nbsp;&nbsp;" + Html2PreviewFilter( questionobj.answer3, false ) + "<br>\n";
+    apercu = apercu + "d) &nbsp;&nbsp;" + Html2PreviewFilter( questionobj.answer4, false ) + "<br>\n";
     
     if( questionobj.feedback ) {
             apercu = apercu + "<br>\nFeedback: " + questionobj.feedback;

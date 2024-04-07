@@ -3,7 +3,7 @@
 * (C) obook 2020-2024
 *
 */
-export {EncodeSnippet, Html2GiftFilter, Html2XMLFilter, GetFirstLine};
+export {EncodeSnippet, Html2GiftFilter, Html2XMLFilter, Html2PreviewFilter, GetFirstLine};
 
 /*
 format :
@@ -34,6 +34,12 @@ function Html2GiftFilter(string, tofile=false) {
 
 return string;
 }
+
+function Html2PreviewFilter(string) {
+    string = string.replaceAll('<', '&lt;');
+    string = string.replaceAll('>', '&gt;');
+ return string;
+ }
 
 function Html2XMLFilter(string, format) {
     if( format == "apercu" )
