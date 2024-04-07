@@ -60,7 +60,7 @@ Outil de fabrication de question QCM au format GIFT et XML pour Moodle
     </div><!-- /panel Settings -->
 
     <!-- Panel Sample -->
-    <div data-role="panel" id="samplepanel" data-display="overlay">
+    <div data-role="panel" id="samplepanel" data-display="overlay" data-position="right">
 
 <p><b>Python</b>
 <textarea readonly name="textareaPython" id="textareaPython" class='class_sample'>Question about Python.
@@ -80,7 +80,7 @@ Outil de fabrication de question QCM au format GIFT et XML pour Moodle
     </body>
 </html>
 </code></pre>What missing?</textarea></p>
-<p><b>LaTeX Math</b>
+<p><b>Math</b>
 <textarea readonly name="textareaMathJax" id="textareaMathJax" class='class_sample'>
 Inline \( \sqrt{2} \)
 Displayed $$ 2x^2-3x+1 $$</textarea></p>
@@ -92,6 +92,7 @@ Displayed $$ 2x^2-3x+1 $$</textarea></p>
 	<div data-role="header" data-position="fixed" data-tap-toggle="false" data-theme="b"> <!-- style="height: 16em;" -->
         <a href="#settingspanel" data-i18n="index.settings" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-btn-icon-left ui-icon-gear">Settings</a>
 		<h1 id="id_header">Moodle MCQ GIFT Maker</h1>
+        <a href="#samplepanel" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-icon-eye ui-btn-icon-left" data-i18n="index.samples">Samples</a>
 	</div><!-- /header -->
 
     <!-- Content -->
@@ -100,14 +101,12 @@ Displayed $$ 2x^2-3x+1 $$</textarea></p>
 	    <!-- <p>LaTeX : les symboles { et } DOIVENT avoir un anti-slash devant, comme \{ et \}, c'est valable pour tous les caractères spéciaux ~ = # { }</p> -->
         <div data-role="collapsible" data-collapsed="false" data-theme="b" data-content-theme="b" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
             <h4><span data-i18n="index.question">Question</span></h4>
-
             <div class="ui-grid-a">
                 <div class="ui-block-a">
                     <input type="text" data-role="spinbox" name="numero" id="id_numero" value="1" min="1" max="100">
                 </div>
                 <div class="ui-block-b"></div>
                     <div style="float:right">
-                        <a href="#samplepanel" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-icon-eye ui-btn-icon-left" data-i18n="index.samples">Samples</a> 
                         <div class="ui-block-c"><a href="#" id="id_reset" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-btn-icon-left ui-icon-delete" data-i18n="index.reset">Reset</a>
                     </div>
                 </div>
@@ -155,7 +154,7 @@ else :
             <textarea cols="80" rows="5" name="textarea" id="id_feedback"></textarea>
         </div>
 
-        <div data-role="collapsible" data-collapsed="false" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" data-theme="b" data-content-theme="b">
+        <div data-role="collapsible" data-collapsed="true" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" data-theme="b" data-content-theme="b">
             <h4><span id="id_outype">Code</span> <span data-i18n="index.code">(copy into a text editor then import in questions bank)</span></h4>
             <form>
                 <div class="ui-field-contain">
@@ -168,16 +167,17 @@ else :
             </form>
 
             <div id="id_code"></div>
-            
-            <div class="ui-grid-a">
-                <div class="ui-block-a">
-                    <a href="#" id="copy-button" data-i18n="index.copy" class="ui-shadow ui-btn ui-corner-all ui-btn-icon-left ui-icon-grid">COPY</a>
-                </div>
-                <div class="ui-block-b"></div>
-                    <a href="#" id="save-button" data-i18n="index.save" class="ui-shadow ui-btn ui-corner-all ui-btn-icon-left ui-icon-action">EXPORT</a>
-                </div>
-            </div>
+         </div>
         
+         <div class="ui-grid-a">
+            <div class="ui-block-a">
+                <a href="#" id="copy-button" data-i18n="index.copy" class="ui-shadow ui-btn ui-corner-all ui-btn-icon-left ui-icon-grid">COPY</a>
+            </div>
+            <div class="ui-block-b">
+                <a href="#" id="save-button" data-i18n="index.save" class="ui-shadow ui-btn ui-corner-all ui-btn-icon-left ui-icon-action">EXPORT</a>
+            </div>
+        </div>
+
 	</div><!-- /content -->
 
     <!-- footer -->
