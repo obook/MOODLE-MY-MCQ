@@ -62,9 +62,7 @@ function ClearCurrentQuestion(number=null) {
     $("#id_feedback").val("");
 
     if(number)
-        $("#id_numero").val(number);
-    else
-      $("#id_numero").val("1");
+      $("#id_numero").val(number);
 
     $("#id_code").html("");
     $("#id_preview").html("");
