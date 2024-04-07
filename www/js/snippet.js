@@ -3,42 +3,53 @@
 * (C) obook 2020-2024
 *
 */
-export {EncodeSnippet, Html2GiftFilter, Html2XMLFilter, Html2PreviewFilter, GetFirstLine};
+export {EncodeSnippet, Html2GiftFilter, Html2AnswerFilter, Html2XMLFilter, Html2PreviewFilter, GetFirstLine};
 
-/*
-format :
-"hml" for website
-"text" for ? (ex-preview ?)
-"file" for save to file
-*/
-function Html2GiftFilter(string, tofile=false) {
-   /* if(!html)  ? 
-        return(string);
-*/
+function GiftFilter(string) {
     string = string.replaceAll('=', '\\=');
     string = string.replaceAll(':', '\\:');
     string = string.replaceAll('{', '\\{');
     string = string.replaceAll('}', '\\}');
     string = string.replaceAll('~', '\\~');
     string = string.replaceAll('#', '\\#');
+return(string);
+}
+
+function Html2GiftFilter(string, tofile=false) {
+
+    string = GiftFilter(string);
+
     // Line feed
     string = string.replaceAll('\u000A', '\\n');
-    
-    if(tofile)
-    {
+
+    if(tofile) {
         return(string);
     }
 
     string = string.replaceAll('<', '&lt;');
     string = string.replaceAll('>', '&gt;');
 
-return string;
+return(string);
 }
 
+function Html2AnswerFilter(string, tofile=false) {
+    string = GiftFilter(string);
+
+     if(tofile) {
+        string = string.replaceAll('<', '&lt;');
+        string = string.replaceAll('>', '&gt;');
+     }
+     else {
+        string = string.replaceAll('<', '&amp;lt;');
+        string = string.replaceAll('>', '&amp;gt;');       
+     }
+return(string);
+}
+ 
 function Html2PreviewFilter(string) {
     string = string.replaceAll('<', '&lt;');
     string = string.replaceAll('>', '&gt;');
- return string;
+return(string);
  }
 
 function Html2XMLFilter(string, format) {
@@ -47,7 +58,7 @@ function Html2XMLFilter(string, format) {
     string = string.replaceAll('<', '&lt;');
     string = string.replaceAll('>', '&gt;');
     // string = string.replaceAll('\t', '');
-return string;
+return(string);
 }
 
 /*
@@ -89,11 +100,11 @@ let succeed = false;
             begin = begin.replace(/(\r\n|\r|\n)/g, '<br>\n');
 
             if(tofile) {
-                code = code.replaceAll("<","&lt;"); /* &amp;lt;" ? */
+                code = code.replaceAll("<","&lt;");
                 code = code.replaceAll(">","&gt;");
             }
             else{
-                code = code.replaceAll("<","&amp;lt;"); /* &amp;lt;" ? */
+                code = code.replaceAll("<","&amp;lt;");
                 code = code.replaceAll(">","&amp;gt;");               
             }
 

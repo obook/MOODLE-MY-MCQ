@@ -4,7 +4,7 @@
 *
 */ 
 
-import { Html2GiftFilter, GetFirstLine, EncodeSnippet} from "./snippet.js";
+import { Html2GiftFilter, Html2AnswerFilter, GetFirstLine, EncodeSnippet} from "./snippet.js";
 import { GetCurrentQuestion, GetQuestion } from "./question.js";
 import { ConfigMax } from "./config.js";
 export { PrintGift, SaveGift };
@@ -70,61 +70,61 @@ let endline = '\n';
     if( type == 1 ) { // Une bonne réponse
         if (points == 1) { /* Points négatifs */
             code = code + "// One correct awswer : n°1, With negative points"+endline+"{"+endline;
-            code = code + " = " + Html2GiftFilter( questionobj.answer1, tofile ) + endline;
-            code = code + " ~ %-33.33333% " + Html2GiftFilter( questionobj.answer2, tofile) + endline;
-            code = code + " ~ %-33.33333% " + Html2GiftFilter( questionobj.answer3, tofile ) + endline;
-            code = code + " ~ %-33.33333% " +  Html2GiftFilter( questionobj.answer4, tofile ) + endline;
+            code = code + " = " + Html2AnswerFilter( questionobj.answer1, tofile) + endline;
+            code = code + " ~ %-33.33333% " + Html2AnswerFilter( questionobj.answer2, tofile)  + endline;
+            code = code + " ~ %-33.33333% " + Html2AnswerFilter( questionobj.answer3, tofile)  + endline;
+            code = code + " ~ %-33.33333% " +  Html2AnswerFilter( questionobj.answer4, tofile)  + endline;
         }
         else {
             code = code + "// One correct awswer : n°1, Without negative points"+endline+"{"+endline;
-            code = code + " = " + Html2GiftFilter( questionobj.answer1, tofile ) + endline;
-            code = code + " ~ " + Html2GiftFilter( questionobj.answer2, tofile ) + endline;
-            code = code + " ~ " + Html2GiftFilter( questionobj.answer3, tofile ) + endline;
-            code = code + " ~] " +  Html2GiftFilter( questionobj.answer4, tofile ) + endline;
+            code = code + " = " + Html2AnswerFilter( questionobj.answer1, tofile)  + endline;
+            code = code + " ~ " + Html2AnswerFilter( questionobj.answer2, tofile)  + endline;
+            code = code + " ~ " + Html2AnswerFilter( questionobj.answer3, tofile)  + endline;
+            code = code + " ~] " +  Html2AnswerFilter( questionobj.answer4, tofile)  + endline;
         }
     }
     else if( type == 2 ) { // Deux bonnes réponses
         if (points == 1) { /* Points négatifs */
             code = code + "// Two correct awswers : n°1 et n°2, With negative points"+endline+"{"+endline;
-            code = code + " ~ %50% " + Html2GiftFilter( questionobj.answer1, tofile ) + endline;
-            code = code + " ~ %50% " + Html2GiftFilter( questionobj.answer2, tofile ) + endline;
-            code = code + " ~ %-33.33333% " + Html2GiftFilter( questionobj.answer3, tofile ) + endline;
-            code = code + " ~ %-33.33333% " +  Html2GiftFilter( questionobj.answer4, tofile ) + endline;
+            code = code + " ~ %50% " + Html2AnswerFilter( questionobj.answer1, tofile , tofile)  + endline;
+            code = code + " ~ %50% " + Html2AnswerFilter( questionobj.answer2, tofile , tofile)  + endline;
+            code = code + " ~ %-33.33333% " + Html2AnswerFilter( questionobj.answer3, tofile , tofile)  + endline;
+            code = code + " ~ %-33.33333% " +  Html2AnswerFilter( questionobj.answer4, tofile , tofile)  + endline;
         }
         else {
             code = code + "// Two correct awswers : n°1 et n°2, Without negative points"+endline+"{"+endline;
-            code = code + " ~ %50% " + Html2GiftFilter( questionobj.answer1, tofile ) + endline;
-            code = code + " ~ %50% " + Html2GiftFilter( questionobj.answer2, tofile ) + endline;
-            code = code + " ~ " + Html2GiftFilter( questionobj.answer3, tofile ) + endline;
-            code = code + " ~ " +  Html2GiftFilter( questionobj.answer4, tofile ) + endline;
+            code = code + " ~ %50% " + Html2AnswerFilter( questionobj.answer1, tofile , tofile)  + endline;
+            code = code + " ~ %50% " + Html2AnswerFilter( questionobj.answer2, tofile , tofile)  + endline;
+            code = code + " ~ " + Html2AnswerFilter( questionobj.answer3, tofile , tofile)  + endline;
+            code = code + " ~ " +  Html2AnswerFilter( questionobj.answer4, tofile , tofile)  + endline;
         }
     }
     else if( type == 3 ) { // Trois bonnes réponses
         if (points == 1) { /* Points négatifs */
             code = code + "// Three correct awswers : n°1, n°2 et n°3, With negative points"+endline+"{"+endline;
-            code = code + " ~ %33.33333% " + Html2GiftFilter( questionobj.answer1, tofile ) + endline;
-            code = code + " ~ %33.33333% " + Html2GiftFilter( questionobj.answer2, tofile ) + endline;
-            code = code + " ~ %33.33333% " + Html2GiftFilter( questionobj.answer3, tofile ) + endline;
-            code = code + " ~ %-100% " +  Html2GiftFilter( questionobj.answer4, tofile ) + endline;
+            code = code + " ~ %33.33333% " + Html2AnswerFilter( questionobj.answer1, tofile , tofile)  + endline;
+            code = code + " ~ %33.33333% " + Html2AnswerFilter( questionobj.answer2, tofile , tofile)  + endline;
+            code = code + " ~ %33.33333% " + Html2AnswerFilter( questionobj.answer3, tofile , tofile)  + endline;
+            code = code + " ~ %-100% " +  Html2AnswerFilter( questionobj.answer4, tofile , tofile)  + endline;
         }
         else {
             code = code + "// Three correct awswers : n°1, n°2 et n°3, Without negative points"+endline+"{"+endline;
-            code = code + " ~ %33.33333% " + Html2GiftFilter( questionobj.answer1, tofile ) + endline;
-            code = code + " ~ %33.33333% " + Html2GiftFilter( questionobj.answer2, tofile ) + endline;
-            code = code + " ~ %33.33333% " + Html2GiftFilter( questionobj.answer3, tofile ) + endline;
-            code = code + " ~ " +  Html2GiftFilter( questionobj.answer4, tofile ) + endline;
+            code = code + " ~ %33.33333% " + Html2AnswerFilter( questionobj.answer1, tofile , tofile)  + endline;
+            code = code + " ~ %33.33333% " + Html2AnswerFilter( questionobj.answer2, tofile , tofile)  + endline;
+            code = code + " ~ %33.33333% " + Html2AnswerFilter( questionobj.answer3, tofile , tofile)  + endline;
+            code = code + " ~ " +  Html2AnswerFilter( questionobj.answer4, tofile , tofile)  + endline;
         }
     }
     else {// Quatre bonnes réponses
         code = code + "// Four correct awswers"+endline+"{"+endline;
-        code = code + " ~ %25% " + Html2GiftFilter( questionobj.answer1, tofile ) + endline;
-        code = code + " ~ %25% " + Html2GiftFilter( questionobj.answer2, tofile ) + endline;
-        code = code + " ~ %25% " + Html2GiftFilter( questionobj.answer3, tofile ) + endline;
-        code = code + " ~ %25% " +  Html2GiftFilter( questionobj.answer4, tofile ) + endline;
+        code = code + " ~ %25% " + Html2AnswerFilter( questionobj.answer1, tofile , tofile)  + endline;
+        code = code + " ~ %25% " + Html2AnswerFilter( questionobj.answer2, tofile , tofile)  + endline;
+        code = code + " ~ %25% " + Html2AnswerFilter( questionobj.answer3, tofile , tofile)  + endline;
+        code = code + " ~ %25% " +  Html2AnswerFilter( questionobj.answer4, tofile , tofile)  + endline;
     }
     
     if( questionobj.feedback )
-         code = code + " #### [html] " + Html2GiftFilter( questionobj.feedback, tofile ) + endline;
+         code = code + " #### [html] " + Html2QuestionFilter( questionobj.feedback, tofile ) + endline;
     
 	code = code + "}";
 
@@ -137,17 +137,15 @@ let questions = "";
     /* Build all questions */
     let max = ConfigMax();
     let theme = $("#id_theme").val();
-    let number;
     let count = 0;
     questions = "// Category\n";
     questions = questions + "$CATEGORY: $course$/" + theme ;
 
     for (let number = 1; number <= max; number++) {
-
         let questionobj = GetQuestion(number);
         if(questionobj) {
-            let code = EncodeGift(questionobj, "\n", bToFile);
-            questions = questions+"\n\n"+code;
+            let question = EncodeGift(questionobj, bToFile);
+            questions = questions+"\n\n"+question;
             count++;
         }
     }

@@ -8,6 +8,7 @@
 const lngs = {
     en: { nativeName: 'English' },
     fr: { nativeName: 'French' },
+    de: { nativeName: 'German' },
     hi: { nativeName: 'Hindi' },
   };
   
@@ -88,6 +89,40 @@ $(function () {
                     questiononly: 'Question uniquement:',
                     copy: 'COPIER',
                     save: 'EXPORTER',
+              }
+            }
+          },
+          de: {
+            translation: {
+                head: {
+                    description:'Moodle MCQ GIFT/XML Maker tool',
+                },
+              index: {
+                    settings: 'Einstellungen',
+                    category: 'Kategorie',
+                    outcode: 'Code',
+                    type1: 'Eine richtige Antwort',
+                    type2: 'Zwei richtige Antworten',
+                    type3: 'Drei richtige Antworten',
+                    type4: 'Vier richtige Antworten',
+                    withnegativepoints : 'Mit negativen Punkten',
+                    withoutnegativepoints:'Ohne negative Punkte',
+                    close: 'Schließen',
+                    question: 'Frage',
+                    samples : 'Proben',
+                    reset: 'Zurücksetzen',
+                    editor: 'Herausgeber',
+                    preview: 'Vorschau',
+                    answers: 'Antworten',
+                    answer1 : 'Antwort 1 (richtig)',
+                    answer2 : 'Antwort 2',
+                    answer3 : 'Antwort 3',
+                    answer4 : 'Antwort 4',
+                    feedback:'Global Rückmeldung (optionnal)',
+                    code: '(in einen Texteditor kopieren und dann in die Fragendatenbank importieren)',
+                    questiononly: 'Nur Frage:',
+                    copy: 'KOPIEREN',
+                    save: 'EXPORT',
               }
             }
           },
