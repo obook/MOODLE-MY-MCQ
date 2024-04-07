@@ -133,7 +133,7 @@ return(question)
 
 function GetFirstLine(s) {
 let car;
-    var splitters = [".", "?", ":", "&", "<", "...", "\n"];
+    var splitters = [".", "?", "!", ":", "&", "<", "...", "\n"];
     for (car of splitters) {
         if( s.includes(car) )
         {
