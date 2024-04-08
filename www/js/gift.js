@@ -80,7 +80,7 @@ let endline = '\n';
             code = code + " = " + Html2AnswerFilter( questionobj.answer1, tofile)  + endline;
             code = code + " ~ " + Html2AnswerFilter( questionobj.answer2, tofile)  + endline;
             code = code + " ~ " + Html2AnswerFilter( questionobj.answer3, tofile)  + endline;
-            code = code + " ~] " +  Html2AnswerFilter( questionobj.answer4, tofile)  + endline;
+            code = code + " ~ " +  Html2AnswerFilter( questionobj.answer4, tofile)  + endline;
         }
     }
     else if( type == 2 ) { // Deux bonnes réponses
