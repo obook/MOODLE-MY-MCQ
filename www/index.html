@@ -220,6 +220,10 @@ else :
         IndexModule.SetFormatOutput($("#sliderOutput").val());
 	});
 
+    $("#id_points_negatifs").change(function() {
+        IndexModule.SetNegativePoints($("#id_points_negatifs").val());
+	});
+
     $("#id_numero").change(function() {
         IndexModule.QuestionNumberChanged($("#id_numero").val());
 	});

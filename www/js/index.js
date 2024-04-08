@@ -10,9 +10,9 @@ import { PrintXML } from "./xml.js";
 import { ClearCurrentQuestion, StoreQuestion, RecallQuestion } from "./question.js";
 import { GetFirstLine} from "./snippet.js";
 import { StorageExists, StorageClear} from "./storage.js";
-import { ConfigMax, ConfigTheme, ConfigFormatOutput, ConfigQuestionOnly,ConfigClear} from "./config.js";
+import { ConfigMax, ConfigTheme, ConfigFormatOutput, ConfigQuestionOnly, ConfigNegativePoints, ConfigClear} from "./config.js";
 
-export {Init, SetFormatOutput, SetQuestionOnly, QuestionNumberChanged, ClearAll, SaveCode};
+export {Init, SetFormatOutput, SetNegativePoints, SetQuestionOnly, QuestionNumberChanged, ClearAll, SaveCode};
 
 var delay = 2
 var counter = delay;
@@ -30,9 +30,13 @@ function Init() {
     $("#sliderBank").val('ON');
   else
     $("#sliderBank").val('OFF');
-  
+
+  if(ConfigNegativePoints()==1) // 1 or 0 
+    $("#id_points_negatifs").val("1");
+  else
+    $("#id_points_negatifs").val("0");
+
   $("#id_theme").val(ConfigTheme());
-  //$("#id_numero").val("1"); /* Do not works !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
   RecallQuestion(actual_question_number);
   Process(true, question_only);
   clockId = setInterval(clock, 1000);
@@ -50,6 +54,10 @@ function clock() {
         Process(false, question_only);
         counter = delay+1;
     }
+}
+
+function SetNegativePoints(value) {
+    ConfigNegativePoints(value);
 }
 
 function SetFormatOutput(value) {

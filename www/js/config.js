@@ -4,7 +4,7 @@
 *
 */
 
-export { ConfigMax, ConfigTheme, ConfigFormatOutput, ConfigQuestionOnly, ConfigClear};
+export { ConfigMax, ConfigTheme, ConfigFormatOutput, ConfigQuestionOnly, ConfigNegativePoints, ConfigClear};
 
 let ConfigObjkey = "CONFv1.1";
 
@@ -15,6 +15,7 @@ function ConfigObject(version) {
         format: "GIFT", /* GIFT or XML */ 
         questiononly: false, /* Print question only or not */
         max: 1, /* Maximum questions */
+        negativepoints: true,
     };
 return conf;
 }
@@ -78,6 +79,19 @@ function ConfigQuestionOnly(value=null) {
     }
 
 return(conf.questiononly)
+}
+
+function ConfigNegativePoints(negativepoints=null) { /* 1 = with , 0 = without */
+    // Charger la config
+    conf = LoadConfig();
+
+    // Régler la catégorie
+    if(negativepoints != null) {
+        conf.negativepoints = negativepoints;
+        localStorage.setItem(ConfigObjkey, JSON.stringify(conf));
+    }
+
+return(conf.negativepoints)
 }
 
 function ConfigClear() {
