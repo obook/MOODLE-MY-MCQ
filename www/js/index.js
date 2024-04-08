@@ -93,7 +93,7 @@ function Process(force=false, question_only=false) {
 	var theme = $("#id_theme").val();
   var titre = numero.padStart(2, '0')+ " - " + GetFirstLine(question_object.val());
   // Réglage du titre de la fenêtre
-  $(document).prop('title', theme);
+  // $(document).prop('title', theme);
 
   if ($("#sliderOutput").val() == 'GIFT') {
     format_gift = true;

@@ -14,6 +14,7 @@ const lngs = {
   
 const rerender = () => {
     $('body').localize();
+    $('title').text($.t('head.title'))
     $('meta[name=description]').attr('content', $.t('head.description'))
   }
 
@@ -28,6 +29,7 @@ $(function () {
             translation: {
                 head: {
                     description:'Moodle MCQ GIFT/XML Maker tool',
+                    title: 'MCQ for Moodle',
                 },
               index: {
                     settings: 'Settings',
@@ -61,6 +63,7 @@ $(function () {
             translation: {
                 head: {
                     description:'Outil de fabrication de QCM pour Moodle',
+                    title: 'QCM pour Moodle',
                 },
                 index: {
                     settings: 'Réglages',
@@ -94,6 +97,7 @@ $(function () {
             translation: {
                 head: {
                     description:'Moodle MCQ GIFT/XML Maker tool',
+                    title: 'MCQ for Moodle',
                 },
               index: {
                     settings: 'Einstellungen',
@@ -127,6 +131,7 @@ $(function () {
             translation: {
                 head: {
                     description:'मूडल एमसीक्यू गिफ्ट/एक्सएमएल मेकर टूल',
+                    title: 'MCQ for Moodle',
                 },
               index: {
                     settings: 'सेटिंग्स',
