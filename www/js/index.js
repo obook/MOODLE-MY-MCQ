@@ -36,6 +36,12 @@ function Init() {
   else
     $("#id_points_negatifs").val("0");
 
+  // $("#id_points_negatifs").i18n();
+
+  //rerender();
+
+  // $("#id_points_negatifs").localize();
+
   $("#id_theme").val(ConfigTheme());
   RecallQuestion(actual_question_number);
   Process(true, question_only);

@@ -192,12 +192,23 @@ else :
 	<script>
 
     let IndexModule=null;
+    var IsInit = false;
 
     /* Events */
 
     $(document).delegate('.ui-page', 'pageshow', function () {
         //console.log("pageshow");
 	});
+
+    $(document).on("pagebeforecreate", function () {
+        /* console.log('pagebeforecreate@index');
+        if (!IsInit){
+            i18n.init(i18nOpts).done(function () {
+                $("html").i18n();
+                IsInit = true;
+            });
+        }*/
+    });
 
 	$(document).on("pagecreate", "#index", function() {
 		//console.log('pagecreate@index');
