@@ -25,6 +25,10 @@ pre {
   background-color: #444444;
 }
 
+.class_points {
+  color: grey;
+}
+
  .class_answer {
   background-color: #444444 !important;
  }

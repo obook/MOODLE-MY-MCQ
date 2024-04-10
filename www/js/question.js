@@ -6,6 +6,7 @@
 
 export {QuestionObj, GetCurrentQuestion, SetCurrentQuestion, ClearCurrentQuestion, StoreQuestion, GetQuestion, RecallQuestion};
 import {StorageExists} from "./storage.js";
+import {ConfigNegativePoints} from "./config.js"
 
 let QuestionObj = {
     number: 0, /* >= 1 */
@@ -50,7 +51,14 @@ function SetCurrentQuestion(varObj) {
   $("#id_reponse3").val(varObj.answer3);
   $("#id_reponse4").val(varObj.answer4);
   $("#id_feedback").val(varObj.feedback);
+
+  let negativepoints = ConfigNegativePoints(); /* true or false */
+  //  console.log("SetCurrentQuestion:negativepoints", negativepoints);
 }
+
+  /* Ici récupérer le nombre de bonnes questions possibles et changer les XXX */
+
+ 
 
 function ClearCurrentQuestion(number=null) {
     $("#id_titre").val("");

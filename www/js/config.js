@@ -4,7 +4,7 @@
 *
 */
 
-export { ConfigMax, ConfigTheme, ConfigFormatOutput, ConfigQuestionOnly, ConfigNegativePoints, ConfigClear};
+export { ConfigMax, ConfigTheme, ConfigFormatOutput, ConfigQuestionOnly, ConfigNegativePoints, ConfigCorrectAnswers, ConfigClear};
 
 let ConfigObjkey = "CONFv1.1";
 
@@ -16,6 +16,7 @@ function ConfigObject(version) {
         questiononly: false, /* Print question only or not */
         max: 1, /* Maximum questions */
         negativepoints: true,
+        correctanswers: 1, /* 1, 2, 3 or 4 correct answers */ 
     };
 return conf;
 }
@@ -92,6 +93,19 @@ function ConfigNegativePoints(negativepoints=null) { /* 1 = with , 0 = without *
     }
 
 return(conf.negativepoints)
+}
+
+function ConfigCorrectAnswers(correctanswers=null) { /* 1 , 2 , 3 or 4 */
+    // Charger la config
+    conf = LoadConfig();
+
+    // Régler la catégorie
+    if(correctanswers != null) {
+        conf.correctanswers = correctanswers;
+        localStorage.setItem(ConfigObjkey, JSON.stringify(conf));
+    }
+
+return(conf.correctanswers)
 }
 
 function ConfigClear() {

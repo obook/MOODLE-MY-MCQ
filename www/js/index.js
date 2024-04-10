@@ -10,9 +10,9 @@ import { PrintXML } from "./xml.js";
 import { ClearCurrentQuestion, StoreQuestion, RecallQuestion } from "./question.js";
 import { GetFirstLine} from "./snippet.js";
 import { StorageExists, StorageClear} from "./storage.js";
-import { ConfigMax, ConfigTheme, ConfigFormatOutput, ConfigQuestionOnly, ConfigNegativePoints, ConfigClear} from "./config.js";
+import { ConfigMax, ConfigTheme, ConfigFormatOutput, ConfigQuestionOnly, ConfigCorrectAnswers, ConfigNegativePoints, ConfigClear} from "./config.js";
 
-export {Init, SetFormatOutput, SetNegativePoints, SetQuestionOnly, QuestionNumberChanged, ClearAll, SaveCode};
+export {Init, SetFormatOutput, SetNegativePoints, SetCorrectAnswers, SetQuestionOnly, QuestionNumberChanged, ClearAll, SaveCode};
 
 var delay = 2
 var counter = delay;
@@ -36,14 +36,11 @@ function Init() {
   else
     $("#id_points_negatifs").val("0");
 
-  // $("#id_points_negatifs").i18n();
-
-  //rerender();
-
-  // $("#id_points_negatifs").localize();
+  $("#id_question_type").val(ConfigCorrectAnswers());
 
   $("#id_theme").val(ConfigTheme());
   RecallQuestion(actual_question_number);
+  SetCorrectAnswers();
   Process(true, question_only);
   clockId = setInterval(clock, 1000);
 }
@@ -63,7 +60,63 @@ function clock() {
 }
 
 function SetNegativePoints(value) {
+  if(value)
     ConfigNegativePoints(value);
+    SetCorrectAnswers();
+}
+
+function SetCorrectAnswers(correctanswers) {
+  if (correctanswers)
+    ConfigCorrectAnswers(correctanswers);
+  else
+    correctanswers = ConfigCorrectAnswers();
+
+  let negativepoints = ConfigNegativePoints();
+
+  $(id_pointsreponse1).text("");
+  $(id_pointsreponse2).text("");
+  $(id_pointsreponse3).text("");
+  $(id_pointsreponse4).text("");
+
+  if ( correctanswers == 1 ) {
+      $(id_pointsreponse1).text("+100%");
+      if(negativepoints==1) {
+          $(id_pointsreponse2).text("-33.33%");
+          $(id_pointsreponse3).text("-33.33%");
+          $(id_pointsreponse4).text("-33.33%");
+      }
+      else{
+        $(id_pointsreponse2).text("0%");
+        $(id_pointsreponse3).text("0%");
+        $(id_pointsreponse4).text("0%");       
+      }
+  } else if ( correctanswers == 2 ) {
+      $(id_pointsreponse1).text("+50%");
+      $(id_pointsreponse2).text("+50%");
+      if(negativepoints==1) {
+          $(id_pointsreponse3).text("-25%");
+          $(id_pointsreponse4).text("-25%");
+      }
+      else{
+        $(id_pointsreponse3).text("0%");
+        $(id_pointsreponse4).text("0%");       
+      }
+  } else if ( correctanswers == 3 ) {
+      $(id_pointsreponse1).text("+33.33%");
+      $(id_pointsreponse2).text("+33.33%");
+      $(id_pointsreponse3).text("+33.33%");
+      if(negativepoints==1) {
+          $(id_pointsreponse4).text("-100%");
+      }
+      else{
+        $(id_pointsreponse4).text("0%");       
+      }
+  } else if ( correctanswers == 4 ) {
+      $(id_pointsreponse1).text("+25%");
+      $(id_pointsreponse2).text("+25%");
+      $(id_pointsreponse3).text("+25%");
+      $(id_pointsreponse4).text("+25%");
+  }
 }
 
 function SetFormatOutput(value) {
