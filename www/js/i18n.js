@@ -27,9 +27,16 @@ $(function () {
         resources: {
           en: {
             translation: {
+              key : '{{what}} is {{how}}',
                 head: {
                     description:'Moodle MCQ GIFT/XML Maker tool',
                     title: 'MCQ-Moodle',
+                },
+                nav: {
+                  home: 'Home',
+                  page1: 'Page One',
+                  page2: 'Page Two',
+                  page3: 'Page Three',
                 },
               index: {
                     settings: 'Settings',
@@ -42,6 +49,7 @@ $(function () {
                     withnegativepoints : 'With negative points',
                     withoutnegativepoints:'Without negative points',
                     close: 'Close',
+                    save: 'Save',
                     question: 'Question',
                     samples : 'Samples',
                     reset: 'Reset',
@@ -56,6 +64,7 @@ $(function () {
                     questiononly: 'Question only:',
                     copy: 'COPY',
                     save: 'EXPORT',
+                    clear: 'Clear all ?',
               }
             }
           },
@@ -76,6 +85,7 @@ $(function () {
                     withnegativepoints : 'Avec points négatifs',
                     withoutnegativepoints:'Sans points négatifs',
                     close: 'Fermer',
+                    save: 'Enregistrer',
                     question: 'Question',
                     samples : 'Exemples',
                     reset: 'RAZ',
@@ -89,7 +99,8 @@ $(function () {
                     feedback: 'Retour global (optionnel)',
                     questiononly: 'Question uniquement:',
                     copy: 'COPIER',
-                    save: 'EXPORTER',
+                    export: 'EXPORTER',
+                    clear: 'Tout effacer ?',
               }
             }
           },
@@ -110,6 +121,7 @@ $(function () {
                     withnegativepoints : 'Mit negativen Punkten',
                     withoutnegativepoints:'Ohne negative Punkte',
                     close: 'Schließen',
+                    save: 'Speichern',
                     question: 'Frage',
                     samples : 'Proben',
                     reset: 'Zurücksetzen',
@@ -123,7 +135,8 @@ $(function () {
                     feedback:'Global Rückmeldung (optionnal)',
                     questiononly: 'Nur Frage:',
                     copy: 'KOPIEREN',
-                    save: 'EXPORT',
+                    export: 'EXPORT',
+                    clear: 'Alles löschen ?',
               }
             }
           },
@@ -144,6 +157,7 @@ $(function () {
                     withnegativepoints : 'नकारात्मक बिंदुओं के साथ',
                     withoutnegativepoints: 'नकारात्मक बिंदुओं के बिना',
                     close: 'बंद करें',
+                    save: 'बचाना',
                     question: 'प्रश्न',
                     samples : 'नमूने',
                     reset: 'रीसेट',
@@ -157,7 +171,8 @@ $(function () {
                     feedback:'वैश्विक प्रतिक्रिया (वैकल्पिक)',
                     questiononly: 'केवल प्रश्न:',
                     copy: 'कॉपी',
-                    save: 'सहेजें',
+                    export: 'सहेजें',
+                    clear: 'सभी साफ करें ?',
               }
             }
           },
@@ -166,6 +181,29 @@ $(function () {
         if (err)
             return console.error(err);
         jqueryI18next.init(i18next, $, { useOptionsAttr: true });
+/*
+        // fill language switcher
+        Object.keys(lngs).map((lng) => {
+          const opt = new Option(lngs[lng].nativeName, lng);
+          if (lng === i18next.resolvedLanguage) {
+            opt.setAttribute("selected", "selected");
+          }
+          $('#languageSwitcher').append(opt);
+        });
+
+        $('#languageSwitcher').change((a, b, c) => {
+          const chosenLng = $(this).find("option:selected").attr('value');
+
+          console.log("chosenLng=", chosenLng, "a,b,c=", a, b, c);
+
+          let newchosenLng = "de";
+
+          i18next.changeLanguage(newchosenLng, () => {
+            rerender();
+          });
+        });
+
+*/
         rerender();
       });
   });

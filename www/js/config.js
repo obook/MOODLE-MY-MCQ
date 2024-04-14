@@ -6,11 +6,11 @@
 
 export { ConfigMax, ConfigTheme, ConfigFormatOutput, ConfigQuestionOnly, ConfigNegativePoints, ConfigCorrectAnswers, ConfigClear};
 
-let ConfigObjkey = "CONFv1.1";
+let ConfigObjkey = "CONF";
 
 function ConfigObject(version) {
     let conf = {
-        version: ConfigObjkey,
+        version: "1.2",
         category: "Default bank category", /* Bank thema */
         format: "GIFT", /* GIFT or XML */ 
         questiononly: false, /* Print question only or not */

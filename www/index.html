@@ -22,6 +22,8 @@ Outil de fabrication de question QCM au format GIFT et XML pour Moodle
     <script src="vendor/i18n/i18next.min.js"></script>
     <script src="vendor/i18n/jquery-i18next.min.js"></script>
     <script src="vendor/i18n/i18nextBrowserLanguageDetector.min.js"></script>
+    <!-- Start internalization -->
+    <script src="js/i18n.js"></script>
 
     <!-- Mathjax -->
 	<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
@@ -44,19 +46,23 @@ Outil de fabrication de question QCM au format GIFT et XML pour Moodle
             <option value="XML">XML</option>
         </select>
 
-        <select name="select-h-1a" id="id_question_type">
-            <option value="1" data-i18n="index.type1">One correct awswer</option><!-- internalization bug -->
-            <option value="2" data-i18n="index.type2">Two correct awswers</option>
-            <option value="3" data-i18n="index.type3">Three correct awswers</option>
-            <option value="4" data-i18n="index.type4">Four correct awswers</option>
-        </select>
+        <form id="id_form_question_type"></form>
+            <select name="select-h-1a" id="id_question_type" class="nav">
+                <option value="1" data-i18n="index.type1">One correct awswer</option><!-- internalization bug -->
+                <option value="2" data-i18n="index.type2">Two correct awswers</option>
+                <option value="3" data-i18n="index.type3">Three correct awswers</option>
+                <option value="4" data-i18n="index.type4">Four correct awswers</option>
+            </select>
+        </form>
 
-        <select name="select-h-1b" id="id_points_negatifs">
-            <option value="1" data-i18n="index.withnegativepoints">With negative points</option>
-            <option value="0" data-i18n="index.withoutnegativepoints">Without negative points</option>
-        </select>
+        <form id="id_form_points_negatifs">
+            <select name="select-h-1b" id="id_points_negatifs">
+                    <option value="1" data-i18n="index.withnegativepoints">With negative points</option>
+                    <option value="0" data-i18n="index.withoutnegativepoints">Without negative points</option>
+                </select>
+        </form>
 
-        <a href="#" data-rel="close" id='id_close_settings'class="ui-btn ui-shadow ui-corner-all ui-icon-delete ui-btn-icon-left" data-i18n="index.close">Close</a>
+        <a href="#" data-rel="close" id='id_close_settings'class="ui-btn ui-shadow ui-corner-all ui-icon-delete ui-btn-icon-left" data-i18n="index.save">Close</a>
     </div><!-- /panel Settings -->
 
     <!-- Panel Sample -->
@@ -93,6 +99,10 @@ Displayed $$ 2x^2-3x+1 $$</textarea></p>
         <a href="#settingspanel" data-i18n="index.settings" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-btn-icon-left ui-icon-gear">Settings</a>
 		<h1 id="id_header">Moodle MCQ GIFT Maker</h1>
         <a href="#samplepanel" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-icon-eye ui-btn-icon-left" data-i18n="index.samples">Samples</a>
+
+
+    <!-- <select name="language" id="languageSwitcher"></select> -->
+        
 	</div><!-- /header -->
 
     <!-- Content -->
@@ -151,12 +161,7 @@ else :
                 <textarea cols="80" rows="5" name="textarea" id="id_feedback"></textarea>
               </div>
         </div>
-<!--
-        <div data-role="collapsible" data-collapsed="true" data-theme="b" data-content-theme="b" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
-            <h4><span data-i18n="index.feedback">Global feedback (optionnal)</span></h4>
-            <textarea cols="80" rows="5" name="textarea" id="id_feedback"></textarea>
-        </div>
-    -->
+
         <div data-role="collapsible" data-collapsed="true" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" data-theme="b" data-content-theme="b">
             <h4><span id="id_outype">Code</span></h4>
             <form>
@@ -177,7 +182,7 @@ else :
                 <a href="#" id="copy-button" data-i18n="index.copy" class="ui-shadow ui-btn ui-corner-all ui-btn-icon-left ui-icon-grid">COPY</a>
             </div>
             <div class="ui-block-b">
-                <a href="#" id="save-button" class="ui-shadow ui-btn ui-corner-all ui-btn-icon-left ui-icon-action"><span data-i18n="index.save" >EXPORT</span> <span id='id_exporttype'></span></a>
+                <a href="#" id="save-button" class="ui-shadow ui-btn ui-corner-all ui-btn-icon-left ui-icon-action"><span data-i18n="index.export" >EXPORT</span> <span id='id_exporttype'></span></a>
             </div>
         </div>
 
@@ -201,13 +206,7 @@ else :
 	});
 
     $(document).on("pagebeforecreate", function () {
-        /* console.log('pagebeforecreate@index');
-        if (!IsInit){
-            i18n.init(i18nOpts).done(function () {
-                $("html").i18n();
-                IsInit = true;
-            });
-        }*/
+        // console.log('pagebeforecreate@index');
     });
 
 	$(document).on("pagecreate", "#index", function() {
@@ -218,12 +217,12 @@ else :
         //console.log('pagebeforeshow@index');
     });  
 
-    $(document).on("pageaftershow", "#index", function() {
-        //console.log('pageaftershow@index');
+    $(document).on("pageaftershow", "#index", function() { /* do not work */
+        console.log('pageaftershow@index');
     });
 
 	$("#id_reset").click(function() {
-		if (confirm( "Clear all ?" ))
+        if ( confirm(i18next.t('index.clear')))
             IndexModule.ClearAll();
 	});
 
@@ -287,9 +286,5 @@ tex2jax: {
 }
 });
 </script>
-
-<!-- Internalization -->
-<script src="js/i18n.js"></script>
-
 </body>
 </html>

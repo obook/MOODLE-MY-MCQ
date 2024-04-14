@@ -52,13 +52,7 @@ function SetCurrentQuestion(varObj) {
   $("#id_reponse4").val(varObj.answer4);
   $("#id_feedback").val(varObj.feedback);
 
-  let negativepoints = ConfigNegativePoints(); /* true or false */
-  //  console.log("SetCurrentQuestion:negativepoints", negativepoints);
 }
-
-  /* Ici récupérer le nombre de bonnes questions possibles et changer les XXX */
-
- 
 
 function ClearCurrentQuestion(number=null) {
     $("#id_titre").val("");

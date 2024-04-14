@@ -71,12 +71,12 @@ function SetCorrectAnswers(correctanswers) {
   else
     correctanswers = ConfigCorrectAnswers();
 
-  let negativepoints = ConfigNegativePoints();
-
   $(id_pointsreponse1).text("");
   $(id_pointsreponse2).text("");
   $(id_pointsreponse3).text("");
   $(id_pointsreponse4).text("");
+
+  let negativepoints = ConfigNegativePoints();
 
   if ( correctanswers == 1 ) {
       $(id_pointsreponse1).text("+100%");
