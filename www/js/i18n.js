@@ -110,7 +110,7 @@ $(function () {
               sample : {
                 python: "Voici du code Python.\n<pre><code>def Syracuse(n):\n    if n%2==0:\n        n = n//2\n    else:\n        n = 3*n+1\n    return n </code></pre>Que retourne Syracuse(100)?",
                 html: "Voici du code HTML.\n<pre><code><html>\n    <body>\n        ... Clic !</button>\n        <h1><span id=\"number\">2000</span></h1>\n    </body>\n</html></code></pre>Que manque t-il?",
-                math: "Exemple pour les sciences\n Mode Inline \\( \\sqrt{2} \\)\n Mode Displayed $$ 2x^2-3x+1 $$"
+                math: "Exemple pour les mathématiques\n Mode Inline \\( \\sqrt{2} \\) (intégré)\n Mode Displayed $$ 2x^2-3x+1 $$"
               }
             }
           },
