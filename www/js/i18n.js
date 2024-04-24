@@ -67,8 +67,8 @@ $(function () {
                     clear: 'Clear all ?',
               },
               sample : {
-                python: "Question about Python function.\n<pre><code>def Syracuse(n):\n    if n%2==0:\n        n = n//2\n    else:\n        n = 3*n+1\n    return n </code></pre>What return Syracuse(100)?",
-                html: "Question about HTML.\n<pre><code><html>\n    <body>\n        ... Clic !</button>\n        <h1><span id=\"number\">2000</span></h1>\n    </body>\n</html></code></pre>What missing?",
+                python: "Question about Python function.<pre><code>def Syracuse(n):\n    if n%2==0:\n        n = n//2\n    else:\n        n = 3*n+1\n    return n </code></pre>What return Syracuse(100)?",
+                html: "Question about HTML.<pre><code><html>\n    <body>\n        ... Clic !</button>\n        <h1><span id=\"number\">2000</span></h1>\n    </body>\n</html></code></pre>What missing?",
                 math: "Some math samples\n Inline \\( \\sqrt{2} \\)\nDisplayed $$ 2x^2-3x+1 $$"
               }
             }
@@ -108,8 +108,8 @@ $(function () {
                     clear: 'Tout effacer ?',
               },
               sample : {
-                python: "Voici du code Python.\n<pre><code>def Syracuse(n):\n    if n%2==0:\n        n = n//2\n    else:\n        n = 3*n+1\n    return n </code></pre>Que retourne Syracuse(100)?",
-                html: "Voici du code HTML.\n<pre><code><html>\n    <body>\n        ... Clic !</button>\n        <h1><span id=\"number\">2000</span></h1>\n    </body>\n</html></code></pre>Que manque t-il?",
+                python: "Voici du code Python.<pre><code>def Syracuse(n):\n    if n%2==0:\n        n = n//2\n    else:\n        n = 3*n+1\n    return n </code></pre>Que retourne Syracuse(100)?",
+                html: "Voici du code HTML.<pre><code><html>\n    <body>\n        ... Clic !</button>\n        <h1><span id=\"number\">2000</span></h1>\n    </body>\n</html></code></pre>Que manque t-il?",
                 math: "Exemple pour les mathématiques\n Mode Inline \\( \\sqrt{2} \\) (intégré)\n Mode Displayed $$ 2x^2-3x+1 $$"
               }
             }
@@ -149,8 +149,8 @@ $(function () {
                     clear: 'Alles löschen ?',
               },
               sample : {
-                python: "Frage zur Python-Funktion.\n<pre><code>def Syracuse(n):\n    if n%2==0:\n        n = n//2\n    else:\n        n = 3*n+ 1\n    return n </code></pre>Was gibt Syracuse(100) zurück?",
-                html: "Frage zur HTML.\n<pre><code><html>\n    <body>\n        ... Clic !</button>\n        <h1><span id=\"number\">2000</span></h1>\n    </body>\n</html></code></pre>What missing?",
+                python: "Frage zur Python-Funktion.<pre><code>def Syracuse(n):\n    if n%2==0:\n        n = n//2\n    else:\n        n = 3*n+ 1\n    return n </code></pre>Was gibt Syracuse(100) zurück?",
+                html: "Frage zur HTML.<pre><code><html>\n    <body>\n        ... Clic !</button>\n        <h1><span id=\"number\">2000</span></h1>\n    </body>\n</html></code></pre>What missing?",
                 math: "Beispiel für Mathematik\n Inline \\( \\sqrt{2} \\)\nDisplayed $$ 2x^2-3x+1 $$"
               }
             }
@@ -191,8 +191,8 @@ $(function () {
               }
             },
             sample : {
-              python: "Python के बारे में प्रश्न\n<pre><code>def Syracuse(n):\n    if n%2==0:\n        n = n//2\n    else:\n        n = 3*n+1\n    return n </code></pre>क्या वापसी Syracuse(100)?",
-              html: "HTML के बारे में प्रश्न.\n<pre><code><html>\n    <body>\n        ... Clic !</button>\n        <h1><span id=\"number\">2000</span></h1>\n    </body>\n</html></code></pre>क्या कमी है?",
+              python: "Python के बारे में प्रश्न<pre><code>def Syracuse(n):\n    if n%2==0:\n        n = n//2\n    else:\n        n = 3*n+1\n    return n </code></pre>क्या वापसी Syracuse(100)?",
+              html: "HTML के बारे में प्रश्न.<pre><code><html>\n    <body>\n        ... Clic !</button>\n        <h1><span id=\"number\">2000</span></h1>\n    </body>\n</html></code></pre>क्या कमी है?",
               math: "गणित के लिए उदाहरण\n इनलाइन मोड\n Inline \\( \\sqrt{2} \\)\nDisplayed $$ 2x^2-3x+1 $$"
             }
           },
