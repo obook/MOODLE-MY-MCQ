@@ -66,7 +66,7 @@ return(string);
 Only support ONE source code.
 tags "pre" and "code" in LOWCASE
 
-preview = print for web
+tofile=false => print inside webpage
 
 */
 
@@ -77,6 +77,10 @@ let index_end = -1;
 let succeed = false;
 
     // console.log("EncodeSnippet:QUESTION=["+question+"] to file=",tofile);
+
+    // test
+
+    //EncodeSnippetNew(question, tofile);
 
     for (let i = 0; i < question.length-1; i++) {
         let c = question[i];
@@ -130,6 +134,41 @@ let succeed = false;
     }
 return(question)
 }
+
+/*
+Support multi codes snippets : problèmes à l'export
+ */
+function EncodeSnippetProjet(question, tofile=false)
+{
+    question = question.replace(/(\r\n|\r|\n)/g, '<br>');
+    const regexp = /<pre><code>(.*?)<\/code><\/pre>/g;
+    const codes = [...question.matchAll(regexp)];
+
+    for (let i = 0; i < codes.length; i++) {
+
+        let code = codes[i][1];
+        let new_code = code;
+
+        //console.log("EncodeSnippetNew:code #",i," = [", code,"]\n********************************************");
+
+        if(tofile) {
+            new_code = new_code.replaceAll("<","&lt;");
+            new_code = new_code.replaceAll(">","&gt;");
+        }
+        else{
+            new_code = new_code.replaceAll("<","&amp;lt;");
+            new_code = new_code.replaceAll(">","&amp;gt;");               
+        }
+
+        question = question.replaceAll(code, new_code);
+
+        //console.log("EncodeSnippetNew:Newcode #",i," = [", code,"]\n********************************************");
+
+    }
+
+    return(question);
+}
+
 
 function GetFirstLine(str) {
 let car;
