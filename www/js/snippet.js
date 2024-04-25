@@ -80,7 +80,7 @@ let succeed = false;
 
     // test
 
-    //EncodeSnippetNew(question, tofile);
+    // EncodeSnippetProjet(question, tofile);
 
     for (let i = 0; i < question.length-1; i++) {
         let c = question[i];
@@ -137,9 +137,15 @@ return(question)
 
 /*
 Support multi codes snippets : problèmes à l'export
+Voir s = s.substring(s.indexOf("<pre>")+1,s.lastIndexOf("</pre>")-1);
  */
 function EncodeSnippetProjet(question, tofile=false)
 {
+    let s = question.substring(question.indexOf("<code>")+0,question.lastIndexOf("</code>")-1); /* coupe trop loin si deux codes */
+
+    console.log("EncodeSnippetNew : s = [", s,"]\n********************************************");
+
+    /*
     question = question.replace(/(\r\n|\r|\n)/g, '<br>');
     const regexp = /<pre><code>(.*?)<\/code><\/pre>/g;
     const codes = [...question.matchAll(regexp)];
@@ -147,6 +153,12 @@ function EncodeSnippetProjet(question, tofile=false)
     for (let i = 0; i < codes.length; i++) {
 
         let code = codes[i][1];
+
+        let s = code.substring(code.indexOf("<pre>")+1,code.lastIndexOf("</pre>")-1);
+
+        console.log("EncodeSnippetNew:code #",i," s = [", s,"]\n********************************************");
+
+        
         let new_code = code;
 
         //console.log("EncodeSnippetNew:code #",i," = [", code,"]\n********************************************");
@@ -164,7 +176,9 @@ function EncodeSnippetProjet(question, tofile=false)
 
         //console.log("EncodeSnippetNew:Newcode #",i," = [", code,"]\n********************************************");
 
-    }
+     
+
+    }   */
 
     return(question);
 }
