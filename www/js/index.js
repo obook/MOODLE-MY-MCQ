@@ -10,9 +10,9 @@ import { PrintXML } from "./xml.js";
 import { ClearCurrentQuestion, StoreQuestion, RecallQuestion } from "./question.js";
 import { GetFirstLine} from "./snippet.js";
 import { StorageExists, StorageClear} from "./storage.js";
-import { ConfigMax, ConfigTheme, ConfigFormatOutput, ConfigQuestionOnly, ConfigCorrectAnswers, ConfigNegativePoints, ConfigClear} from "./config.js";
+import { ConfigMax, ConfigTheme, ConfigFormatOutput, ConfigQuestionOnly, ConfigCorrectAnswers, ConfigPenality, ConfigClear} from "./config.js";
 
-export {Init, SetFormatOutput, SetNegativePoints, SetCorrectAnswers, SetQuestionOnly, QuestionNumberChanged, ClearAll, SaveCode};
+export {Init, SetFormatOutput, SetPenality, SetCorrectAnswers, SetQuestionOnly, QuestionNumberChanged, ClearAll, SaveCode};
 
 var delay = 2
 var counter = delay;
@@ -21,6 +21,7 @@ var old_header = "";
 var format_gift = true;
 var question_only = true;
 var actual_question_number = 1;
+var penality = 'ON';
 
 function Init() {
   $("#sliderOutput").val(ConfigFormatOutput());
@@ -31,10 +32,7 @@ function Init() {
   else
     $("#sliderBank").val('OFF');
 
-  if(ConfigNegativePoints()==1) // 1 or 0 
-    $("#id_points_negatifs").val("1");
-  else
-    $("#id_points_negatifs").val("0");
+  $("#sliderPenality").val(ConfigPenality());
 
   $("#id_question_type").val(ConfigCorrectAnswers());
 
@@ -59,10 +57,12 @@ function clock() {
     }
 }
 
-function SetNegativePoints(value) {
-  if(value)
-    ConfigNegativePoints(value);
-    SetCorrectAnswers();
+function SetPenality(value) {
+  if (value == 'OFF')
+    penality = false;
+  else
+    penality = true;
+  ConfigPenality(value);
 }
 
 function SetCorrectAnswers(correctanswers) {
@@ -76,11 +76,11 @@ function SetCorrectAnswers(correctanswers) {
   $(id_pointsreponse3).text("");
   $(id_pointsreponse4).text("");
 
-  let negativepoints = ConfigNegativePoints();
+  penality = ConfigPenality();
 
   if ( correctanswers == 1 ) {
       $(id_pointsreponse1).text("+100%");
-      if(negativepoints==1) {
+      if(penality=='ON') {
           $(id_pointsreponse2).text("-33.33%");
           $(id_pointsreponse3).text("-33.33%");
           $(id_pointsreponse4).text("-33.33%");
@@ -93,7 +93,7 @@ function SetCorrectAnswers(correctanswers) {
   } else if ( correctanswers == 2 ) {
       $(id_pointsreponse1).text("+50%");
       $(id_pointsreponse2).text("+50%");
-      if(negativepoints==1) {
+      if(penality=='ON') {
           $(id_pointsreponse3).text("-25%");
           $(id_pointsreponse4).text("-25%");
       }
@@ -105,7 +105,7 @@ function SetCorrectAnswers(correctanswers) {
       $(id_pointsreponse1).text("+33.33%");
       $(id_pointsreponse2).text("+33.33%");
       $(id_pointsreponse3).text("+33.33%");
-      if(negativepoints==1) {
+      if(penality=='ON') {
           $(id_pointsreponse4).text("-100%");
       }
       else{

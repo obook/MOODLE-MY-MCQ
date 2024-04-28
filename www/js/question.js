@@ -6,7 +6,6 @@
 
 export {QuestionObj, GetCurrentQuestion, SetCurrentQuestion, ClearCurrentQuestion, StoreQuestion, GetQuestion, RecallQuestion};
 import {StorageExists} from "./storage.js";
-import {ConfigNegativePoints} from "./config.js"
 
 let QuestionObj = {
     number: 0, /* >= 1 */

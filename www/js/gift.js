@@ -65,10 +65,10 @@ let endline = '\n';
     /* aller cherche plutot dans la config ? */
 
     let type = $("#id_question_type").val(); /* 1,2,3 ou 4 bonnes réponses */
-    let points = $("#id_points_negatifs").val(); /* 0 = sans points négatifs, 1 = avec points négatifs */  
+    let penality = $("#sliderPenality").val(); /* OFF= sans points négatifs, ON = avec points négatifs */  
 
     if( type == 1 ) { // Une bonne réponse
-        if (points == 1) { /* Points négatifs */
+        if (penality == 'ON') { /* Points négatifs */
             code = code + "// One correct awswer : n°1, With negative points"+endline+"{"+endline;
             code = code + " = " + Html2AnswerFilter( questionobj.answer1, tofile) + endline;
             code = code + " ~ %-33.33333% " + Html2AnswerFilter( questionobj.answer2, tofile)  + endline;
@@ -84,7 +84,7 @@ let endline = '\n';
         }
     }
     else if( type == 2 ) { // Deux bonnes réponses
-        if (points == 1) { /* Points négatifs */
+        if (penality  == 'ON') { /* Points négatifs */
             code = code + "// Two correct awswers : n°1 et n°2, With negative points"+endline+"{"+endline;
             code = code + " ~ %50% " + Html2AnswerFilter( questionobj.answer1, tofile , tofile)  + endline;
             code = code + " ~ %50% " + Html2AnswerFilter( questionobj.answer2, tofile , tofile)  + endline;
@@ -100,7 +100,7 @@ let endline = '\n';
         }
     }
     else if( type == 3 ) { // Trois bonnes réponses
-        if (points == 1) { /* Points négatifs */
+        if (penality  == 'ON') { /* Points négatifs */
             code = code + "// Three correct awswers : n°1, n°2 et n°3, With negative points"+endline+"{"+endline;
             code = code + " ~ %33.33333% " + Html2AnswerFilter( questionobj.answer1, tofile , tofile)  + endline;
             code = code + " ~ %33.33333% " + Html2AnswerFilter( questionobj.answer2, tofile , tofile)  + endline;

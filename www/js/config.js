@@ -4,18 +4,19 @@
 *
 */
 
-export { ConfigMax, ConfigTheme, ConfigFormatOutput, ConfigQuestionOnly, ConfigNegativePoints, ConfigCorrectAnswers, ConfigClear};
+export { ConfigMax, ConfigTheme, ConfigFormatOutput, ConfigQuestionOnly, ConfigPenality, ConfigCorrectAnswers, ConfigClear};
 
 let ConfigObjkey = "CONF";
 
 function ConfigObject(version) {
     let conf = {
-        version: "1.2",
+        version: "1.3",
         category: "Default bank category", /* Bank thema */
         format: "GIFT", /* GIFT or XML */ 
         questiononly: false, /* Print question only or not */
         max: 1, /* Maximum questions */
-        negativepoints: true,
+        /* negativepoints: true, */
+        penality: true,
         correctanswers: 1, /* 1, 2, 3 or 4 correct answers */ 
     };
 return conf;
@@ -82,17 +83,17 @@ function ConfigQuestionOnly(value=null) {
 return(conf.questiononly)
 }
 
-function ConfigNegativePoints(negativepoints=null) { /* 1 = with , 0 = without */
-    // Charger la config
-    conf = LoadConfig();
+function ConfigPenality(penality=null) {
+   // Charger la config
+   conf = LoadConfig();
 
-    // Régler la catégorie
-    if(negativepoints != null) {
-        conf.negativepoints = negativepoints;
-        localStorage.setItem(ConfigObjkey, JSON.stringify(conf));
-    }
+   // Régler la catégorie
+   if(penality != null) {
+       conf.penality = penality;
+       localStorage.setItem(ConfigObjkey, JSON.stringify(conf));
+   }
 
-return(conf.negativepoints)
+   return(conf.penality)
 }
 
 function ConfigCorrectAnswers(correctanswers=null) { /* 1 , 2 , 3 or 4 */

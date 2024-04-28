@@ -22,7 +22,7 @@ function PrintXML(force=false, question_only=true) {
     // console.log("MakeXML");
 
     var type = $("#id_question_type").val(); /* 1,2,3 ou 4 bonnes réponses */
-    var points = $("#id_points_negatifs").val(); /* 0 = sans points négatifs, 1 = avec points négatifs */
+    let penality = $("#sliderPenality").val(); /* OFF= sans points négatifs, ON = avec points négatifs */  
 
     var reponse1 = $("#id_reponse1").val();
     var reponse2 = $("#id_reponse2").val();

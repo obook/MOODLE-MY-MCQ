@@ -40,27 +40,26 @@ Outil de fabrication de question QCM au format GIFT et XML pour Moodle
     <div data-role="panel" id="settingspanel" data-display="overlay">
         <label for="id_theme" data-i18n="index.category">Category:</label>
         <input type="text" name="id_theme" id="id_theme" value="My bank category">
+
+        <label for="id_question_type" data-i18n="index.type">Correct anwsers</label>
+        <select name="select-h-1a" id="id_question_type" class="nav">
+            <option value="1">1</option><!-- internalization bug -->
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </select>
+
+        <label for="sliderPenality" data-i18n="index.penality">Negative points:</label>
+            <select class="ui-shadow" name="sliderPenality" id="sliderPenality" data-role="slider" data-mini="true">
+                <option value="OFF" selected>OFF</option>
+                <option value="ON">ON</option>
+        </select>
+    
         <label for="sliderOutput" data-i18n="index.outcode">Code:</label>
         <select name="sliderOutput" id="sliderOutput" data-role="slider" data-mini="true">
             <option value="GIFT" selected>GIFT</option>
             <option value="XML">XML</option>
         </select>
-
-        <form id="id_form_question_type"></form>
-            <select name="select-h-1a" id="id_question_type" class="nav">
-                <option value="1" data-i18n="index.type1">One correct awswer</option><!-- internalization bug -->
-                <option value="2" data-i18n="index.type2">Two correct awswers</option>
-                <option value="3" data-i18n="index.type3">Three correct awswers</option>
-                <option value="4" data-i18n="index.type4">Four correct awswers</option>
-            </select>
-        </form>
-
-        <form id="id_form_points_negatifs">
-            <select name="select-h-1b" id="id_points_negatifs">
-                    <option value="1" data-i18n="index.withnegativepoints">With negative points</option>
-                    <option value="0" data-i18n="index.withoutnegativepoints">Without negative points</option>
-                </select>
-        </form>
 
         <a href="#" data-rel="close" id='id_close_settings'class="ui-btn ui-shadow ui-corner-all ui-icon-delete ui-btn-icon-left" data-i18n="index.save">Close</a>
     </div><!-- /panel Settings -->
@@ -155,7 +154,7 @@ Displayed $$ 2x^2-3x+1 $$</textarea></p>
               </div>
         </div>
 
-        <div data-role="collapsible" data-collapsed="true" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" data-theme="b" data-content-theme="b">
+        <div data-role="collapsible" data-collapsed="false" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" data-theme="b" data-content-theme="b">
             <h4><span id="id_outype">Code</span></h4>
             <form>
                 <div class="ui-field-contain">
@@ -222,17 +221,21 @@ Displayed $$ 2x^2-3x+1 $$</textarea></p>
     $("#sliderOutput").change(function() {
         IndexModule.SetFormatOutput($("#sliderOutput").val());
 	});
-
+/*
     $("#id_points_negatifs").change(function() {
         IndexModule.SetNegativePoints($("#id_points_negatifs").val());
 	});
-
+*/
+    $("#sliderPenality").change(function() {
+        IndexModule.SetPenality($("#sliderPenality").val());
+	});
+    
     $("#id_question_type").change(function() {
         IndexModule.SetCorrectAnswers($("#id_question_type").val());
 	});
 
 	$("#id_close_settings").click(function() {
-        IndexModule.SetNegativePoints();
+        IndexModule.SetPenality();
         IndexModule.SetCorrectAnswers();
 	});
     
