@@ -4,7 +4,7 @@
 *
 */
 
-export { ConfigMax, ConfigTheme, ConfigFormatOutput, ConfigQuestionOnly, ConfigPenality, ConfigCorrectAnswers, ConfigClear};
+export { ConfigTheme, ConfigFormatOutput, ConfigQuestionOnly, ConfigPenality, ConfigCorrectAnswers, ConfigClear};
 
 let ConfigObjkey = "CONF";
 
@@ -32,6 +32,8 @@ function LoadConfig() {
 return(conf);
 }
 
+/* Archi faux, on sauve uniquement le numéro affiché, pas le max
+
 function ConfigMax(number=null) {
     // Charger la config
     conf = LoadConfig();
@@ -44,7 +46,7 @@ function ConfigMax(number=null) {
     }
 return(conf.max);
 }
-
+ */
 function ConfigTheme(category=null) {
     // Charger la config
     conf = LoadConfig();

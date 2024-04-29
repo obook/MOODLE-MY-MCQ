@@ -10,7 +10,7 @@ import { PrintXML } from "./xml.js";
 import { ClearCurrentQuestion, StoreQuestion, RecallQuestion } from "./question.js";
 import { GetFirstLine} from "./snippet.js";
 import { StorageExists, StorageClear} from "./storage.js";
-import { ConfigMax, ConfigTheme, ConfigFormatOutput, ConfigQuestionOnly, ConfigCorrectAnswers, ConfigPenality, ConfigClear} from "./config.js";
+import { ConfigTheme, ConfigFormatOutput, ConfigQuestionOnly, ConfigCorrectAnswers, ConfigPenality, ConfigClear} from "./config.js";
 
 export {Init, SetFormatOutput, SetPenality, SetCorrectAnswers, SetQuestionOnly, QuestionNumberChanged, ClearAll, SaveCode};
 
@@ -149,7 +149,7 @@ function QuestionNumberChanged(number) {
   else {
     ClearCurrentQuestion();
   }
-  ConfigMax(number);
+
   Process();
 }
 

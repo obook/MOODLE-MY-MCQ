@@ -6,7 +6,6 @@
 
 import { Html2GiftFilter, Html2AnswerFilter, GetFirstLine, EncodeSnippet} from "./snippet.js";
 import { GetCurrentQuestion, GetQuestion } from "./question.js";
-import { ConfigMax } from "./config.js";
 export { PrintGift, SaveGift };
 
 let old_code = "";
@@ -134,23 +133,25 @@ return(code);
 const SaveGift = (filename) => {
 let questions = "";
 
-    /* Build all questions */
-    let max = ConfigMax();
     let theme = $("#id_theme").val();
-    let count = 0;
     questions = "// Category\n";
     questions = questions + "$CATEGORY: $course$/" + theme ;
 
-    for (let number = 1; number <= max; number++) {
-        let questionobj = GetQuestion(number);
+    let index = 0;
+
+    while (true) {
+        let questionobj = GetQuestion(index+1);
         if(questionobj) {
             let question = EncodeGift(questionobj, bToFile);
             questions = questions+"\n\n"+question;
-            count++;
+            index++;
+        }
+        else {
+            break;
         }
     }
 
-    if(!count) {
+    if(!index) {
         alert("No any question");
         return;
     }
