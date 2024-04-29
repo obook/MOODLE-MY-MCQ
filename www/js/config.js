@@ -10,13 +10,11 @@ let ConfigObjkey = "CONF";
 
 function ConfigObject(version) {
     let conf = {
-        version: "1.3",
+        version: "1.4",
         category: "Default bank category", /* Bank thema */
         format: "GIFT", /* GIFT or XML */ 
         questiononly: false, /* Print question only or not */
-        max: 1, /* Maximum questions */
-        /* negativepoints: true, */
-        penality: true,
+        penality: true, /* Negative points */
         correctanswers: 1, /* 1, 2, 3 or 4 correct answers */ 
     };
 return conf;
@@ -32,21 +30,6 @@ function LoadConfig() {
 return(conf);
 }
 
-/* Archi faux, on sauve uniquement le numéro affiché, pas le max
-
-function ConfigMax(number=null) {
-    // Charger la config
-    conf = LoadConfig();
-
-    // Régler le max
-    let max = conf.max;
-    if( number > conf.max) {
-        conf.max = number;
-        localStorage.setItem(ConfigObjkey, JSON.stringify(conf));
-    }
-return(conf.max);
-}
- */
 function ConfigTheme(category=null) {
     // Charger la config
     conf = LoadConfig();
