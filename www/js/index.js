@@ -94,8 +94,8 @@ function SetCorrectAnswers(correctanswers) {
       $(id_pointsreponse1).text("+50%");
       $(id_pointsreponse2).text("+50%");
       if(penality=='ON') {
-          $(id_pointsreponse3).text("-25%");
-          $(id_pointsreponse4).text("-25%");
+          $(id_pointsreponse3).text("-50%");
+          $(id_pointsreponse4).text("-50%");
       }
       else{
         $(id_pointsreponse3).text("0%");
