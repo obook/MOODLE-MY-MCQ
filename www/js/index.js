@@ -76,15 +76,23 @@ function SetCorrectAnswers(correctanswers) {
   $(id_pointsreponse3).text("");
   $(id_pointsreponse4).text("");
 
-  $(id_label_reponse1).removeClass("class_right_answer");
-  $(id_label_reponse2).removeClass("class_right_answer");
-  $(id_label_reponse3).removeClass("class_right_answer");
-  $(id_label_reponse4).removeClass("class_right_answer");
+  $(id_label_reponse1).removeClass("class_correct_answer");
+  $(id_label_reponse2).removeClass("class_correct_answer");
+  $(id_label_reponse3).removeClass("class_correct_answer");
+  $(id_label_reponse4).removeClass("class_correct_answer");
+
+  $(id_label_reponse1).removeClass("class_incorrect_answer");
+  $(id_label_reponse2).removeClass("class_incorrect_answer");
+  $(id_label_reponse3).removeClass("class_incorrect_answer");
+  $(id_label_reponse4).removeClass("class_incorrect_answer");
 
   penality = ConfigPenality();
 
   if ( correctanswers == 1 ) {
-      $(id_label_reponse1).addClass("class_right_answer");
+      $(id_label_reponse1).addClass("class_correct_answer");
+      $(id_label_reponse2).addClass("class_incorrect_answer");
+      $(id_label_reponse3).addClass("class_incorrect_answer");
+      $(id_label_reponse4).addClass("class_incorrect_answer");
       if(penality=='ON') {
           $(id_pointsreponse1).text("+100%");
           $(id_pointsreponse2).text("-33.33%");
@@ -92,8 +100,10 @@ function SetCorrectAnswers(correctanswers) {
           $(id_pointsreponse4).text("-33.33%");
       }
   } else if ( correctanswers == 2 ) {
-      $(id_label_reponse1).addClass("class_right_answer");
-      $(id_label_reponse2).addClass("class_right_answer");
+      $(id_label_reponse1).addClass("class_correct_answer");
+      $(id_label_reponse2).addClass("class_correct_answer");
+      $(id_label_reponse3).addClass("class_incorrect_answer");
+      $(id_label_reponse4).addClass("class_incorrect_answer");
       if(penality=='ON') {
           $(id_pointsreponse1).text("+50%");
           $(id_pointsreponse2).text("+50%");
@@ -104,17 +114,18 @@ function SetCorrectAnswers(correctanswers) {
       $(id_pointsreponse1).text("+33.33%");
       $(id_pointsreponse2).text("+33.33%");
       $(id_pointsreponse3).text("+33.33%");
-      $(id_label_reponse1).addClass("class_right_answer");
-      $(id_label_reponse2).addClass("class_right_answer");
-      $(id_label_reponse3).addClass("class_right_answer");
+      $(id_label_reponse1).addClass("class_correct_answer");
+      $(id_label_reponse2).addClass("class_correct_answer");
+      $(id_label_reponse3).addClass("class_correct_answer");
+      $(id_label_reponse4).addClass("class_incorrect_answer");
       if(penality=='ON') {
           $(id_pointsreponse4).text("-100%");
       }
   } else if ( correctanswers == 4 ) {
-      $(id_label_reponse1).addClass("class_right_answer");
-      $(id_label_reponse2).addClass("class_right_answer");
-      $(id_label_reponse3).addClass("class_right_answer");
-      $(id_label_reponse4).addClass("class_right_answer");
+      $(id_label_reponse1).addClass("class_correct_answer");
+      $(id_label_reponse2).addClass("class_correct_answer");
+      $(id_label_reponse3).addClass("class_correct_answer");
+      $(id_label_reponse4).addClass("class_correct_answer");
       if(penality=='ON') {
         $(id_pointsreponse1).text("+25%");
         $(id_pointsreponse2).text("+25%");
