@@ -79,9 +79,9 @@ pre {
  }
 
  .class_correct_answer{
-  background: #135c00ab;
+  color: #00ff00;
  }
 
  .class_incorrect_answer{
-  /* background: #420000ab; */
+  color: #ff0000;
  }
