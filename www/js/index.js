@@ -6,13 +6,13 @@
 
 import { MakePreview } from "./preview.js";
 import { PrintGift, SaveGift } from "./gift.js";
-import { PrintXML } from "./xml.js";
+import { PrintXML, SaveXML } from "./xml.js";
 import { ClearCurrentQuestion, StoreQuestion, RecallQuestion } from "./question.js";
 import { GetFirstLine} from "./snippet.js";
 import { StorageExists, StorageClear} from "./storage.js";
 import { ConfigTheme, ConfigFormatOutput, ConfigQuestionOnly, ConfigCorrectAnswers, ConfigPenality, ConfigClear} from "./config.js";
 
-export {Init, SetFormatOutput, SetPenality, SetCorrectAnswers, SetQuestionOnly, QuestionNumberChanged, ClearAll, SaveCode};
+export {Init, Process, SetFormatOutput, SetPenality, SetCorrectAnswers, SetQuestionOnly, QuestionNumberChanged, ClearAll, SaveCode};
 
 var delay = 2
 var counter = delay;
@@ -76,46 +76,51 @@ function SetCorrectAnswers(correctanswers) {
   $(id_pointsreponse3).text("");
   $(id_pointsreponse4).text("");
 
+  $(id_label_reponse1).removeClass("class_right_answer");
+  $(id_label_reponse2).removeClass("class_right_answer");
+  $(id_label_reponse3).removeClass("class_right_answer");
+  $(id_label_reponse4).removeClass("class_right_answer");
+
   penality = ConfigPenality();
 
   if ( correctanswers == 1 ) {
-      $(id_pointsreponse1).text("+100%");
+      $(id_label_reponse1).addClass("class_right_answer");
       if(penality=='ON') {
+          $(id_pointsreponse1).text("+100%");
           $(id_pointsreponse2).text("-33.33%");
           $(id_pointsreponse3).text("-33.33%");
           $(id_pointsreponse4).text("-33.33%");
       }
-      else{
-        $(id_pointsreponse2).text("0%");
-        $(id_pointsreponse3).text("0%");
-        $(id_pointsreponse4).text("0%");       
-      }
   } else if ( correctanswers == 2 ) {
-      $(id_pointsreponse1).text("+50%");
-      $(id_pointsreponse2).text("+50%");
+      $(id_label_reponse1).addClass("class_right_answer");
+      $(id_label_reponse2).addClass("class_right_answer");
       if(penality=='ON') {
+          $(id_pointsreponse1).text("+50%");
+          $(id_pointsreponse2).text("+50%");
           $(id_pointsreponse3).text("-50%");
           $(id_pointsreponse4).text("-50%");
-      }
-      else{
-        $(id_pointsreponse3).text("0%");
-        $(id_pointsreponse4).text("0%");       
       }
   } else if ( correctanswers == 3 ) {
       $(id_pointsreponse1).text("+33.33%");
       $(id_pointsreponse2).text("+33.33%");
       $(id_pointsreponse3).text("+33.33%");
+      $(id_label_reponse1).addClass("class_right_answer");
+      $(id_label_reponse2).addClass("class_right_answer");
+      $(id_label_reponse3).addClass("class_right_answer");
       if(penality=='ON') {
           $(id_pointsreponse4).text("-100%");
       }
-      else{
-        $(id_pointsreponse4).text("0%");       
-      }
   } else if ( correctanswers == 4 ) {
-      $(id_pointsreponse1).text("+25%");
-      $(id_pointsreponse2).text("+25%");
-      $(id_pointsreponse3).text("+25%");
-      $(id_pointsreponse4).text("+25%");
+      $(id_label_reponse1).addClass("class_right_answer");
+      $(id_label_reponse2).addClass("class_right_answer");
+      $(id_label_reponse3).addClass("class_right_answer");
+      $(id_label_reponse4).addClass("class_right_answer");
+      if(penality=='ON') {
+        $(id_pointsreponse1).text("+25%");
+        $(id_pointsreponse2).text("+25%");
+        $(id_pointsreponse3).text("+25%");
+        $(id_pointsreponse4).text("+25%");
+    }
   }
 }
 
@@ -196,7 +201,7 @@ function SaveCode() {
   if(format_gift)
     SaveGift(ConfigTheme());
   else
-    alert("Not implemented yet");
+    SaveXMLSaveGift(ConfigTheme());
 }
 
 Init();

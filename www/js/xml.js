@@ -5,7 +5,7 @@
 */
 
 import { EncodeSnippet, Html2XMLFilter, GetFirstLine} from "./snippet.js";
-export { PrintXML };
+export { PrintXML, SaveXML };
 
 var old_code = "";
 
@@ -109,8 +109,6 @@ function PrintXML(force=false, question_only=true) {
 
 const SaveXML = (filename) => {
     let questions = "";
-    
-        let theme = $("#id_theme").val();
-
+    let theme = $("#id_theme").val();
+    alert("Not implemented yet");
 };
-

@@ -71,3 +71,12 @@ pre {
   border-radius: 4px;
   overflow: auto;
  }
+
+ .class_feedback{
+  font-style: italic;
+ }
+
+ .class_right_answer{
+  background: #0f4b00ab;
+ }
+
