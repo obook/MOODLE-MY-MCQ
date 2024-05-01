@@ -28,6 +28,7 @@ pre {
 .class_points {
   color: rgb(128, 128, 128);
   float: right;
+  padding-right: 10px;
 }
 
  .class_answer {
@@ -78,7 +79,7 @@ pre {
  }
 
  .class_correct_answer{
-  background: #0f4b00ab;
+  background: #135c00ab;
  }
 
  .class_incorrect_answer{
