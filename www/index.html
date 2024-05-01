@@ -235,6 +235,13 @@ Displayed $$ 2x^2-3x+1 $$</textarea></p>
         IndexModule.SetPenality();
         IndexModule.SetCorrectAnswers();
 	});
+
+    $("#settingspanel").panel({
+        close: function( event, ui ) {
+            IndexModule.SetPenality();
+            IndexModule.SetCorrectAnswers();
+        }
+    });
     
     $("#id_numero").change(function() {
         IndexModule.QuestionNumberChanged($("#id_numero").val());
