@@ -1,3 +1,4 @@
 Retirer le, ou les, "\n" devant  <pre> à l'exportation pour éviter deux lignes vides dans le PDF.
 Faire l'export pour le format XML
+Ajouter un bouton copier dans les exemples.
 OB 24/04/2024
